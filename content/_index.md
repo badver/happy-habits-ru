@@ -255,8 +255,6 @@ keywords: "психолог онлайн тревожность, психоте�
 
 ## Контакты
 
-**E-mail:** kseniya.parvatkina.therapy@gmail.com
-
 **Telegram:** @happy_habits_ru
 
 **WhatsApp:** +90 507 175 46 33
