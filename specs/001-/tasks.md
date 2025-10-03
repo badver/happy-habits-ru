@@ -51,14 +51,14 @@ Hugo static site structure:
 
 ## Phase 3.1: Setup
 
-- [ ] **T001** Initialize Hugo project with config.toml (lang=ru, baseURL, title, analytics IDs)
+- [x] **T001** Initialize Hugo project with config.toml (lang=ru, baseURL, title, analytics IDs)
   - Path: `config.toml`
   - Hugo version: v0.120+
   - Configure: languageCode=ru-RU, disableKinds=[RSS, sitemap auto-generated]
   - Add Yandex.Metrika ID, Google Analytics 4 ID as params
   - Dependencies: None
 
-- [ ] **T002** [P] Setup Netlify deployment configuration
+- [x] **T002** [P] Setup Netlify deployment configuration
   - Path: `netlify.toml`
   - Hugo build command: `hugo --gc --minify`
   - Publish directory: `public`
@@ -66,7 +66,7 @@ Hugo static site structure:
   - Preview deployments: enabled for all branches
   - Dependencies: None (parallel with T001)
 
-- [ ] **T003** [P] Configure Hugo asset pipeline
+- [x] **T003** [P] Configure Hugo asset pipeline
   - Path: `config.toml` (asset processing section)
   - SCSS compilation with autoprefixer
   - JavaScript bundling and minification
