@@ -157,14 +157,14 @@
 ```
 specs/001-/
 ├── plan.md              # This file (/plan command output) ✅
-├── research.md          # Phase 0 output (/plan command) → Created
-├── data-model.md        # Phase 1 output (/plan command) → Created
-├── quickstart.md        # Phase 1 output (/plan command) → Created
-├── contracts/           # Phase 1 output (/plan command) → Created
-│   ├── analytics-events.yaml    # Спецификация событий аналитики
-│   ├── deeplinks.yaml           # Telegram/WhatsApp deeplink contracts
-│   └── content-blocks.yaml      # Структура контентных блоков
-└── tasks.md             # Phase 2 output (/tasks command - NOT created by /plan)
+├── research.md          # Phase 0 decisions → Documented inline (Section "Phase 0")
+├── data-model.md        # Entities → Documented inline (Section "Phase 1")
+├── quickstart.md        # Manual test checklist → Documented inline (Section "Phase 1")
+├── contracts/           # API contracts → Documented inline (Section "Phase 1")
+│   ├── analytics-events.yaml    # Спецификация событий (inline YAML)
+│   ├── deeplinks.yaml           # Telegram/WhatsApp deeplinks (inline YAML)
+│   └── content-blocks.yaml      # Структура контентных блоков (inline YAML)
+└── tasks.md             # Phase 2 output (/tasks command) ✅
 ```
 
 ### Source Code (repository root)
@@ -385,107 +385,18 @@ specs/001-/
 
 ### Generate Contract Tests
 
-**Tests** (в /tests/playwright/):
+**Tests** (в /tests/playwright/) — 8 separate test files:
 
-1. **critical-path.spec.js** — Критические пути (TDD: tests written first, MUST FAIL before implementation)
-   ```javascript
-   // Test: Hero section loads with correct elements
-   test('Hero section displays title, CTA buttons, and badges', async ({ page }) => {
-     await page.goto('/');
-     await expect(page.locator('h1')).toContainText('Освободитесь от тревоги');
-     await expect(page.locator('[data-cta="telegram"]')).toBeVisible();
-     await expect(page.locator('[data-cta="whatsapp"]')).toBeVisible();
-     await expect(page.locator('[data-badge="confidentiality"]')).toBeVisible();
-   });
+1. **deeplink-telegram.spec.js** — Telegram deeplink contract test
+2. **deeplink-whatsapp.spec.js** — WhatsApp deeplink contract test
+3. **analytics.spec.js** — Analytics events contract test
+4. **hero.spec.js** — Hero section integration test
+5. **content-blocks.spec.js** — All content blocks presence test
+6. **mobile.spec.js** — Mobile rendering (360px) test
+7. **typography.spec.js** — Russian typography validation
+8. **performance.spec.js** — Lighthouse performance test
 
-   // Test: Telegram deeplink opens with pre-filled text
-   test('Telegram CTA opens deeplink with correct text', async ({ page, context }) => {
-     await page.goto('/');
-     const [newPage] = await Promise.all([
-       context.waitForEvent('page'),
-       page.locator('[data-cta="telegram"]').click()
-     ]);
-     expect(newPage.url()).toContain('tg://resolve?domain=happy_habits_ru');
-     expect(decodeURIComponent(newPage.url())).toContain('Здравствуйте! Хочу записаться');
-   });
-
-   // Test: Analytics event fires on CTA click
-   test('Analytics event sent on messenger CTA click', async ({ page }) => {
-     let analyticsEvent = null;
-     page.on('console', msg => {
-       if (msg.text().includes('gtag') || msg.text().includes('ym')) {
-         analyticsEvent = msg.text();
-       }
-     });
-     await page.goto('/');
-     await page.locator('[data-cta="whatsapp"]').click();
-     expect(analyticsEvent).toBeTruthy();
-     expect(analyticsEvent).toContain('cta_messenger_click');
-   });
-
-   // Test: Mobile viewport renders correctly (360px)
-   test('Page renders correctly on mobile (360px)', async ({ page }) => {
-     await page.setViewportSize({ width: 360, height: 640 });
-     await page.goto('/');
-     const hero = page.locator('[data-block="hero"]');
-     await expect(hero).toBeVisible();
-     const ctaButton = page.locator('[data-cta="telegram"]');
-     const box = await ctaButton.boundingBox();
-     expect(box.width).toBeGreaterThanOrEqual(44); // Touch target size
-     expect(box.height).toBeGreaterThanOrEqual(44);
-   });
-   ```
-
-2. **content.spec.js** — Content verification
-   ```javascript
-   // Test: Russian typography is correct
-   test('Page uses correct Russian typography', async ({ page }) => {
-     await page.goto('/');
-     const content = await page.content();
-     expect(content).toMatch(/«[^»]+»/); // Correct quotes
-     expect(content).not.toMatch(/\"[^\"]+\"/); // No straight quotes
-     expect(content).toMatch(/—/); // Em dash
-   });
-
-   // Test: All required sections present
-   test('All content blocks are present', async ({ page }) => {
-     await page.goto('/');
-     await expect(page.locator('[data-block="hero"]')).toBeVisible();
-     await expect(page.locator('[data-block="symptoms"]')).toBeVisible();
-     await expect(page.locator('[data-block="benefits"]')).toBeVisible();
-     await expect(page.locator('[data-block="about"]')).toBeVisible();
-     await expect(page.locator('[data-block="process"]')).toBeVisible();
-     await expect(page.locator('[data-block="testimonials"]')).toBeVisible();
-     await expect(page.locator('[data-block="pricing"]')).toBeVisible();
-     await expect(page.locator('[data-block="faq"]')).toBeVisible();
-     await expect(page.locator('[data-block="cta-final"]')).toBeVisible();
-     await expect(page.locator('[data-block="footer"]')).toBeVisible();
-   });
-   ```
-
-3. **performance.spec.js** — Performance tests
-   ```javascript
-   // Test: Page load time within budget
-   test('Page loads within performance budget', async ({ page }) => {
-     const startTime = Date.now();
-     await page.goto('/');
-     await page.waitForLoadState('networkidle');
-     const loadTime = Date.now() - startTime;
-     expect(loadTime).toBeLessThan(2500); // LCP ≤ 2.5s
-   });
-
-   // Test: Images lazy-load correctly
-   test('Images use lazy loading', async ({ page }) => {
-     await page.goto('/');
-     const images = page.locator('img');
-     const count = await images.count();
-     for (let i = 0; i < count; i++) {
-       const img = images.nth(i);
-       const loading = await img.getAttribute('loading');
-       expect(loading).toBe('lazy');
-     }
-   });
-   ```
+*See tasks.md T004-T011 for detailed test specifications with Playwright MCP tool usage*
 
 ### Extract Test Scenarios from User Stories
 

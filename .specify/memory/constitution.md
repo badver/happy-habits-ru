@@ -39,7 +39,7 @@ Every design, content, and technical decision MUST be evaluated against conversi
 - First screen CTA click-through rate (CTR) MUST achieve ≥8%
 - Mobile traffic MUST account for ≥60% of conversions
 - Response time SLA (≤2 hours) MUST be prominently displayed
-- All conversion paths (Telegram, WhatsApp, form) MUST be instrumented with UTM tracking
+- All conversion paths (Telegram, WhatsApp) MUST be instrumented with UTM tracking
 - A/B testing framework MUST be implemented from day one
 
 *Rationale*: This is a direct-response marketing asset, not a branding site. Every element exists to drive qualified leads to contact channels.

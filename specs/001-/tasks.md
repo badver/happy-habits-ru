@@ -288,7 +288,9 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 - [ ] **T026** A/B testing logic in assets/js/ab-test.js
   - Path: `assets/js/ab-test.js`
-  - Test A: Hero headline variants (baseline vs alternative — define 2 variants)
+  - Test A: Hero headline variants:
+    - Baseline: «Освободитесь от тревоги за 8-12 сессий по доказательному методу»
+    - Variant B: [TBD during content creation in T027 — suggest alternative emphasizing "Верните контроль" or "Начните жить без страха"]
   - Test B: CTA button text variants («Записаться на диагностику» vs «Написать в Telegram» vs «Получить консультацию»)
   - Random assignment: 50/50 split, store variant in localStorage
   - Apply variant on page load (before Hero visible)
@@ -412,6 +414,16 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fix any issues flagged by Lighthouse
   - Dependencies: T035 (performance optimization)
 
+- [ ] **T038** Validate KPI measurement configuration
+  - Path: N/A (verification task)
+  - Verify: Yandex.Metrika goal "cta_messenger_click" configured (конверсия ≥5% target per FR-005)
+  - Verify: Google Analytics 4 conversion event "messenger_click" configured
+  - Verify: Event properties include: button_position (for CTR ≥8% per screen per FR-004)
+  - Verify: Device dimension tracked (mobile/desktop for ≥60% mobile target per FR-006)
+  - Check: Analytics dashboards can measure FR-004 (CTR), FR-005 (conversion), FR-006 (mobile %)
+  - Document: Dashboard URLs and metric formulas in project README
+  - Dependencies: T024 (analytics.js), T031 (verify events firing)
+
 ---
 
 ## Dependencies Graph
@@ -515,6 +527,7 @@ Task: "Create case studies data in data/case-studies.yaml"
 - **Mobile-First**: Start CSS at 360px, scale up with media queries
 - **Performance**: Target Lighthouse ≥90 mobile, LCP ≤2.5s
 - **Analytics**: Yandex.Metrika is primary (Russian audience), GA4 is secondary
+- **Terminology Standardization**: Use English IDs for code (`data-block="hero"`, `data-block="symptoms"`) and Russian titles for user-facing content («Первый экран», «Узнаете себя?»). Maintain this convention across HTML partials, CSS classes, and JavaScript.
 
 ---
 
