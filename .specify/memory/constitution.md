@@ -62,7 +62,7 @@ Mobile performance is NON-NEGOTIABLE:
 **Tone: Доказательный, конкретный, измеримый**
 
 All content claims MUST be:
-- Specific and measurable (e.g., "8-12 sessions", "7-8 из 10 клиентов")
+- Specific and measurable (e.g., "8-12 sessions", "8 из 10 клиентов")
 - Grounded in methodology (КПТ/CBT evidence base)
 - Free of medical jargon and "cure" promises
 - Transparent about process, timelines, costs
@@ -165,7 +165,7 @@ Typography requirements:
 
 ### Content Quality Gates
 - [ ] No unexplained medical claims
-- [ ] All statistics cited (e.g., "7-8 из 10") have methodology note
+- [ ] All statistics cited (e.g., "8 из 10") have methodology note
 - [ ] Testimonials include consent disclosure
 - [ ] Pricing clearly stated with payment/cancellation terms
 - [ ] FAQ addresses all major objections identified in brief

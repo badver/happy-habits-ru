@@ -20,7 +20,7 @@ test.describe('Hero Section', () => {
     await page.goto('/');
 
     // Look for subtitle or any element containing the social proof
-    const subtitle = page.locator('text=/7-8 из 10 клиентов/');
+    const subtitle = page.locator('text=/8 из 10 клиентов/');
     await expect(subtitle).toBeVisible();
   });
 

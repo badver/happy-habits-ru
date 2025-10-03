@@ -109,7 +109,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 - [x] **T007** [P] Integration test: Hero section rendering in tests/playwright/hero.spec.js
   - Verify: H1 contains «Освободитесь от тревоги за 8-12 сессий»
-  - Verify: Subtitle contains «7-8 из 10 клиентов»
+  - Verify: Subtitle contains «8 из 10 клиентов»
   - Verify: 2 CTA buttons visible (Telegram, WhatsApp)
   - Verify: 3 badges visible: «Конфиденциально», «Только онлайн», «Ответ в течение 2 часов»
   - Verify: Psychologist photo loads
@@ -190,7 +190,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Title: «Как помогает терапия»
   - Subtitle: «Что изменится через 8-12 встреч»
   - 4 result items with numbers: снижение тревоги, панические атаки, сон, управление стрессом
-  - Markers: КПТ method, social proof «7-8 из 10 клиентов»
+  - Markers: КПТ method, social proof «8 из 10 клиентов»
   - Data attribute: `data-block="benefits"`
   - Dependencies: T012
 
