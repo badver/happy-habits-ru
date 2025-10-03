@@ -16,7 +16,10 @@
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
   <meta property="og:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
-  <meta property="og:image" content="{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg">
+  {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
+  {{ if $ogImage }}
+  <meta property="og:image" content="{{ ($ogImage.Resize "1200x630").Permalink }}">
+  {{ end }}
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="{{ .Site.Title }}">
 
@@ -24,7 +27,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
   <meta name="twitter:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg">
+  {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
+  {{ if $twitterImage }}
+  <meta name="twitter:image" content="{{ ($twitterImage.Resize "1200x630").Permalink }}">
+  {{ end }}
 
   <!-- Schema.org markup -->
   <script type="application/ld+json">
@@ -37,7 +43,10 @@
         "name": "Ксения Парваткина",
         "jobTitle": "Психолог-психотерапевт",
         "description": "Специализация: тревожные расстройства, панические атаки, КПТ",
-        "image": "{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg",
+        {{ $schemaImage := resources.Get "images/psychologist-portrait.jpg" }}
+        {{ if $schemaImage }}
+        "image": "{{ $schemaImage.Permalink }}",
+        {{ end }}
         "url": "{{ .Site.BaseURL }}",
         "sameAs": [
           "https://t.me/happy_habits_ru"

@@ -4,12 +4,16 @@
 
     <div class="about__content">
       <div class="about__image">
-        <img src="/images/psychologist-portrait.jpg"
-             alt="Психолог — специалист по тревожным расстройствам"
-             class="about__photo"
-             width="400"
-             height="500"
-             loading="lazy">
+        {{ $image := resources.Get "images/psychologist-portrait.jpg" }}
+        {{ if $image }}
+          {{ $resized := $image.Resize "400x500" }}
+          <img src="{{ $resized.RelPermalink }}"
+               alt="Психолог — специалист по тревожным расстройствам"
+               class="about__photo"
+               width="{{ $resized.Width }}"
+               height="{{ $resized.Height }}"
+               loading="lazy">
+        {{ end }}
       </div>
 
       <div class="about__info">

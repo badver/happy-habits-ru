@@ -37,12 +37,16 @@
     </div>
 
     <div class="hero__image">
-      <img src="/images/psychologist-main.jpg"
-           alt="Ксения Парваткина — психолог-психотерапевт, специалист по работе с тревожными расстройствами"
-           class="hero__photo"
-           loading="eager"
-           width="600"
-           height="600">
+      {{ $heroImage := resources.Get "images/psychologist-portrait.jpg" }}
+      {{ if $heroImage }}
+        {{ $resized := $heroImage.Resize "600x600" }}
+        <img src="{{ $resized.RelPermalink }}"
+             alt="Ксения Парваткина — психолог-психотерапевт, специалист по работе с тревожными расстройствами"
+             class="hero__photo"
+             loading="eager"
+             width="{{ $resized.Width }}"
+             height="{{ $resized.Height }}">
+      {{ end }}
     </div>
   </div>
 </section>
