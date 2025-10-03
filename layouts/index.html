@@ -292,5 +292,11 @@
     {{ $paletteSwitcher = $paletteSwitcher | minify | fingerprint }}
     <script src="{{ $paletteSwitcher.Permalink }}" integrity="{{ $paletteSwitcher.Data.Integrity }}"></script>
   {{ end }}
+
+  {{ $carousel := resources.Get "js/testimonials-carousel.js" }}
+  {{ if $carousel }}
+    {{ $carousel = $carousel | minify | fingerprint }}
+    <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
+  {{ end }}
 </body>
 </html>

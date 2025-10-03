@@ -3,6 +3,7 @@
     "tags": [
       "a",
       "body",
+      "button",
       "div",
       "footer",
       "h1",
@@ -54,6 +55,10 @@
       "btn--telegram",
       "btn--whatsapp",
       "btn__icon",
+      "carousel__btn",
+      "carousel__btn--next",
+      "carousel__btn--prev",
+      "carousel__dots",
       "case-studies",
       "case-studies__title",
       "container",
@@ -148,8 +153,10 @@
       "testimonial-card__text",
       "testimonial-card__timeline",
       "testimonials",
+      "testimonials-carousel",
       "testimonials__badge",
-      "testimonials__grid"
+      "testimonials__grid",
+      "testimonials__track"
     ],
     "ids": [
       "palette-selector"
