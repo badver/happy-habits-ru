@@ -3,23 +3,13 @@
    Base: 360px mobile → 768px tablet → 1920px desktop
    ============================================ */
 
+/* Import Color Palette */
+@import "colors.css";
+
 /* ============================================
    CSS Variables & Reset
    ============================================ */
 :root {
-  /* Colors */
-  --color-primary: #0088cc;
-  --color-primary-dark: #006699;
-  --color-secondary: #25D366;
-  --color-secondary-dark: #1da851;
-  --color-text: #1a1a1a;
-  --color-text-light: #666666;
-  --color-bg: #ffffff;
-  --color-bg-light: #f8f9fa;
-  --color-border: #e0e0e0;
-  --color-error: #dc3545;
-  --color-success: #28a745;
-
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   --font-size-base: 16px;
@@ -210,7 +200,7 @@ section {
    Hero Section
    ============================================ */
 .hero {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-border) 100%);
   padding: var(--spacing-lg) 0;
 }
 
@@ -696,12 +686,12 @@ section {
    ============================================ */
 .cta-final {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-text);
   text-align: center;
 }
 
 .cta-final__title {
-  color: white;
+  color: var(--color-text);
   font-size: 28px;
   margin-bottom: var(--spacing-sm);
 }
@@ -709,7 +699,8 @@ section {
 .cta-final__description {
   font-size: 18px;
   margin-bottom: var(--spacing-lg);
-  opacity: 0.95;
+  color: var(--color-text);
+  opacity: 0.9;
 }
 
 .cta-final__buttons {
@@ -743,7 +734,7 @@ section {
 }
 
 .guarantee__icon {
-  color: white;
+  color: var(--color-text);
 }
 
 /* ============================================
@@ -798,6 +789,49 @@ section {
 .footer__bottom {
   padding-top: var(--spacing-md);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer__palette-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.palette-label {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.palette-selector {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.palette-selector:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.palette-selector:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.palette-selector option {
+  background-color: var(--color-text);
+  color: white;
 }
 
 .footer__copyright {

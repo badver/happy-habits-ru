@@ -1,0 +1,18 @@
+/* ============================================
+   PURPLE PALETTE - Mindfulness, Wisdom, Serenity
+   ============================================ */
+:root {
+  /* Colors */
+  --color-primary: #9b7eb5;        /* Soft purple - mindfulness, wisdom */
+  --color-primary-dark: #7d6394;   /* Darker purple */
+  --color-secondary: #b8a4c9;      /* Lavender - calm, peace */
+  --color-secondary-dark: #9b88ad; /* Medium lavender */
+  --color-accent: #d4c5de;         /* Light lavender - serenity */
+  --color-text: #3d3142;           /* Dark purple-gray */
+  --color-text-light: #756a7f;     /* Medium purple-gray */
+  --color-bg: #fbf9fc;             /* Very light purple-white */
+  --color-bg-light: #f3eff6;       /* Light lavender background */
+  --color-border: #e5dcea;         /* Light purple border */
+  --color-error: #d08770;          /* Soft coral */
+  --color-success: #8b9d83;        /* Sage green */
+}

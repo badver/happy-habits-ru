@@ -1,0 +1,18 @@
+/* ============================================
+   NEUTRAL PALETTE - Clean, Professional, Minimal
+   ============================================ */
+:root {
+  /* Colors */
+  --color-primary: #5d6d7e;        /* Slate gray - professional, stable */
+  --color-primary-dark: #4a5866;   /* Darker slate */
+  --color-secondary: #85929e;      /* Light slate - modern */
+  --color-secondary-dark: #6b7a87; /* Medium slate */
+  --color-accent: #aeb6bf;         /* Light gray - subtle */
+  --color-text: #2c3e50;           /* Dark blue-gray */
+  --color-text-light: #7f8c8d;     /* Medium gray */
+  --color-bg: #ffffff;             /* Pure white */
+  --color-bg-light: #f4f6f7;       /* Light gray */
+  --color-border: #d5d8dc;         /* Gray border */
+  --color-error: #e74c3c;          /* Red */
+  --color-success: #27ae60;        /* Green */
+}

@@ -1,0 +1,18 @@
+/* ============================================
+   WARM PALETTE - Comforting, Approachable, Welcoming
+   ============================================ */
+:root {
+  /* Colors */
+  --color-primary: #d4a574;        /* Warm beige/tan - calming, professional */
+  --color-primary-dark: #b8885a;   /* Darker tan for hovers */
+  --color-secondary: #8b9d83;      /* Sage green - calming, natural */
+  --color-secondary-dark: #6d7d67; /* Darker sage */
+  --color-accent: #e8b4a0;         /* Soft peach - warmth, approachability */
+  --color-text: #3d3229;           /* Warm dark brown instead of black */
+  --color-text-light: #7a6e65;     /* Warm gray-brown */
+  --color-bg: #faf8f6;             /* Warm off-white */
+  --color-bg-light: #f5f1ed;       /* Light warm beige */
+  --color-border: #e8dfd6;         /* Warm light border */
+  --color-error: #d08770;          /* Soft coral instead of harsh red */
+  --color-success: #8b9d83;        /* Sage green for success */
+}

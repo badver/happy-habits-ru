@@ -12,6 +12,7 @@
       "head",
       "html",
       "img",
+      "label",
       "li",
       "link",
       "meta",
@@ -19,6 +20,7 @@
       "path",
       "script",
       "section",
+      "select",
       "span",
       "strong",
       "style",
@@ -80,6 +82,7 @@
       "footer__disclaimer",
       "footer__icon",
       "footer__link",
+      "footer__palette-switcher",
       "footer__section",
       "footer__text",
       "footer__title",
@@ -96,6 +99,8 @@
       "hero__title",
       "method-badge",
       "method-description",
+      "palette-label",
+      "palette-selector",
       "price__amount",
       "price__currency",
       "price__save",
@@ -146,6 +151,8 @@
       "testimonials__badge",
       "testimonials__grid"
     ],
-    "ids": null
+    "ids": [
+      "palette-selector"
+    ]
   }
 }
