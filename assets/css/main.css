@@ -711,6 +711,29 @@ section {
   margin: 0 auto var(--spacing-lg);
 }
 
+.cta-final .btn {
+  background-color: white;
+  color: var(--color-text);
+  border: 2px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-final .btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-final .btn--telegram {
+  background-color: white;
+  color: #0088cc;
+}
+
+.cta-final .btn--whatsapp {
+  background-color: white;
+  color: #25D366;
+}
+
 .cta-final__sla {
   display: flex;
   align-items: center;
