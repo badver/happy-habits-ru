@@ -82,7 +82,7 @@ Hugo static site structure:
 
 Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright__browser_click`, `mcp__playwright__browser_snapshot`, etc.
 
-- [ ] **T004** [P] Contract test: Telegram deeplink in tests/playwright/deeplink-telegram.spec.js
+- [x] **T004** [P] Contract test: Telegram deeplink in tests/playwright/deeplink-telegram.spec.js
   - Verify: Button `[data-cta="telegram"]` opens `tg://resolve?domain=happy_habits_ru`
   - Verify: Pre-filled text: «Здравствуйте! Хочу записаться на бесплатную диагностику (30 минут)»
   - Verify: Fallback to `https://t.me/happy_habits_ru` if app not installed
@@ -90,7 +90,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (button doesn't exist yet)
   - Dependencies: None (parallel task)
 
-- [ ] **T005** [P] Contract test: WhatsApp deeplink in tests/playwright/deeplink-whatsapp.spec.js
+- [x] **T005** [P] Contract test: WhatsApp deeplink in tests/playwright/deeplink-whatsapp.spec.js
   - Verify: Button `[data-cta="whatsapp"]` opens `https://wa.me/905071754633`
   - Verify: Pre-filled text matches Telegram (same message)
   - Verify: Fallback to `https://web.whatsapp.com/` if app not installed
@@ -98,7 +98,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (button doesn't exist yet)
   - Dependencies: None (parallel task)
 
-- [ ] **T006** [P] Contract test: Analytics events in tests/playwright/analytics.spec.js
+- [x] **T006** [P] Contract test: Analytics events in tests/playwright/analytics.spec.js
   - Verify: Click on Telegram button fires `gtag('event', 'cta_messenger_click', { messenger_type: 'telegram', button_position: 'hero', ... })`
   - Verify: Click on WhatsApp button fires Yandex.Metrika event `ym(XXXXX, 'reachGoal', 'cta_messenger_click')`
   - Verify: Scroll to 75% fires `scroll_depth` event
@@ -107,7 +107,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (analytics not integrated)
   - Dependencies: None (parallel task)
 
-- [ ] **T007** [P] Integration test: Hero section rendering in tests/playwright/hero.spec.js
+- [x] **T007** [P] Integration test: Hero section rendering in tests/playwright/hero.spec.js
   - Verify: H1 contains «Освободитесь от тревоги за 8-12 сессий»
   - Verify: Subtitle contains «7-8 из 10 клиентов»
   - Verify: 2 CTA buttons visible (Telegram, WhatsApp)
@@ -117,14 +117,14 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (Hero partial doesn't exist)
   - Dependencies: None (parallel task)
 
-- [ ] **T008** [P] Integration test: All content blocks present in tests/playwright/content-blocks.spec.js
+- [x] **T008** [P] Integration test: All content blocks present in tests/playwright/content-blocks.spec.js
   - Verify: 10 blocks with `data-block` attributes: hero, symptoms, benefits, about, process, testimonials, pricing, faq, cta-final, footer
   - Verify: Each block is visible and has content
   - Use: `mcp__playwright__browser_snapshot` and locator checks
   - **MUST FAIL** initially (blocks don't exist)
   - Dependencies: None (parallel task)
 
-- [ ] **T009** [P] Integration test: Mobile rendering (360px) in tests/playwright/mobile.spec.js
+- [x] **T009** [P] Integration test: Mobile rendering (360px) in tests/playwright/mobile.spec.js
   - Set viewport: 360x640px
   - Verify: All blocks render without horizontal scroll
   - Verify: CTA buttons ≥44x44px (touch target size)
@@ -134,7 +134,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (no responsive design)
   - Dependencies: None (parallel task)
 
-- [ ] **T010** [P] Content test: Russian typography in tests/playwright/typography.spec.js
+- [x] **T010** [P] Content test: Russian typography in tests/playwright/typography.spec.js
   - Verify: Quotes are « » not " "
   - Verify: Dashes are — (em dash) not - (hyphen)
   - Verify: Non-breaking spaces before units: `5000 ₽` (nbsp between number and currency)
@@ -143,7 +143,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - **MUST FAIL** initially (content not written with correct typography)
   - Dependencies: None (parallel task)
 
-- [ ] **T011** [P] Performance test: Lighthouse ≥90 in tests/playwright/performance.spec.js
+- [x] **T011** [P] Performance test: Lighthouse ≥90 in tests/playwright/performance.spec.js
   - Measure page load time (target: LCP ≤2.5s)
   - Verify: No console errors on page load
   - Verify: Images use lazy-loading
