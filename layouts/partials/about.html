@@ -4,15 +4,14 @@
 
     <div class="about__content">
       <div class="about__image">
-        {{ $image := resources.Get "images/psychologist-portrait.jpg" }}
+        {{ $image := resources.Get "images/psychologist-session.jpg" }}
         {{ if $image }}
-          {{ $resized := $image.Resize "400x500" }}
+          {{ $resized := $image.Fit "400x400" }}
           <img src="{{ $resized.RelPermalink }}"
-               alt="Психолог — специалист по тревожным расстройствам"
+               alt="Психолог-психотерапевт на онлайн сессии — работа с клиентами"
                class="about__photo"
                width="{{ $resized.Width }}"
-               height="{{ $resized.Height }}"
-               loading="lazy">
+               height="{{ $resized.Height }}">
         {{ end }}
       </div>
 
