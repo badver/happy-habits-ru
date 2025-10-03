@@ -1,0 +1,77 @@
+<section class="testimonials" data-block="testimonials">
+  <div class="container">
+    <h2 class="section__title">Отзывы и кейсы</h2>
+    <p class="section__subtitle">Все истории публикуются с согласия клиентов</p>
+
+    <div class="testimonials__grid">
+      {{ range $.Site.Data.testimonials }}
+      <div class="testimonial-card">
+        <div class="testimonial-card__header">
+          <div class="testimonial-card__author">{{ .author_name }}</div>
+          <div class="testimonial-card__timeline">{{ .timeline }}</div>
+        </div>
+
+        <div class="testimonial-card__content">
+          <p class="testimonial-card__text">{{ .text }}</p>
+
+          <div class="testimonial-card__details">
+            <div class="detail">
+              <strong>До:</strong> {{ .before_state }}
+            </div>
+            <div class="detail">
+              <strong>Процесс:</strong> {{ .process }}
+            </div>
+            <div class="detail">
+              <strong>Результат:</strong> {{ .result }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="case-studies">
+      <h3 class="case-studies__title">Кейсы с динамикой</h3>
+
+      {{ range $.Site.Data.case_studies }}
+      <div class="case-study">
+        <h4 class="case-study__description">{{ .description }}</h4>
+
+        <div class="case-study__chart">
+          <div class="chart">
+            <div class="chart__y-axis">
+              <span>10</span>
+              <span>8</span>
+              <span>6</span>
+              <span>4</span>
+              <span>2</span>
+              <span>0</span>
+            </div>
+            <div class="chart__plot">
+              {{ range .anxiety_data }}
+              <div class="chart__point" data-session="{{ .session }}" data-level="{{ .anxiety_level }}"
+                   style="--session: {{ .session }}; --level: {{ .anxiety_level }};">
+                <span class="chart__label">{{ .anxiety_level }}</span>
+              </div>
+              {{ end }}
+            </div>
+            <div class="chart__x-axis">
+              <span>Сессия 1</span>
+              <span>Сессия {{ .sessions_count }}</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="case-study__outcome"><strong>Результат:</strong> {{ .outcome }}</p>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="testimonials__badge">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
+      Все истории с согласия клиентов
+    </div>
+  </div>
+</section>

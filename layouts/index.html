@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{{ .Site.Title }}</title>
+  <meta name="description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ .Site.Title }}">
+  <meta property="og:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
+
+  <!-- CSS -->
+  {{ $css := resources.Get "css/main.css" }}
+  {{ if $css }}
+    {{ $css = $css | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ end }}
+
+  <!-- Critical CSS inline (will be added later for performance) -->
+  <style>
+    /* Critical CSS for above-the-fold content */
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  </style>
+
+  <!-- Yandex.Metrika counter -->
+  {{ if .Site.Params.yandexMetrikaID }}
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym({{ .Site.Params.yandexMetrikaID }}, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/{{ .Site.Params.yandexMetrikaID }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  {{ end }}
+
+  <!-- Google Analytics 4 -->
+  {{ if .Site.Params.googleAnalyticsID }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
+  </script>
+  {{ end }}
+</head>
+<body>
+  <!-- Hero Section -->
+  {{ partial "hero.html" . }}
+
+  <!-- Symptoms Section -->
+  {{ partial "symptoms.html" . }}
+
+  <!-- Benefits Section -->
+  {{ partial "benefits.html" . }}
+
+  <!-- About Section -->
+  {{ partial "about.html" . }}
+
+  <!-- Process Section -->
+  {{ partial "process.html" . }}
+
+  <!-- Testimonials Section -->
+  {{ partial "testimonials.html" . }}
+
+  <!-- Pricing Section -->
+  {{ partial "pricing.html" . }}
+
+  <!-- FAQ Section -->
+  {{ partial "faq.html" . }}
+
+  <!-- Final CTA Section -->
+  {{ partial "cta-final.html" . }}
+
+  <!-- Footer -->
+  {{ partial "footer.html" . }}
+
+  <!-- JavaScript -->
+  {{ $analytics := resources.Get "js/analytics.js" }}
+  {{ if $analytics }}
+    {{ $analytics = $analytics | minify | fingerprint }}
+    <script src="{{ $analytics.Permalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $deeplinks := resources.Get "js/deeplinks.js" }}
+  {{ if $deeplinks }}
+    {{ $deeplinks = $deeplinks | minify | fingerprint }}
+    <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $abtest := resources.Get "js/ab-test.js" }}
+  {{ if $abtest }}
+    {{ $abtest = $abtest | minify | fingerprint }}
+    <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
+  {{ end }}
+</body>
+</html>
