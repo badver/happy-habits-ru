@@ -1,0 +1,12 @@
+# robots.txt for happy-habits.ru
+# Allow all crawlers to index the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://happy-habits.ru/sitemap.xml
+
+# Block access to admin areas (if any in future)
+# User-agent: *
+# Disallow: /admin/
