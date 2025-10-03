@@ -7,12 +7,145 @@
 
   <title>{{ .Site.Title }}</title>
   <meta name="description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
+  <meta name="keywords" content="психолог онлайн тревожность, психотерапия тревоги онлайн, панические атаки психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия, психотерапевт онлайн">
+  <meta name="author" content="Наталья Прокофьева">
+  <link rel="canonical" href="{{ .Permalink }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ .Site.Title }}">
-  <meta property="og:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
+  <meta property="og:title" content="Психолог онлайн: Лечение тревожности КПТ | Наталья Прокофьева">
+  <meta property="og:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
+  <meta property="og:image" content="{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Психолог онлайн: Лечение тревожности КПТ | Наталья Прокофьева">
+  <meta name="twitter:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "{{ .Site.BaseURL }}#person",
+        "name": "Наталья Прокофьева",
+        "jobTitle": "Психолог-психотерапевт",
+        "description": "Специализация: тревожные расстройства, панические атаки, КПТ",
+        "image": "{{ .Site.BaseURL }}assets/images/psychologist-portrait.jpg",
+        "url": "{{ .Site.BaseURL }}",
+        "sameAs": [
+          "https://t.me/happy_habits_ru"
+        ],
+        "knowsAbout": ["Когнитивно-поведенческая терапия", "Тревожные расстройства", "Панические атаки", "ОКР", "Психотерапия"],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Московский Государственный Университет им. М.В. Ломоносова"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "{{ .Site.BaseURL }}#service",
+        "name": "Психолог онлайн — Наталья Прокофьева",
+        "description": "Онлайн консультации психолога. Лечение тревожности, панических атак методом когнитивно-поведенческой терапии (КПТ).",
+        "url": "{{ .Site.BaseURL }}",
+        "telephone": "+905071754633",
+        "email": "natalia.prokofeva.therapy@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "RU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "55.7558",
+          "longitude": "37.6173"
+        },
+        "priceRange": "5000-45000 ₽",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "20:00"
+          }
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Россия"
+        },
+        "availableLanguage": {
+          "@type": "Language",
+          "name": "Russian"
+        },
+        "provider": {
+          "@id": "{{ .Site.BaseURL }}#person"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "{{ .Site.BaseURL }}#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "А если не поможет?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Когнитивно-поведенческая терапия — метод с доказанной эффективностью 85% при тревожных расстройствах. После бесплатной диагностики вы поймёте, подходит ли КПТ для вашего случая."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько займёт времени?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Краткосрочная терапия: 8-15 сессий (2-4 месяца при частоте 1 раз в неделю). Первые улучшения обычно после 3-4 сессий."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Конфиденциально ли?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, строго конфиденциально. Никакой информации третьим лицам без вашего письменного согласия. Все записи зашифрованы."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Чем КПТ отличается от других методов?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "КПТ фокусируется на мыслях и поведении, краткосрочна (8-15 сессий), имеет доказательную базу и структурирована с измерением прогресса."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Дорого ли?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "5000 ₽ за сессию — средняя цена в Москве для КПТ-терапевта с сертификацией. Пакет 10 сессий — 45000 ₽ (экономия 5000 ₽)."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ .Site.BaseURL }}#website",
+        "url": "{{ .Site.BaseURL }}",
+        "name": "{{ .Site.Title }}",
+        "description": "Психолог онлайн. Лечение тревожности методом КПТ",
+        "publisher": {
+          "@id": "{{ .Site.BaseURL }}#person"
+        },
+        "inLanguage": "ru-RU"
+      }
+    ]
+  }
+  </script>
 
   <!-- CSS -->
   {{ $css := resources.Get "css/main.css" }}
@@ -21,10 +154,59 @@
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
   {{ end }}
 
-  <!-- Critical CSS inline (will be added later for performance) -->
+  <!-- Critical CSS inline for above-the-fold content (Hero section) -->
   <style>
-    /* Critical CSS for above-the-fold content */
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    /* Critical CSS - only for initial viewport */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .hero {
+      padding: 32px 16px;
+      background-color: #f8f9fa;
+    }
+    .hero__title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      color: #666666;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn--primary {
+      background-color: #0088cc;
+      color: white;
+    }
+    .btn--secondary {
+      background-color: #25D366;
+      color: white;
+    }
   </style>
 
   <!-- Yandex.Metrika counter -->

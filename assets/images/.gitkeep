@@ -1,0 +1,12 @@
+# Placeholder for psychologist photos
+#
+# Add the following images:
+# - psychologist-portrait.jpg (professional headshot)
+# - psychologist-session.jpg (during online session)
+# - psychologist-workspace.jpg (workspace setup)
+#
+# Requirements:
+# - Format: JPEG high quality
+# - Max width: 1920px
+# - Will be converted to WebP by Hugo pipeline
+# - Include descriptive Russian alt texts

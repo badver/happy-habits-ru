@@ -158,7 +158,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 **Layout & Templates:**
 
-- [ ] **T012** Create main landing page template in layouts/index.html
+- [x] **T012** Create main landing page template in layouts/index.html
   - Path: `layouts/index.html`
   - Structure: HTML5 boilerplate, `lang="ru"`, meta tags
   - Include: All 10 partial blocks (hero, symptoms, etc.)
@@ -168,7 +168,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 **Content Block Partials (all parallel - different files):**
 
-- [ ] **T013** [P] Hero section partial in layouts/partials/hero.html
+- [x] **T013** [P] Hero section partial in layouts/partials/hero.html
   - Path: `layouts/partials/hero.html`
   - Elements: H1 title, subtitle, 2 CTA buttons (`data-cta="telegram"`, `data-cta="whatsapp"`), 3 badges, psychologist photo
   - Telegram button: `tg://resolve?domain=happy_habits_ru&text=<encoded>`
@@ -177,7 +177,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="hero"`
   - Dependencies: T012 (index.html exists)
 
-- [ ] **T014** [P] Symptoms block partial in layouts/partials/symptoms.html
+- [x] **T014** [P] Symptoms block partial in layouts/partials/symptoms.html
   - Path: `layouts/partials/symptoms.html`
   - Title: «Узнаете себя?»
   - 8-10 symptom checkpoints (list)
@@ -185,7 +185,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="symptoms"`
   - Dependencies: T012
 
-- [ ] **T015** [P] Benefits block partial in layouts/partials/benefits.html
+- [x] **T015** [P] Benefits block partial in layouts/partials/benefits.html
   - Path: `layouts/partials/benefits.html`
   - Title: «Как помогает терапия»
   - Subtitle: «Что изменится через 8-12 встреч»
@@ -194,7 +194,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="benefits"`
   - Dependencies: T012
 
-- [ ] **T016** [P] About block partial in layouts/partials/about.html
+- [x] **T016** [P] About block partial in layouts/partials/about.html
   - Path: `layouts/partials/about.html`
   - Title: «Почему именно я»
   - Psychologist photo, biography (up to 1200 chars)
@@ -203,7 +203,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="about"`
   - Dependencies: T012
 
-- [ ] **T017** [P] Process block partial in layouts/partials/process.html
+- [x] **T017** [P] Process block partial in layouts/partials/process.html
   - Path: `layouts/partials/process.html`
   - Title: «Как проходит работа»
   - 4 steps: (1) Free diagnostic 30min, (2) Therapy plan, (3) 8-15 sessions, (4) Result consolidation
@@ -211,7 +211,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="process"`
   - Dependencies: T012
 
-- [ ] **T018** [P] Testimonials block partial in layouts/partials/testimonials.html
+- [x] **T018** [P] Testimonials block partial in layouts/partials/testimonials.html
   - Path: `layouts/partials/testimonials.html`
   - Title: «Отзывы и кейсы»
   - 6-8 text testimonials (400-700 chars each) — iterate from `data/testimonials.yaml`
@@ -220,7 +220,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="testimonials"`
   - Dependencies: T012, T029, T030 (data files)
 
-- [ ] **T019** [P] Pricing block partial in layouts/partials/pricing.html
+- [x] **T019** [P] Pricing block partial in layouts/partials/pricing.html
   - Path: `layouts/partials/pricing.html`
   - Title: «Стоимость и форматы»
   - Price 1: Single session 5000₽ (60 min, online)
@@ -229,7 +229,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="pricing"`
   - Dependencies: T012
 
-- [ ] **T020** [P] FAQ block partial in layouts/partials/faq.html
+- [x] **T020** [P] FAQ block partial in layouts/partials/faq.html
   - Path: `layouts/partials/faq.html`
   - Title: «FAQ — отвечаем на ваши сомнения»
   - 5 questions: (1) А если не поможет?, (2) Сколько займет времени?, (3) Конфиденциально ли?, (4) Чем КПТ отличается?, (5) Дорого ли?
@@ -237,7 +237,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="faq"`
   - Dependencies: T012
 
-- [ ] **T021** [P] Final CTA block partial in layouts/partials/cta-final.html
+- [x] **T021** [P] Final CTA block partial in layouts/partials/cta-final.html
   - Path: `layouts/partials/cta-final.html`
   - Title: «Первый шаг — бесплатная диагностика 30 минут»
   - Large Telegram, WhatsApp buttons
@@ -245,7 +245,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Data attribute: `data-block="cta-final"`
   - Dependencies: T012
 
-- [ ] **T022** [P] Footer partial in layouts/partials/footer.html
+- [x] **T022** [P] Footer partial in layouts/partials/footer.html
   - Path: `layouts/partials/footer.html`
   - Contacts: e-mail, Telegram, WhatsApp links
   - Copyright notice
@@ -255,7 +255,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 **CSS & JavaScript:**
 
-- [ ] **T023** Mobile-First CSS in assets/css/main.css
+- [x] **T023** Mobile-First CSS in assets/css/main.css
   - Path: `assets/css/main.css`
   - Mobile-First approach: Base styles for 360px, media queries for tablet/desktop
   - Breakpoints: 360px (mobile), 768px (tablet), 1920px (desktop)
@@ -266,7 +266,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Critical CSS: above-the-fold styles for Hero (will be inlined by Hugo)
   - Dependencies: T013-T022 (HTML partials exist)
 
-- [ ] **T024** Analytics integration in assets/js/analytics.js
+- [x] **T024** Analytics integration in assets/js/analytics.js
   - Path: `assets/js/analytics.js`
   - Yandex.Metrika: Init with counter ID from config.toml params
   - Google Analytics 4: gtag() init with GA4 ID
@@ -276,7 +276,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - UTM parameters: Extract from URL query string, attach to all events
   - Dependencies: T012 (index.html loads this script)
 
-- [ ] **T025** Deeplink logic in assets/js/deeplinks.js
+- [x] **T025** Deeplink logic in assets/js/deeplinks.js
   - Path: `assets/js/deeplinks.js`
   - Function: `buildTelegramDeeplink()` → `tg://resolve?domain=happy_habits_ru&text=<encoded_message>`
   - Function: `buildWhatsAppDeeplink()` → `https://wa.me/905071754633?text=<encoded_message>`
@@ -286,7 +286,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fire analytics event on each click (call analytics.js function)
   - Dependencies: T012, T024 (analytics.js exists)
 
-- [ ] **T026** A/B testing logic in assets/js/ab-test.js
+- [x] **T026** A/B testing logic in assets/js/ab-test.js
   - Path: `assets/js/ab-test.js`
   - Test A: Hero headline variants:
     - Baseline: «Освободитесь от тревоги за 8-12 сессий по доказательному методу»
@@ -302,7 +302,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 ## Phase 3.4: Content & Data
 
-- [ ] **T027** Landing page content in content/_index.md
+- [x] **T027** Landing page content in content/_index.md
   - Path: `content/_index.md`
   - Front matter: title, description, keywords (Russian SEO)
   - All Russian text for 10 blocks
@@ -311,7 +311,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Length: Approx 2500-3500 words total
   - Dependencies: T013-T022 (partials reference this content)
 
-- [ ] **T028** [P] Add psychologist photos to assets/images/
+- [x] **T028** [P] Add psychologist photos to assets/images/
   - Path: `assets/images/psychologist-*.jpg`
   - Photos: 3-5 images (portrait, working scene, online session)
   - Format: JPEG high quality, will be converted to WebP by Hugo pipeline
@@ -319,7 +319,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Optimize: Resize to max 1920px width before adding to repo
   - Dependencies: None (parallel task)
 
-- [ ] **T029** [P] Create testimonials data in data/testimonials.yaml
+- [x] **T029** [P] Create testimonials data in data/testimonials.yaml
   - Path: `data/testimonials.yaml`
   - Structure: Array of 6-8 testimonials
   - Fields per testimonial: author_name (can be initials), text (400-700 chars), before_state, process, result, timeline
@@ -328,7 +328,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Note: «Все истории с согласия клиентов»
   - Dependencies: None (parallel task)
 
-- [ ] **T030** [P] Create case studies data in data/case-studies.yaml
+- [x] **T030** [P] Create case studies data in data/case-studies.yaml
   - Path: `data/case-studies.yaml`
   - Structure: Array of 2-3 case studies
   - Fields: description, anxiety_data (array of {session: number, anxiety_level: 0-10}), sessions_count, outcome
@@ -340,7 +340,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 ## Phase 3.5: Integration & SEO
 
-- [ ] **T031** Verify analytics events firing correctly
+- [x] **T031** Verify analytics events firing correctly
   - Path: N/A (testing task)
   - Test: Open site in browser, open DevTools Console
   - Click Telegram button → verify `gtag` and `ym` calls in console
@@ -350,7 +350,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fix any issues in assets/js/analytics.js
   - Dependencies: T024, T025 (analytics and deeplinks implemented)
 
-- [ ] **T032** Add SEO meta tags, OG tags, Schema.org in layouts/index.html
+- [x] **T032** Add SEO meta tags, OG tags, Schema.org in layouts/index.html
   - Path: `layouts/index.html` (head section)
   - Title: «Психолог онлайн: Лечение тревожности КПТ | <Name>»
   - Description: «Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.»
@@ -359,14 +359,14 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Schema.org: Person (психолог), ProfessionalService (контакты, часы приема), FAQPage (from FAQ block)
   - Dependencies: T012 (index.html exists)
 
-- [ ] **T033** Configure robots.txt and verify sitemap.xml
+- [x] **T033** Configure robots.txt and verify sitemap.xml
   - Path: `static/robots.txt`
   - Allow all crawlers: `User-agent: * / Allow: /`
   - Sitemap: `Sitemap: https://<domain>/sitemap.xml` (Hugo auto-generates sitemap.xml)
   - Verify: Hugo config has `sitemap` output format enabled
   - Dependencies: T001 (Hugo config)
 
-- [ ] **T034** Accessibility audit: WCAG contrast, font sizes, alt-texts
+- [x] **T034** Accessibility audit: WCAG contrast, font sizes, alt-texts
   - Path: N/A (audit task)
   - Check: All text has contrast ratio ≥4.5:1 (WCAG AA)
   - Check: Font sizes ≥16px on mobile (in main.css)
@@ -376,7 +376,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fix issues in layouts/, assets/css/main.css, content/
   - Dependencies: T023 (CSS), T027 (content), T028 (images)
 
-- [ ] **T035** Performance optimization: images, CSS, JS
+- [x] **T035** Performance optimization: images, CSS, JS
   - Path: Hugo config, assets/
   - Images: Convert all to WebP (Hugo image processing), add lazy loading
   - CSS: Minify, extract critical CSS for Hero (inline in <head>)
@@ -389,7 +389,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 ## Phase 3.6: Verification & Testing
 
-- [ ] **T036** Run all Playwright MCP tests (T004-T011)
+- [x] **T036** Run all Playwright MCP tests (T004-T011)
   - Path: `tests/playwright/*.spec.js`
   - Command: Use Playwright MCP tools to execute each test
   - Expected: All tests PASS now (they failed initially in Phase 3.2)
@@ -405,7 +405,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fix any failing tests before proceeding
   - Dependencies: T013-T026 (all implementation complete)
 
-- [ ] **T037** Run Lighthouse audit (mobile & desktop)
+- [x] **T037** Run Lighthouse audit (mobile & desktop)
   - Path: N/A (audit task)
   - Mobile: Target Performance ≥90, LCP ≤2.5s
   - Desktop: Target Performance ≥95
@@ -414,7 +414,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
   - Fix any issues flagged by Lighthouse
   - Dependencies: T035 (performance optimization)
 
-- [ ] **T038** Validate KPI measurement configuration
+- [x] **T038** Validate KPI measurement configuration
   - Path: N/A (verification task)
   - Verify: Yandex.Metrika goal "cta_messenger_click" configured (конверсия ≥5% target per FR-005)
   - Verify: Google Analytics 4 conversion event "messenger_click" configured
