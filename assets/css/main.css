@@ -255,6 +255,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  align-items: center;
+  text-align: center;
 }
 
 .hero__image {
@@ -764,6 +766,10 @@ section {
   left: 0;
   color: var(--color-success);
   font-weight: bold;
+}
+
+.pricing-card__cta {
+  text-align: center;
 }
 
 .pricing__terms {

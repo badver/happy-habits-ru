@@ -159,6 +159,8 @@
       "testimonials__track"
     ],
     "ids": [
+      "cta-final",
+      "faq",
       "palette-selector"
     ]
   }

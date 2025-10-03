@@ -11,10 +11,8 @@
             Знакомимся, обсуждаем ваш запрос и симптомы. Я объясняю, как работает КПТ и подходит ли она в вашем случае. Это бесплатно и ни к чему не обязывает.
           </p>
           <div class="step__cta">
-            <a href="tg://resolve?domain=happy_habits_ru&text={{ urlquery "Здравствуйте! Хочу записаться на бесплатную диагностику (30 минут)" }}"
-               class="btn btn--small btn--telegram"
-               data-cta="telegram"
-               data-position="step-1">
+            <a href="#cta-final"
+               class="btn btn--small">
               Записаться на диагностику
             </a>
           </div>
@@ -54,21 +52,9 @@
 
     <div class="process__cta-final">
       <p class="cta-text">Готовы начать? Запишитесь на бесплатную диагностику</p>
-      <div class="cta-buttons">
-        <a href="tg://resolve?domain=happy_habits_ru&text={{ urlquery "Здравствуйте! Хочу записаться на бесплатную диагностику (30 минут)" }}"
-           class="btn btn--primary btn--telegram"
-           data-cta="telegram"
-           data-position="process-end">
-          Telegram
-        </a>
-
-        <a href="https://wa.me/905071754633?text={{ urlquery "Здравствуйте! Хочу записаться на бесплатную диагностику (30 минут)" }}"
-           class="btn btn--secondary btn--whatsapp"
-           data-cta="whatsapp"
-           data-position="process-end">
-          WhatsApp
-        </a>
-      </div>
+      <a href="#cta-final" class="btn btn--primary">
+        Записаться
+      </a>
     </div>
   </div>
 </section>
