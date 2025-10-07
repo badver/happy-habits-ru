@@ -13,16 +13,16 @@ disableKinds = ["RSS", "taxonomy", "term"]
 # Analytics configuration
 [params]
   # Yandex.Metrika counter ID
-  yandexMetrikaID = ""
+  yandexMetrikaID = "98271361"
 
-  # Google Analytics 4 measurement ID
-  googleAnalyticsID = ""
+  # Google Analytics 4 measurement ID 
+  googleAnalyticsID = "G-214RJM3C13"
 
 # Asset processing configuration
 [build]
   writeStats = true
 
-# Asset pipeline settings
+# Asset pipeline settings 
 [params.assets]
   # SCSS compilation
   [params.assets.scss]

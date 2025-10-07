@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>{{ .Site.Title }}</title>
-  <meta name="description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
-  <meta name="keywords" content="психолог онлайн тревожность, психотерапия тревоги онлайн, панические атаки психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия, психотерапевт онлайн">
+  <meta name="description"
+    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
+  <meta name="keywords"
+    content="психолог онлайн тревожность, психотерапия тревоги онлайн, панические атаки психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия, психотерапевт онлайн">
   <meta name="author" content="Ксения Парваткина">
   <link rel="canonical" href="{{ .Permalink }}">
 
@@ -15,10 +18,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
-  <meta property="og:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
+  <meta property="og:description"
+    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
   {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $ogImage }}
-  <meta property="og:image" content="{{ ($ogImage.Resize "1200x630").Permalink }}">
+  <meta property="og:image" content="{{ ($ogImage.Resize " 1200x630").Permalink }}">
   {{ end }}
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -26,10 +30,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
-  <meta name="twitter:description" content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
+  <meta name="twitter:description"
+    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
   {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $twitterImage }}
-  <meta name="twitter:image" content="{{ ($twitterImage.Resize "1200x630").Permalink }}">
+  <meta name="twitter:image" content="{{ ($twitterImage.Resize " 1200x630").Permalink }}">
   {{ end }}
 
   <!-- Schema.org markup -->
@@ -158,15 +163,23 @@
   <!-- CSS -->
   {{ $css := resources.Get "css/main.css" }}
   {{ if $css }}
-    {{ $css = $css | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ $css = $css | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
   {{ end }}
 
   <!-- Critical CSS inline for above-the-fold content (Hero section) -->
   <style>
     /* Critical CSS - only for initial viewport */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -177,10 +190,12 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
     .hero {
       padding: 32px 16px;
       background-color: var(--color-bg-light, #f8f9fa);
     }
+
     .hero__title {
       font-size: 28px;
       font-weight: 700;
@@ -188,11 +203,13 @@
       margin-bottom: 16px;
       color: var(--color-text, #1a1a1a);
     }
+
     .hero__subtitle {
       font-size: 18px;
       color: var(--color-text-light, #666666);
       margin-bottom: 24px;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -207,31 +224,40 @@
       text-decoration: none;
       transition: all 0.2s ease;
     }
+
     .btn--primary {
       background-color: var(--color-primary, #0088cc);
       color: white;
     }
+
     .btn--secondary {
       background-color: var(--color-secondary, #25D366);
       color: white;
     }
   </style>
 
-  <!-- Yandex.Metrika counter -->
   {{ if .Site.Params.yandexMetrikaID }}
+  <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-    ym({{ .Site.Params.yandexMetrikaID }}, "init", {
-      clickmap:true,
-      trackLinks:true,
-      accurateTrackBounce:true,
-      webvisor:true
+    ym({{ .Site.Params.yandexMetrikaID }}, 'init', {
+      webvisor: true,
+      clickmap: true,
+      accurateTrackBounce: true,
+      trackLinks: true
     });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/{{ .Site.Params.yandexMetrikaID }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/{{ .Site.Params.yandexMetrikaID }}"
+        style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
   {{ end }}
 
   <!-- Google Analytics 4 -->
@@ -239,12 +265,13 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
   </script>
   {{ end }}
 </head>
+
 <body>
   <!-- Hero Section -->
   {{ partial "hero.html" . }}
@@ -277,34 +304,35 @@
   {{ partial "footer.html" . }}
 
   <!-- JavaScript -->
-  {{ $analytics := resources.Get "js/analytics.js" }}
+  {{ $analytics := resources.Get "js/analytics.js" | resources.ExecuteAsTemplate "js/analytics.js" . }}
   {{ if $analytics }}
-    {{ $analytics = $analytics | minify | fingerprint }}
-    <script src="{{ $analytics.Permalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
+  {{ $analytics = $analytics | minify | fingerprint }}
+  <script src="{{ $analytics.Permalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
   {{ end }}
 
   {{ $deeplinks := resources.Get "js/deeplinks.js" }}
   {{ if $deeplinks }}
-    {{ $deeplinks = $deeplinks | minify | fingerprint }}
-    <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
+  {{ $deeplinks = $deeplinks | minify | fingerprint }}
+  <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
   {{ end }}
 
-  {{ $abtest := resources.Get "js/ab-test.js" }}
+  {{ $abtest := resources.Get "js/ab-test.js" | resources.ExecuteAsTemplate "js/ab-test.js" . }}
   {{ if $abtest }}
-    {{ $abtest = $abtest | minify | fingerprint }}
-    <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
+  {{ $abtest = $abtest | minify | fingerprint }}
+  <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
   {{ end }}
 
   {{ $paletteSwitcher := resources.Get "js/palette-switcher.js" }}
   {{ if $paletteSwitcher }}
-    {{ $paletteSwitcher = $paletteSwitcher | minify | fingerprint }}
-    <script src="{{ $paletteSwitcher.Permalink }}" integrity="{{ $paletteSwitcher.Data.Integrity }}"></script>
+  {{ $paletteSwitcher = $paletteSwitcher | minify | fingerprint }}
+  <script src="{{ $paletteSwitcher.Permalink }}" integrity="{{ $paletteSwitcher.Data.Integrity }}"></script>
   {{ end }}
 
   {{ $carousel := resources.Get "js/testimonials-carousel.js" }}
   {{ if $carousel }}
-    {{ $carousel = $carousel | minify | fingerprint }}
-    <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
+  {{ $carousel = $carousel | minify | fingerprint }}
+  <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
   {{ end }}
 </body>
+
 </html>

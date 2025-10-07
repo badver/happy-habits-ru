@@ -3,8 +3,11 @@
  * Manages variant assignment and application
  */
 
-(function() {
+(function () {
   'use strict';
+
+  // Get analytics IDs from config (injected by Hugo)
+  const YM_ID = '{{ .Site.Params.yandexMetrikaID }}';
 
   // A/B Test Configuration
   const AB_TESTS = {
@@ -75,8 +78,8 @@
     }
 
     // Yandex.Metrika
-    if (typeof ym !== 'undefined' && window.yandexMetrikaID) {
-      ym(window.yandexMetrikaID, 'params', {
+    if (typeof ym !== 'undefined' && YM_ID) {
+      ym(YM_ID, 'params', {
         [`ab_test_${testName}`]: variantId
       });
     }

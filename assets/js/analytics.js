@@ -3,12 +3,12 @@
  * Handles Google Analytics 4 and Yandex.Metrika events
  */
 
-(function() {
+(function () {
   'use strict';
 
   // Get analytics IDs from config (injected by Hugo)
-  const GA4_ID = window.googleAnalyticsID || '';
-  const YM_ID = window.yandexMetrikaID || '';
+  const GA4_ID = '{{ .Site.Params.googleAnalyticsID }}';
+  const YM_ID = '{{ .Site.Params.yandexMetrikaID }}';
 
   // Extract UTM parameters from URL
   function getUTMParameters() {
@@ -42,7 +42,7 @@
    * @param {string} messengerType - 'telegram' or 'whatsapp'
    * @param {string} buttonPosition - location of button (e.g., 'hero', 'symptoms', 'final-cta')
    */
-  window.trackMessengerClick = function(messengerType, buttonPosition) {
+  window.trackMessengerClick = function (messengerType, buttonPosition) {
     const eventData = {
       messenger_type: messengerType,
       button_position: buttonPosition,
@@ -102,7 +102,7 @@
 
   // Debounce scroll tracking
   let scrollTimeout;
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(trackScrollDepth, 100);
   });
@@ -142,7 +142,7 @@
   /**
    * Initialize analytics tracking
    */
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     console.log('Analytics initialized');
     console.log('UTM parameters:', getStoredUTM());
   });
