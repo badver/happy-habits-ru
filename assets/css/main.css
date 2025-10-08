@@ -590,7 +590,7 @@ section {
   gap: var(--spacing-md);
   overflow-x: auto;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   /* Firefox */
   scrollbar-width: none;
