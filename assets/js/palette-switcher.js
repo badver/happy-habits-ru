@@ -8,7 +8,7 @@
 
   const PALETTES = {
     blue: {
-      name: '🔵 Синий (Профессиональный)',
+      name: '🔵 Синий',
       colors: {
         '--color-primary': '#4a90e2',
         '--color-primary-dark': '#357abd',
@@ -25,7 +25,7 @@
       }
     },
     warm: {
-      name: '🟤 Тёплый (Уютный)',
+      name: '🟤 Уютный',
       colors: {
         '--color-primary': '#d4a574',
         '--color-primary-dark': '#b8885a',
@@ -42,7 +42,7 @@
       }
     },
     green: {
-      name: '🟢 Зелёный (Природный)',
+      name: '🟢 Природный',
       colors: {
         '--color-primary': '#6ba368',
         '--color-primary-dark': '#4d8b4a',
@@ -59,7 +59,7 @@
       }
     },
     purple: {
-      name: '🟣 Фиолетовый (Медитация)',
+      name: '🟣 Медитация',
       colors: {
         '--color-primary': '#9b7eb5',
         '--color-primary-dark': '#7d6394',
@@ -76,7 +76,7 @@
       }
     },
     neutral: {
-      name: '⚫ Нейтральный (Минимализм)',
+      name: '⚫ Минимализм',
       colors: {
         '--color-primary': '#5d6d7e',
         '--color-primary-dark': '#4a5866',
