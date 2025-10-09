@@ -590,7 +590,7 @@ section {
   gap: var(--spacing-md);
   overflow-x: auto;
   scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: none;
   -webkit-overflow-scrolling: touch;
   /* Firefox */
   scrollbar-width: none;
@@ -607,7 +607,8 @@ section {
 .testimonial-card {
   flex: 0 0 100%;
   max-width: 100%;
-  scroll-snap-align: center;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
   padding: var(--spacing-md);
   background-color: var(--color-bg-light);
   border-radius: 12px;
@@ -1145,6 +1146,15 @@ section {
   .testimonial-card {
     flex: 0 0 calc(50% - var(--spacing-md) / 2);
     max-width: calc(50% - var(--spacing-md) / 2);
+  }
+
+  /* Enable gentle scroll-snap only on tablet+ */
+  .testimonials__track {
+    scroll-snap-type: x proximity;
+  }
+
+  .testimonial-card {
+    scroll-snap-align: center;
   }
 
   .pricing__cards {

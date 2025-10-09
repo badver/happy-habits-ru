@@ -3,7 +3,7 @@
  * Swipeable carousel for testimonials with touch support
  */
 
-(function() {
+(function () {
   'use strict';
 
   class TestimonialsCarousel {
@@ -81,12 +81,12 @@
     observeCards() {
       const options = {
         root: this.track,
-        threshold: 0.5
+        threshold: 0.3  // Reduced from 0.5 to be less aggressive
       };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
             const index = this.cards.indexOf(entry.target);
             if (index !== -1) {
               this.currentIndex = index;
@@ -101,13 +101,33 @@
     }
 
     touchStart(event) {
-      this.isDragging = true;
+      // Only handle horizontal swipes within carousel, don't interfere with page scroll
+      this.isDragging = false;  // Will be set to true only if horizontal movement detected
       this.startPos = this.getPositionX(event);
-      this.animationID = requestAnimationFrame(this.animation.bind(this));
-      this.track.style.cursor = 'grabbing';
+      this.startPosY = this.getPositionY(event);
+      this.hasMoved = false;
     }
 
     touchMove(event) {
+      if (!this.hasMoved) {
+        const currentX = this.getPositionX(event);
+        const currentY = this.getPositionY(event);
+        const deltaX = Math.abs(currentX - this.startPos);
+        const deltaY = Math.abs(currentY - this.startPosY);
+
+        // Only start dragging if horizontal movement is more significant than vertical
+        if (deltaX > deltaY && deltaX > 10) {
+          this.isDragging = true;
+          this.hasMoved = true;
+          this.track.style.cursor = 'grabbing';
+        } else if (deltaY > deltaX && deltaY > 10) {
+          // Vertical scroll detected, don't interfere
+          this.isDragging = false;
+          this.hasMoved = true;
+          return;
+        }
+      }
+
       if (this.isDragging) {
         const currentPosition = this.getPositionX(event);
         this.currentTranslate = this.prevTranslate + currentPosition - this.startPos;
@@ -115,16 +135,20 @@
     }
 
     touchEnd() {
+      if (!this.hasMoved || !this.isDragging) {
+        this.isDragging = false;
+        return;
+      }
+
       this.isDragging = false;
-      cancelAnimationFrame(this.animationID);
       this.track.style.cursor = 'grab';
 
       const movedBy = this.currentTranslate - this.prevTranslate;
 
-      // Swipe threshold
-      if (movedBy < -50 && this.currentIndex < this.cards.length - 1) {
+      // Swipe threshold - increased to require more deliberate swipe
+      if (movedBy < -75 && this.currentIndex < this.cards.length - 1) {
         this.next();
-      } else if (movedBy > 50 && this.currentIndex > 0) {
+      } else if (movedBy > 75 && this.currentIndex > 0) {
         this.prev();
       } else {
         this.goToSlide(this.currentIndex);
@@ -133,6 +157,10 @@
 
     getPositionX(event) {
       return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    getPositionY(event) {
+      return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY;
     }
 
     animation() {
