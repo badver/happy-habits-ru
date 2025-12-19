@@ -1,253 +1,265 @@
-# Деплой сайта на GitHub Pages с доменом happy-habits.ru
+# Deployment Guide
 
-## Предварительные требования
+## Overview
 
-- GitHub аккаунт
-- Git установлен локально
-- Доступ к управлению DNS записями домена happy-habits.ru
+This Hugo site supports deployment to multiple environments with dynamic baseURL configuration. The site is designed to work correctly across different hostnames without hardcoded URLs.
 
----
+## How It Works
 
-## Шаг 1: Подготовка репозитория GitHub
+The site uses Hugo's environment-specific configuration system:
 
-### 1.1 Создайте новый репозиторий на GitHub
-1. Перейдите на https://github.com/new
-2. Введите название репозитория (например: `psych-web` или `happy-habits-website`)
-3. Выберите **Public** (для бесплатного GitHub Pages)
-4. **НЕ** инициализируйте с README, .gitignore или лицензией
-5. Нажмите **Create repository**
+- **Base config** ([config.toml](config.toml)): Uses `baseURL = "/"` as default
+- **Production config** ([config/production/config.toml](config/production/config.toml)): Sets `baseURL = "https://happy-habits.ru/"`
+- **Development config** ([config/development/config.toml](config/development/config.toml)): Sets `baseURL = "http://localhost:1313/"`
+- **Build-time override**: Can be overridden with `-b` flag for custom deployments
 
-### 1.2 Подключите локальный проект к GitHub
+## Deployment Targets
 
-Выполните команды в терминале из папки проекта:
+### 1. Netlify (Primary)
+
+#### Production Deploy
+- **Trigger**: Push to `main` branch
+- **Domain**: happy-habits.ru
+- **Environment**: production
+- **Build command**: `hugo --gc --minify`
+- **Config**: Uses [config/production/config.toml](config/production/config.toml)
+
+#### Preview Deploys
+- **Trigger**: Pull requests
+- **Domain**: `deploy-preview-[PR-NUMBER]--[SITE-NAME].netlify.app`
+- **Build command**: `hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL`
+- **Config**: Uses base config with dynamic baseURL override
+
+#### Branch Deploys
+- **Trigger**: Push to any branch
+- **Domain**: `[BRANCH-NAME]--[SITE-NAME].netlify.app`
+- **Build command**: `hugo --gc --minify -b $DEPLOY_PRIME_URL`
+- **Config**: Uses base config with dynamic baseURL override
+
+### 2. GitHub Pages
+
+- **Domain**: Configured via CNAME file (production only)
+- **Build**: GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml))
+- **Build command**: `hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"`
+- **Environment**: production
+
+### 3. Custom Domain Deployment
+
+To deploy to a different domain, you have three options:
+
+#### Option 1: Update Production Config (Permanent Change)
+
+Edit [config/production/config.toml](config/production/config.toml):
+
+```toml
+baseURL = "https://your-domain.com/"
+```
+
+Then build normally:
+```bash
+hugo --gc --minify --environment production
+```
+
+#### Option 2: Override at Build Time (Temporary)
 
 ```bash
-# Инициализируйте git (если еще не сделано)
-git init
-
-# Добавьте все файлы
-git add .
-
-# Создайте первый коммит
-git commit -m "Initial commit: Hugo psychologist website"
-
-# Добавьте удаленный репозиторий (замените YOUR-USERNAME и REPO-NAME)
-git remote add origin https://github.com/YOUR-USERNAME/REPO-NAME.git
-
-# Переименуйте ветку в main (если нужно)
-git branch -M main
-
-# Отправьте код на GitHub
-git push -u origin main
+hugo --gc --minify -b "https://your-domain.com/"
 ```
 
----
+This works without modifying any config files.
 
-## Шаг 2: Настройка GitHub Pages
+#### Option 3: Environment Variable
 
-### 2.1 Включите GitHub Pages
-1. Откройте ваш репозиторий на GitHub
-2. Перейдите в **Settings** (Настройки)
-3. В левом меню выберите **Pages**
-4. В секции **Build and deployment**:
-   - **Source**: выберите **GitHub Actions**
-5. Сохраните настройки
-
-### 2.2 Проверка автоматического деплоя
-1. Перейдите во вкладку **Actions** в вашем репозитории
-2. Вы должны увидеть запущенный workflow "Deploy Hugo site to GitHub Pages"
-3. Дождитесь завершения (зеленая галочка ✓, обычно 1-2 минуты)
-4. После успешного деплоя сайт будет доступен по адресу: `https://YOUR-USERNAME.github.io/REPO-NAME/`
-
----
-
-## Шаг 3: Настройка кастомного домена happy-habits.ru
-
-### 3.1 Настройка DNS записей
-
-Войдите в панель управления вашего регистратора домена (например, REG.RU, Timeweb, etc.) и добавьте следующие DNS записи:
-
-#### A-записи для корневого домена (happy-habits.ru):
-```
-Тип: A
-Имя: @ (или оставьте пустым)
-Значение: 185.199.108.153
-
-Тип: A
-Имя: @
-Значение: 185.199.109.153
-
-Тип: A
-Имя: @
-Значение: 185.199.110.153
-
-Тип: A
-Имя: @
-Значение: 185.199.111.153
-```
-
-#### CNAME-запись для www (опционально):
-```
-Тип: CNAME
-Имя: www
-Значение: YOUR-USERNAME.github.io
-```
-
-**Важно**: Замените `YOUR-USERNAME` на ваше имя пользователя GitHub.
-
-### 3.2 Добавьте домен в GitHub Pages
-
-1. Вернитесь в **Settings** → **Pages** вашего репозитория
-2. В секции **Custom domain** введите: `happy-habits.ru`
-3. Нажмите **Save**
-4. Подождите проверки DNS (может занять несколько минут)
-5. После успешной проверки отметьте **Enforce HTTPS**
-
-**Примечание**: Генерация SSL-сертификата может занять до 15-20 минут. После этого ваш сайт будет доступен по HTTPS.
-
----
-
-## Шаг 4: Проверка деплоя
-
-### 4.1 Проверьте DNS
-Используйте онлайн-инструменты для проверки DNS:
-- https://dnschecker.org
-- Введите `happy-habits.ru`
-- Убедитесь, что A-записи указывают на IP-адреса GitHub
-
-### 4.2 Проверьте сайт
-Откройте в браузере:
-- http://happy-habits.ru (должен автоматически перенаправить на HTTPS)
-- https://happy-habits.ru
-
----
-
-## Автоматические обновления
-
-После настройки каждое изменение автоматически деплоится при push в ветку `main`:
+Set the environment variable in your hosting platform (e.g., Netlify, Vercel):
 
 ```bash
-# Внесите изменения в файлы
-# Например, отредактируйте контент или CSS
-
-# Добавьте изменения
-git add .
-
-# Создайте коммит
-git commit -m "Описание изменений"
-
-# Отправьте на GitHub
-git push
-
-# Workflow автоматически запустится и обновит сайт через 1-2 минуты
+HUGO_BASEURL="https://your-domain.com/"
 ```
 
-Отслеживайте статус деплоя во вкладке **Actions** вашего репозитория.
+Then modify [config/production/config.toml](config/production/config.toml):
 
----
+```toml
+baseURL = {{ getenv "HUGO_BASEURL" | default "https://happy-habits.ru/" }}
+```
 
-## Локальная разработка
+## Local Development
 
-Для тестирования изменений локально перед публикацией:
+### Standard Development Server
 
 ```bash
-# Запустите локальный сервер Hugo
-hugo server -D
-
-# Откройте в браузере
-# http://localhost:1313
-
-# Сервер автоматически перезагрузится при изменениях файлов
+hugo server
 ```
 
----
+This uses the base config with `baseURL = "/"`. The site will be available at `http://localhost:1313/`.
 
-## Полезные команды
+### Test Production Configuration
 
-### Сборка сайта локально
 ```bash
-hugo --minify
+hugo server --environment production
 ```
 
-### Очистка кеша
+This uses [config/production/config.toml](config/production/config.toml) with `baseURL = "https://happy-habits.ru/"`.
+
+### Test with Custom BaseURL
+
 ```bash
-rm -rf public/ resources/
-hugo --gc --minify
+hugo server -b "http://localhost:1313/"
 ```
 
-### Проверка версии Hugo
+### Test Build Output
+
+Build with a test domain and verify no hardcoded URLs remain:
+
 ```bash
-hugo version
+hugo --minify -b "https://test-domain.com/"
+grep -r "happy-habits.ru" public/ || echo "✅ No hardcoded URLs found"
 ```
 
----
+Check generated files:
 
-## Структура файлов деплоя
+```bash
+# Verify robots.txt has correct sitemap URL
+cat public/robots.txt | grep Sitemap
 
-Вот файлы, которые были созданы для деплоя:
+# Verify canonical URL
+grep 'rel="canonical"' public/index.html
+
+# Verify favicon paths
+grep 'apple-touch-icon' public/index.html
+```
+
+## Troubleshooting
+
+### Assets Not Loading (404 Errors)
+
+**Symptom**: CSS, JS, images, or favicons return 404 errors.
+
+**Possible Causes**:
+1. baseURL not set correctly at build time
+2. Build command missing `-b` flag for preview deploys
+3. Assets missing from `static/` or `assets/` directories
+
+**Solutions**:
+- Verify Netlify build settings use correct commands from [netlify.toml](netlify.toml)
+- Check that `$DEPLOY_PRIME_URL` is available in preview environments
+- Inspect `public/index.html` to see actual asset URLs generated
+
+### Wrong Canonical URLs or Meta Tags
+
+**Symptom**: Canonical URLs or Open Graph URLs point to wrong domain.
+
+**Possible Causes**:
+1. Build command not setting correct baseURL
+2. Hugo environment not set correctly
+
+**Solutions**:
+- Production builds should set `HUGO_ENVIRONMENT=production`
+- Preview builds should use `-b $DEPLOY_PRIME_URL` flag
+- Check output HTML: `grep 'rel="canonical"' public/index.html`
+
+### robots.txt Has Wrong Sitemap URL
+
+**Symptom**: robots.txt points to incorrect sitemap URL.
+
+**Possible Causes**:
+1. robots.txt template not being used
+2. baseURL incorrect at build time
+
+**Solutions**:
+- Verify [layouts/robots.txt](layouts/robots.txt) exists (not in static/)
+- Check [config.toml](config.toml) includes robots output format
+- Verify generated file: `cat public/robots.txt`
+
+### Anchor Links Not Working
+
+**Symptom**: Clicking `#cta-final` or `#faq` links doesn't scroll to section.
+
+**Possible Causes**:
+1. JavaScript errors preventing default behavior
+2. CSS scroll-snap or smooth-scroll conflicts
+3. Target element missing ID attribute
+
+**Solutions**:
+- Open browser console and check for JavaScript errors
+- Verify target elements have correct IDs: `<section id="cta-final">`
+- Test with JavaScript disabled to isolate CSS issues
+
+### Mixed Content Warnings
+
+**Symptom**: Browser shows mixed content warnings (HTTP/HTTPS).
+
+**Possible Causes**:
+1. baseURL uses `http://` instead of `https://`
+2. External resources loaded over HTTP
+
+**Solutions**:
+- Ensure production baseURL uses `https://`
+- Check for any hardcoded `http://` URLs in templates
+- Verify all external resources use HTTPS
+
+### CNAME File Issues (GitHub Pages)
+
+**Symptom**: GitHub Pages not working with custom domain.
+
+**Possible Causes**:
+1. CNAME file not in build output
+2. Wrong environment used for build
+
+**Solutions**:
+- Verify [static/CNAME](static/CNAME) exists with correct domain
+- Ensure `CNAME` appears in `public/` after build
+- For non-GitHub-Pages deployments, the CNAME file won't cause issues (it's just ignored)
+
+## File Structure
 
 ```
 .
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions workflow
-├── static/
-│   └── CNAME                   # Файл с доменом для GitHub Pages
-└── DEPLOYMENT.md               # Эта инструкция
+├── config.toml                           # Base config (baseURL = "/")
+├── config/
+│   ├── production/
+│   │   └── config.toml                   # Production baseURL override
+│   └── development/
+│       └── config.toml                   # Development baseURL override
+├── layouts/
+│   ├── index.html                        # Main template (uses .Permalink)
+│   ├── robots.txt                        # Dynamic robots.txt template
+│   └── partials/                         # Component templates
+├── static/                               # Static assets (favicons, images)
+│   └── CNAME                             # GitHub Pages custom domain (optional)
+├── netlify.toml                          # Netlify build configuration
+└── .github/workflows/deploy.yml          # GitHub Actions workflow
 ```
 
----
+## Key Features
 
-## Устранение неполадок
+✅ **Dynamic baseURL**: Adapts to any deployment domain
+✅ **Environment-specific configs**: Production, development, preview
+✅ **Dynamic robots.txt**: Sitemap URL always matches deployed domain
+✅ **Relative asset paths**: Favicons and resources use Hugo's `relURL`
+✅ **Build-time overrides**: Can deploy to any domain with `-b` flag
+✅ **No hardcoded URLs**: All URLs generated dynamically
+✅ **Backwards compatible**: Existing workflows continue to work
 
-### Сайт не открывается после настройки DNS
-- **Причина**: DNS-записи еще не распространились
-- **Решение**: Подождите 1-48 часов для полной propagation DNS
+## Testing Checklist
 
-### Ошибка "Domain's DNS record could not be retrieved"
-- **Причина**: Неправильные DNS-записи
-- **Решение**: Проверьте A-записи, убедитесь, что указали все 4 IP-адреса
+Before deploying to production:
 
-### HTTPS не работает
-- **Причина**: SSL-сертификат еще не выпущен
-- **Решение**: Подождите 15-20 минут после добавления домена
+- [ ] Local development server works: `hugo server`
+- [ ] Production config works: `hugo server --environment production`
+- [ ] Build completes without errors: `hugo --minify`
+- [ ] No hardcoded URLs in output: `grep -r "happy-habits.ru" public/`
+- [ ] robots.txt has correct sitemap URL
+- [ ] Canonical URLs correct in `public/index.html`
+- [ ] Favicons load correctly
+- [ ] CSS and JS load correctly
+- [ ] Anchor links work (`#cta-final`, `#faq`)
+- [ ] No console errors in browser
+- [ ] No mixed content warnings
 
-### Workflow завершается с ошибкой
-- Проверьте логи во вкладке **Actions**
-- Убедитесь, что в Settings → Actions → General разрешены Workflow permissions: Read and write
+## Support
 
-### Изменения не отображаются на сайте
-- Очистите кеш браузера (Cmd+Shift+R на Mac, Ctrl+Shift+R на Windows)
-- Проверьте, что workflow успешно завершился (зеленая галочка)
-
----
-
-## Дополнительные возможности
-
-### Настройка редиректа www → без www
-Добавьте в `static/_redirects`:
-```
-https://www.happy-habits.ru/* https://happy-habits.ru/:splat 301!
-```
-
-### Google Analytics
-Добавьте в `config.toml`:
-```toml
-[services.googleAnalytics]
-ID = "G-XXXXXXXXXX"
-```
-
-### Yandex.Metrika
-Добавьте код счетчика в `layouts/partials/footer.html`
-
----
-
-## Контакты и поддержка
-
-- GitHub Pages документация: https://docs.github.com/en/pages
-- Hugo документация: https://gohugo.io/documentation/
-- GitHub Actions: https://docs.github.com/en/actions
-
----
-
-**Готово!** Ваш сайт будет автоматически обновляться при каждом git push.
+For issues or questions about deployment:
+1. Check this guide's troubleshooting section
+2. Review build logs in Netlify or GitHub Actions
+3. Test locally with `hugo server --environment production`
+4. Verify configuration files match this guide

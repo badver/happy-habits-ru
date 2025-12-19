@@ -1,0 +1,2 @@
+# Production configuration - merged with base config.toml
+baseURL = "https://happy-habits.ru/"

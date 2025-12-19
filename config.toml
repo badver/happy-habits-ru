@@ -1,4 +1,8 @@
-baseURL = "https://happy-habits.ru/"
+# Default baseURL - will be overridden by build environments
+# For local development: http://localhost:1313/
+# For production: uses config/production/config.toml
+# For previews: overridden by Netlify's $DEPLOY_PRIME_URL
+baseURL = "/"
 languageCode = "ru-RU"
 title = "Психолог онлайн — Помощь при тревоге и панических атаках"
 
@@ -52,7 +56,13 @@ disableKinds = ["RSS", "taxonomy", "term"]
 
 # Output formats
 [outputs]
-  home = ["HTML"]
+  home = ["HTML", "robots"]
+
+# robots.txt as Hugo template output
+[outputFormats.robots]
+  baseName = "robots"
+  mediaType = "text/plain"
+  isPlainText = true
 
 # Sitemap configuration
 [sitemap]

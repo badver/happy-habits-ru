@@ -1,0 +1,2 @@
+# Development configuration
+baseURL = "http://localhost:1313/"

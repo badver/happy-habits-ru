@@ -1,11 +1,11 @@
-# robots.txt for happy-habits.ru
+# robots.txt for https://staging-test.example.com/
 # Allow all crawlers to index the site
 
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://happy-habits.ru/sitemap.xml
+# Sitemap location - dynamically generated
+Sitemap: https://staging-test.example.com/sitemap.xml
 
 # Block access to admin areas (if any in future)
 # User-agent: *
