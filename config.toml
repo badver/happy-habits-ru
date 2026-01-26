@@ -19,8 +19,16 @@ disableKinds = ["RSS", "taxonomy", "term"]
   # Yandex.Metrika counter ID
   yandexMetrikaID = "98271361"
 
-  # Google Analytics 4 measurement ID 
+  # Google Analytics 4 measurement ID
   googleAnalyticsID = "G-214RJM3C13"
+
+# A/B Testing - Landing Page Variants
+[params.variants]
+  enabled = true
+  list = ["a"]                   # Add "b", "c" as needed
+  weights = [100]                # Percentage weights, must sum to 100
+  default = "a"                  # Default variant for fallback
+  forceParam = "v"               # URL param to force variant: /?v=b
 
 # Asset processing configuration
 [build]

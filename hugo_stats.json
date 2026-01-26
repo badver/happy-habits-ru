@@ -158,6 +158,7 @@
     "ids": [
       "cta-final",
       "faq",
+      "loading",
       "palette-selector"
     ]
   }

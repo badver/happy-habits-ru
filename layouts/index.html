@@ -1,250 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Redirecting...</title>
 
-  <title>{{ .Site.Title }}</title>
-  <meta name="description"
-    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
-  <meta name="keywords"
-    content="психолог онлайн тревожность, психотерапия тревоги онлайн, панические атаки психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия, психотерапевт онлайн">
-  <meta name="author" content="Ксения Парваткина">
-  <link rel="canonical" href="{{ .Permalink }}">
+  <!-- SEO: Router page should not be indexed -->
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="{{ .Site.BaseURL }}v/a/">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
-  <meta property="og:description"
-    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
-  {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
-  {{ if $ogImage }}
-  <meta property="og:image" content="{{ ($ogImage.Fill "1200x630 Center").Permalink }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  {{ end }}
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Психолог онлайн: Лечение тревожности КПТ | Ксения Парваткина">
-  <meta name="twitter:description"
-    content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
-  {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
-  {{ if $twitterImage }}
-  <meta name="twitter:image" content="{{ ($twitterImage.Fill "1200x630 Center").Permalink }}">
-  {{ end }}
-
-  <!-- Schema.org markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "{{ .Site.BaseURL }}#person",
-        "name": "Ксения Парваткина",
-        "jobTitle": "Психолог-психотерапевт",
-        "description": "Специализация: тревожные расстройства, панические атаки, КПТ",
-        {{ $schemaImage := resources.Get "images/psychologist-portrait.jpg" }}
-        {{ if $schemaImage }}
-        "image": "{{ $schemaImage.Permalink }}",
-        {{ end }}
-        "url": "{{ .Site.BaseURL }}",
-        "sameAs": [
-          "https://t.me/happy_habits_ru"
-        ],
-        "knowsAbout": ["Когнитивно-поведенческая терапия", "Тревожные расстройства", "Панические атаки", "ОКР", "Психотерапия"],
-        "alumniOf": {
-          "@type": "Organization",
-          "name": "МИП"
-        }
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "{{ .Site.BaseURL }}#service",
-        "name": "Психолог онлайн — Ксения Парваткина",
-        "description": "Онлайн консультации психолога. Лечение тревожности, панических атак методом когнитивно-поведенческой терапии (КПТ).",
-        "url": "{{ .Site.BaseURL }}",
-        "telephone": "+905071754633",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "RU"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "55.7558",
-          "longitude": "37.6173"
-        },
-        "priceRange": "5000-45000 ₽",
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "10:00",
-            "closes": "20:00"
-          }
-        ],
-        "areaServed": {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        "availableLanguage": {
-          "@type": "Language",
-          "name": "Russian"
-        },
-        "provider": {
-          "@id": "{{ .Site.BaseURL }}#person"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "{{ .Site.BaseURL }}#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "А если не поможет?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Когнитивно-поведенческая терапия — метод с доказанной эффективностью 85% при тревожных расстройствах. После бесплатной диагностики вы поймёте, подходит ли КПТ для вашего случая."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Сколько займёт времени?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Краткосрочная терапия: 8-15 сессий (2-4 месяца при частоте 1 раз в неделю). Первые улучшения обычно после 3-4 сессий."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Конфиденциально ли?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, строго конфиденциально. Никакой информации третьим лицам без вашего письменного согласия. Все записи зашифрованы."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Чем КПТ отличается от других методов?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "КПТ фокусируется на мыслях и поведении, краткосрочна (8-15 сессий), имеет доказательную базу и структурирована с измерением прогресса."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Дорого ли?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "5000 ₽ за сессию — средняя цена в Москве для КПТ-терапевта с сертификацией. Пакет 10 сессий — 45000 ₽ (экономия 5000 ₽)."
-            }
-          }
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "{{ .Site.BaseURL }}#website",
-        "url": "{{ .Site.BaseURL }}",
-        "name": "{{ .Site.Title }}",
-        "description": "Психолог онлайн. Лечение тревожности методом КПТ",
-        "publisher": {
-          "@id": "{{ .Site.BaseURL }}#person"
-        },
-        "inLanguage": "ru-RU"
-      }
-    ]
-  }
-  </script>
-
-  <!-- CSS -->
-  {{ $css := resources.Get "css/main.css" }}
-  {{ if $css }}
-  {{ $css = $css | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{ end }}
-
-  <!-- Critical CSS inline for above-the-fold content (Hero section) -->
+  <!-- Minimal styling for brief flash -->
   <style>
-    /* Critical CSS - only for initial viewport */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 16px;
-    }
-
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--color-text, #1a1a1a);
-      background-color: var(--color-bg, #ffffff);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .hero {
-      padding: 32px 16px;
-      background-color: var(--color-bg-light, #f8f9fa);
-    }
-
-    .hero__title {
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: var(--color-text, #1a1a1a);
-    }
-
-    .hero__subtitle {
-      font-size: 18px;
-      color: var(--color-text-light, #666666);
-      margin-bottom: 24px;
-    }
-
-    .btn {
-      display: inline-flex;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: 600;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn--primary {
-      background-color: var(--color-primary, #0088cc);
-      color: white;
-    }
-
-    .btn--secondary {
-      background-color: var(--color-secondary, #25D366);
-      color: white;
+      min-height: 100vh;
+      background: #f8f9fa;
+      color: #666;
     }
   </style>
 
   {{ if .Site.Params.yandexMetrikaID }}
-  <!-- Yandex.Metrika counter -->
+  <!-- Yandex.Metrika counter (for tracking router visits) -->
   <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
       m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
@@ -260,15 +40,10 @@
       trackLinks: true
     });
   </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/{{ .Site.Params.yandexMetrikaID }}"
-        style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
   {{ end }}
 
-  <!-- Google Analytics 4 -->
   {{ if .Site.Params.googleAnalyticsID }}
+  <!-- Google Analytics 4 (for tracking router visits) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -277,69 +52,35 @@
     gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
   </script>
   {{ end }}
+
+  <!-- Router configuration from Hugo -->
+  <script>
+    window.VARIANT_CONFIG = {
+      variants: {{ .Site.Params.variants.list | default (slice "a") | jsonify | safeJS }},
+      weights: {{ .Site.Params.variants.weights | default (slice 100) | jsonify | safeJS }},
+      defaultVariant: {{ .Site.Params.variants.default | default "a" | jsonify | safeJS }},
+      forceParam: {{ .Site.Params.variants.forceParam | default "v" | jsonify | safeJS }},
+      enabled: {{ if .Site.Params.variants.enabled }}true{{ else }}false{{ end }},
+      yandexMetrikaID: {{ .Site.Params.yandexMetrikaID | default 0 }},
+      googleAnalyticsID: {{ .Site.Params.googleAnalyticsID | default "" | jsonify | safeJS }}
+    };
+  </script>
+
+  <!-- Router script -->
+  {{ $router := resources.Get "js/router.js" }}
+  {{ if $router }}
+  {{ $router = $router | minify | fingerprint }}
+  <script src="{{ $router.Permalink }}" integrity="{{ $router.Data.Integrity }}"></script>
+  {{ end }}
 </head>
-
 <body>
-  <!-- Hero Section -->
-  {{ partial "hero.html" . }}
+  <!-- Fallback for no-JS users -->
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/v/a/">
+    <p>Redirecting to <a href="/v/a/">main page</a>...</p>
+  </noscript>
 
-  <!-- Symptoms Section -->
-  {{ partial "symptoms.html" . }}
-
-  <!-- Benefits Section -->
-  {{ partial "benefits.html" . }}
-
-  <!-- About Section -->
-  {{ partial "about.html" . }}
-
-  <!-- Process Section -->
-  {{ partial "process.html" . }}
-
-  <!-- Testimonials Section -->
-  {{ partial "testimonials.html" . }}
-
-  <!-- Pricing Section -->
-  {{ partial "pricing.html" . }}
-
-  <!-- FAQ Section -->
-  {{ partial "faq.html" . }}
-
-  <!-- Final CTA Section -->
-  {{ partial "cta-final.html" . }}
-
-  <!-- Footer -->
-  {{ partial "footer.html" . }}
-
-  <!-- JavaScript -->
-  {{ $analytics := resources.Get "js/analytics.js" | resources.ExecuteAsTemplate "js/analytics.js" . }}
-  {{ if $analytics }}
-  {{ $analytics = $analytics | minify | fingerprint }}
-  <script src="{{ $analytics.Permalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
-  {{ end }}
-
-  {{ $deeplinks := resources.Get "js/deeplinks.js" }}
-  {{ if $deeplinks }}
-  {{ $deeplinks = $deeplinks | minify | fingerprint }}
-  <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
-  {{ end }}
-
-  {{ $abtest := resources.Get "js/ab-test.js" | resources.ExecuteAsTemplate "js/ab-test.js" . }}
-  {{ if $abtest }}
-  {{ $abtest = $abtest | minify | fingerprint }}
-  <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
-  {{ end }}
-
-  {{ $paletteSwitcher := resources.Get "js/palette-switcher.js" }}
-  {{ if $paletteSwitcher }}
-  {{ $paletteSwitcher = $paletteSwitcher | minify | fingerprint }}
-  <script src="{{ $paletteSwitcher.Permalink }}" integrity="{{ $paletteSwitcher.Data.Integrity }}"></script>
-  {{ end }}
-
-  {{ $carousel := resources.Get "js/testimonials-carousel.js" }}
-  {{ if $carousel }}
-  {{ $carousel = $carousel | minify | fingerprint }}
-  <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
-  {{ end }}
+  <!-- Brief loading state (JS will redirect immediately) -->
+  <div id="loading">Загрузка...</div>
 </body>
-
 </html>
