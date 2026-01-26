@@ -4,7 +4,7 @@
 
     <div class="about__content">
       <div class="about__image">
-        {{ $image := resources.Get "images/psychologist-session.jpg" }}
+        {{ $image := resources.Get "images/psychologist-portrait.jpg" }}
         {{ if $image }}
         {{ $resized := $image.Fit "400x400" }}
         <img src="{{ $resized.RelPermalink }}" alt="Психолог-психотерапевт на онлайн сессии — работа с клиентами"
@@ -14,7 +14,7 @@
 
       <div class="about__info">
         <div class="about__bio">
-          <p>Меня зовут Ксения, я клинический и кризисный психолог, психотерапевт с 4-летним опытом работы с тревожными
+          <p>Меня зовут Ксения, я клинический и кризисный психолог, психотерапевт с большим опытом работы с тревожными
             расстройствами.</p>
 
           <p>Специализируюсь на когнитивно-поведенческой терапии (КПТ) — методе с доказанной эффективностью 85% при

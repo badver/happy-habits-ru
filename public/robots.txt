@@ -1,11 +1,11 @@
-# robots.txt for https://staging-test.example.com/
+# robots.txt for http://localhost:1313/
 # Allow all crawlers to index the site
 
 User-agent: *
 Allow: /
 
 # Sitemap location - dynamically generated
-Sitemap: https://staging-test.example.com/sitemap.xml
+Sitemap: http://localhost:1313/sitemap.xml
 
 # Block access to admin areas (if any in future)
 # User-agent: *

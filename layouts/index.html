@@ -27,7 +27,7 @@
     content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.">
   {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $ogImage }}
-  <meta property="og:image" content="{{ ($ogImage.Fill " 1200x630 Center").Permalink }}">
+  <meta property="og:image" content="{{ ($ogImage.Fill "1200x630 Center").Permalink }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   {{ end }}
@@ -41,7 +41,7 @@
     content="Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%.">
   {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $twitterImage }}
-  <meta name="twitter:image" content="{{ ($twitterImage.Fill " 1200x630 Center").Permalink }}">
+  <meta name="twitter:image" content="{{ ($twitterImage.Fill "1200x630 Center").Permalink }}">
   {{ end }}
 
   <!-- Schema.org markup -->
