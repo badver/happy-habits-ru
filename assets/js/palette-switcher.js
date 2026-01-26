@@ -94,8 +94,8 @@
     }
   };
 
-  const STORAGE_KEY = 'preferred-palette';
-  const DEFAULT_PALETTE = 'blue';
+  // Track current palette for the session
+  let currentPalette = null;
 
   /**
    * Apply a palette to the page
@@ -107,13 +107,12 @@
       return;
     }
 
+    currentPalette = paletteName;
+
     const root = document.documentElement;
     Object.keys(palette.colors).forEach(cssVar => {
       root.style.setProperty(cssVar, palette.colors[cssVar]);
     });
-
-    // Save preference
-    localStorage.setItem(STORAGE_KEY, paletteName);
 
     // Update dropdown if it exists
     const selector = document.getElementById('palette-selector');
@@ -128,10 +127,12 @@
   }
 
   /**
-   * Get saved palette preference
+   * Get a random palette
    */
-  function getSavedPalette() {
-    return localStorage.getItem(STORAGE_KEY) || DEFAULT_PALETTE;
+  function getRandomPalette() {
+    const paletteNames = Object.keys(PALETTES);
+    const randomIndex = Math.floor(Math.random() * paletteNames.length);
+    return paletteNames[randomIndex];
   }
 
   /**
@@ -149,8 +150,7 @@
       selector.appendChild(option);
     });
 
-    // Set current palette
-    const currentPalette = getSavedPalette();
+    // Set current palette in dropdown
     selector.value = currentPalette;
 
     // Listen for changes
@@ -163,9 +163,9 @@
    * Initialize on page load
    */
   function init() {
-    // Apply saved palette immediately
-    const savedPalette = getSavedPalette();
-    applyPalette(savedPalette);
+    // Apply random palette on each visit
+    const randomPalette = getRandomPalette();
+    applyPalette(randomPalette);
 
     // Initialize selector when DOM is ready
     if (document.readyState === 'loading') {
@@ -181,7 +181,7 @@
   // Expose for debugging
   window.paletteSwitcher = {
     apply: applyPalette,
-    getCurrent: getSavedPalette,
+    getCurrent: () => currentPalette,
     available: Object.keys(PALETTES)
   };
 })();

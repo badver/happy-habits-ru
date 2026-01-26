@@ -43,9 +43,13 @@
    * @param {string} buttonPosition - location of button (e.g., 'hero', 'symptoms', 'final-cta')
    */
   window.trackMessengerClick = function (messengerType, buttonPosition) {
+    // Get current color palette for conversion analysis
+    const colorPalette = window.paletteSwitcher?.getCurrent() || 'unknown';
+
     const eventData = {
       messenger_type: messengerType,
       button_position: buttonPosition,
+      color_palette: colorPalette,
       ...getStoredUTM()
     };
 
@@ -140,10 +144,28 @@
   });
 
   /**
+   * Attach click handlers to CTA buttons
+   */
+  function initCTATracking() {
+    const ctaButtons = document.querySelectorAll('[data-cta]');
+
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const messengerType = this.getAttribute('data-cta');
+        const buttonPosition = this.getAttribute('data-position') || 'unknown';
+        window.trackMessengerClick(messengerType, buttonPosition);
+      });
+    });
+
+    console.log('CTA tracking initialized for', ctaButtons.length, 'buttons');
+  }
+
+  /**
    * Initialize analytics tracking
    */
   document.addEventListener('DOMContentLoaded', function () {
     console.log('Analytics initialized');
     console.log('UTM parameters:', getStoredUTM());
+    initCTATracking();
   });
 })();
