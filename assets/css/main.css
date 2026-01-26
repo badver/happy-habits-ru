@@ -1026,6 +1026,15 @@ section {
   background-color: #1da851;
 }
 
+.social-btn--instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.social-btn--instagram:hover {
+  background: linear-gradient(45deg, #d97d2b 0%, #c75832 25%, #b8203a 50%, #a91d57 75%, #9a1473 100%);
+}
+
 .social-btn svg {
   fill: currentColor;
 }
