@@ -53,25 +53,108 @@
   </script>
   {{ end }}
 
-  <!-- Router configuration from Hugo -->
+  <!-- Router script (inline for immediate execution) -->
   <script>
-    window.VARIANT_CONFIG = {
-      variants: {{ .Site.Params.variants.list | default (slice "a") | jsonify | safeJS }},
-      weights: {{ .Site.Params.variants.weights | default (slice 100) | jsonify | safeJS }},
-      defaultVariant: {{ .Site.Params.variants.default | default "a" | jsonify | safeJS }},
-      forceParam: {{ .Site.Params.variants.forceParam | default "v" | jsonify | safeJS }},
-      enabled: {{ if .Site.Params.variants.enabled }}true{{ else }}false{{ end }},
-      yandexMetrikaID: {{ .Site.Params.yandexMetrikaID | default 0 }},
-      googleAnalyticsID: {{ .Site.Params.googleAnalyticsID | default "" | jsonify | safeJS }}
-    };
-  </script>
+    (function() {
+      'use strict';
 
-  <!-- Router script -->
-  {{ $router := resources.Get "js/router.js" }}
-  {{ if $router }}
-  {{ $router = $router | minify | fingerprint }}
-  <script src="{{ $router.Permalink }}" integrity="{{ $router.Data.Integrity }}"></script>
-  {{ end }}
+      var STORAGE_KEY = 'landing_variant';
+      var config = {
+        variants: {{ .Site.Params.variants.list | default (slice "a") | jsonify | safeJS }},
+        weights: {{ .Site.Params.variants.weights | default (slice 100) | jsonify | safeJS }},
+        defaultVariant: {{ .Site.Params.variants.default | default "a" | jsonify | safeJS }},
+        forceParam: {{ .Site.Params.variants.forceParam | default "v" | jsonify | safeJS }},
+        enabled: {{ if .Site.Params.variants.enabled }}true{{ else }}false{{ end }},
+        yandexMetrikaID: {{ .Site.Params.yandexMetrikaID | default 0 }},
+        googleAnalyticsID: {{ .Site.Params.googleAnalyticsID | default "" | jsonify | safeJS }}
+      };
+
+      function weightedRandom(variants, weights) {
+        var total = 0;
+        for (var i = 0; i < weights.length; i++) total += weights[i];
+        var rand = Math.random() * total;
+        var cumulative = 0;
+        for (var j = 0; j < variants.length; j++) {
+          cumulative += weights[j];
+          if (rand < cumulative) return variants[j];
+        }
+        return variants[variants.length - 1];
+      }
+
+      function getUrlParam(param) {
+        var params = new URLSearchParams(window.location.search);
+        return params.get(param);
+      }
+
+      function isValidVariant(v) {
+        return v && config.variants.indexOf(v) !== -1;
+      }
+
+      function trackAssignment(variant, source) {
+        if (config.googleAnalyticsID && typeof gtag === 'function') {
+          gtag('event', 'variant_assigned', {
+            variant: variant,
+            assignment_source: source,
+            event_category: 'ab_test'
+          });
+        }
+        if (config.yandexMetrikaID && typeof ym === 'function') {
+          ym(config.yandexMetrikaID, 'params', { landing_variant: variant });
+          ym(config.yandexMetrikaID, 'reachGoal', 'variant_assigned', { variant: variant });
+        }
+      }
+
+      function redirect(variant) {
+        var url = '/v/' + variant + '/';
+        var params = new URLSearchParams(window.location.search);
+        params.delete(config.forceParam);
+        var qs = params.toString();
+        if (qs) url += '?' + qs;
+        if (window.location.hash) url += window.location.hash;
+        window.location.replace(url);
+      }
+
+      // Main router logic
+      (function route() {
+        if (!config.enabled) {
+          redirect(config.defaultVariant);
+          return;
+        }
+
+        var variant, source;
+
+        // 1. Check URL force parameter
+        var forced = getUrlParam(config.forceParam);
+        if (isValidVariant(forced)) {
+          variant = forced;
+          source = 'forced';
+          try { localStorage.setItem(STORAGE_KEY, variant); } catch(e) {}
+          trackAssignment(variant, source);
+          redirect(variant);
+          return;
+        }
+
+        // 2. Check localStorage
+        try {
+          var stored = localStorage.getItem(STORAGE_KEY);
+          if (isValidVariant(stored)) {
+            variant = stored;
+            source = 'stored';
+            trackAssignment(variant, source);
+            redirect(variant);
+            return;
+          }
+        } catch(e) {}
+
+        // 3. Random assignment
+        variant = weightedRandom(config.variants, config.weights);
+        source = 'assigned';
+        try { localStorage.setItem(STORAGE_KEY, variant); } catch(e) {}
+        trackAssignment(variant, source);
+        redirect(variant);
+      })();
+    })();
+  </script>
 </head>
 <body>
   <!-- Fallback for no-JS users -->
