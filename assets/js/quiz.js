@@ -203,12 +203,12 @@
       guarantees.classList.add('quiz-revealed');
     }
 
-    // Show footer messenger buttons (TG/WA only)
-    const footerButtons = document.querySelectorAll('.footer .social-btn--telegram, .footer .social-btn--whatsapp');
-    footerButtons.forEach(btn => {
-      btn.classList.remove('quiz-hidden');
-      btn.classList.add('quiz-revealed');
-    });
+    // Show footer contact section (entire "Связаться" block)
+    const footerContactSection = document.getElementById('footer-contact-section');
+    if (footerContactSection) {
+      footerContactSection.classList.remove('quiz-hidden');
+      footerContactSection.classList.add('quiz-revealed');
+    }
   }
 
   // Hide CTA buttons initially (show quiz)
@@ -237,11 +237,11 @@
       guarantees.classList.add('quiz-hidden');
     }
 
-    // Hide footer messenger buttons (TG/WA only, keep Instagram visible)
-    const footerButtons = document.querySelectorAll('.footer .social-btn--telegram, .footer .social-btn--whatsapp');
-    footerButtons.forEach(btn => {
-      btn.classList.add('quiz-hidden');
-    });
+    // Hide footer contact section (entire "Связаться" block)
+    const footerContactSection = document.getElementById('footer-contact-section');
+    if (footerContactSection) {
+      footerContactSection.classList.add('quiz-hidden');
+    }
   }
 
   // Initialize quiz
