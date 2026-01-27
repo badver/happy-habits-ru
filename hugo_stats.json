@@ -70,7 +70,6 @@
       "cta-final__guarantees",
       "cta-final__sla",
       "cta-final__title",
-      "cta-final__urgency",
       "cta-text",
       "detail",
       "disclaimer__text",
@@ -126,6 +125,19 @@
       "process",
       "process__cta-final",
       "process__steps",
+      "quiz-section",
+      "quiz__answer",
+      "quiz__answers",
+      "quiz__back-btn",
+      "quiz__container",
+      "quiz__content",
+      "quiz__navigation",
+      "quiz__progress",
+      "quiz__progress-bar",
+      "quiz__progress-fill",
+      "quiz__progress-text",
+      "quiz__question",
+      "quiz__question-text",
       "section__subtitle",
       "section__title",
       "sla__icon",
@@ -166,7 +178,11 @@
       "cta-final",
       "faq",
       "loading",
-      "palette-selector"
+      "palette-selector",
+      "quiz-back-btn",
+      "quiz-current",
+      "quiz-progress-fill",
+      "quiz-section"
     ]
   }
 }

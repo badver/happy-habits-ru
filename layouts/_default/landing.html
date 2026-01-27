@@ -348,6 +348,12 @@
   {{ $carousel = $carousel | minify | fingerprint }}
   <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
   {{ end }}
+
+  {{ $quiz := resources.Get "js/quiz.js" }}
+  {{ if $quiz }}
+  {{ $quiz = $quiz | minify | fingerprint }}
+  <script src="{{ $quiz.Permalink }}" integrity="{{ $quiz.Data.Integrity }}"></script>
+  {{ end }}
 </body>
 
 </html>

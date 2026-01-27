@@ -1,0 +1,68 @@
+<!-- Quiz Gate Component -->
+<div id="quiz-section" class="quiz-section">
+  <div class="quiz__container">
+    <div class="quiz__progress">
+      <span class="quiz__progress-text">Вопрос <span id="quiz-current">1</span> из 4</span>
+      <div class="quiz__progress-bar">
+        <div class="quiz__progress-fill" id="quiz-progress-fill" style="width: 25%"></div>
+      </div>
+    </div>
+
+    <div class="quiz__content">
+      <!-- Question 1: Problem Type -->
+      <div class="quiz__question" data-question="1">
+        <h3 class="quiz__question-text">С чем вы хотели бы разобраться?</h3>
+        <div class="quiz__answers">
+          <button class="quiz__answer" data-answer="anxiety">Тревожность</button>
+          <button class="quiz__answer" data-answer="panic">Панические атаки</button>
+          <button class="quiz__answer" data-answer="stress">Стресс и выгорание</button>
+          <button class="quiz__answer" data-answer="ocd">Навязчивые мысли (ОКР)</button>
+          <button class="quiz__answer" data-answer="other">Другое</button>
+        </div>
+      </div>
+
+      <!-- Question 2: Duration -->
+      <div class="quiz__question" data-question="2" style="display: none;">
+        <h3 class="quiz__question-text">Как давно вас беспокоит эта проблема?</h3>
+        <div class="quiz__answers">
+          <button class="quiz__answer" data-answer="less_month">Менее месяца</button>
+          <button class="quiz__answer" data-answer="1_6_months">1-6 месяцев</button>
+          <button class="quiz__answer" data-answer="6_12_months">6-12 месяцев</button>
+          <button class="quiz__answer" data-answer="more_year">Более года</button>
+          <button class="quiz__answer" data-answer="several_years">Несколько лет</button>
+        </div>
+      </div>
+
+      <!-- Question 3: Previous Therapy -->
+      <div class="quiz__question" data-question="3" style="display: none;">
+        <h3 class="quiz__question-text">Обращались ли вы ранее к психологу или психотерапевту?</h3>
+        <div class="quiz__answers">
+          <button class="quiz__answer" data-answer="never">Нет, это будет первый раз</button>
+          <button class="quiz__answer" data-answer="yes_no_help">Да, но не помогло</button>
+          <button class="quiz__answer" data-answer="yes_positive">Да, был положительный опыт</button>
+          <button class="quiz__answer" data-answer="working_now">Работаю сейчас с другим специалистом</button>
+        </div>
+      </div>
+
+      <!-- Question 4: Expectations -->
+      <div class="quiz__question" data-question="4" style="display: none;">
+        <h3 class="quiz__question-text">Что для вас важнее всего в терапии?</h3>
+        <div class="quiz__answers">
+          <button class="quiz__answer" data-answer="quick_result">Быстрый результат</button>
+          <button class="quiz__answer" data-answer="deep_understanding">Глубокое понимание проблемы</button>
+          <button class="quiz__answer" data-answer="techniques">Конкретные техники и упражнения</button>
+          <button class="quiz__answer" data-answer="support">Поддержка и принятие</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz__navigation">
+      <button class="quiz__back-btn" id="quiz-back-btn" style="display: none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Назад
+      </button>
+    </div>
+  </div>
+</div>
