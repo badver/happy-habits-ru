@@ -1,7 +1,7 @@
 ---
 title: "Variants"
 robots: "noindex,nofollow"
-_build:
+build:
   list: never
 sitemap_exclude: true
 ---

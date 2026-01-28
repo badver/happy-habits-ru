@@ -1,11 +1,11 @@
-# robots.txt for {{ .Site.BaseURL }}
+# robots.txt for {{ "/" | absURL }}
 # Allow all crawlers to index the site
 
 User-agent: *
 Allow: /
 
 # Sitemap location - dynamically generated
-Sitemap: {{ .Site.BaseURL }}sitemap.xml
+Sitemap: {{ "sitemap.xml" | absURL }}
 
 # Block access to admin areas (if any in future)
 # User-agent: *

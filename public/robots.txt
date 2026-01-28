@@ -1,11 +1,11 @@
-# robots.txt for http://localhost:1313/
+# robots.txt for https://happy-habits.ru/
 # Allow all crawlers to index the site
 
 User-agent: *
 Allow: /
 
 # Sitemap location - dynamically generated
-Sitemap: http://localhost:1313/sitemap.xml
+Sitemap: https://happy-habits.ru/sitemap.xml
 
 # Block access to admin areas (if any in future)
 # User-agent: *

@@ -2,19 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/v/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/v/a/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>http://localhost:1313/v/b/</loc>
+    <loc>https://happy-habits.ru/v/a/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
