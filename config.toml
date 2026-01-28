@@ -1,8 +1,5 @@
-# Default baseURL - will be overridden by build environments
-# For local development: http://localhost:1313/
-# For production: uses config/production/config.toml
-# For previews: overridden by Netlify's $DEPLOY_PRIME_URL
-baseURL = "/"
+# Production baseURL - for local dev, run: hugo server (ignores this)
+baseURL = "https://happy-habits.ru/"
 languageCode = "ru-RU"
 title = "Психолог онлайн — Помощь при тревоге и панических атаках"
 
