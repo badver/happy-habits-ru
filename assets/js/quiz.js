@@ -54,6 +54,8 @@
     }
   ];
 
+  const TOTAL_STEPS = 5; // 4 questions + 1 info step
+
   let currentQuestion = 1;
   let answers = {};
   let startTime = null;
@@ -135,7 +137,7 @@
     const backBtn = document.getElementById('quiz-back-btn');
 
     if (progressText) progressText.textContent = questionNum;
-    if (progressFill) progressFill.style.width = (questionNum / QUESTIONS.length * 100) + '%';
+    if (progressFill) progressFill.style.width = (questionNum / TOTAL_STEPS * 100) + '%';
     if (backBtn) backBtn.style.display = questionNum > 1 ? 'flex' : 'none';
 
     currentQuestion = questionNum;
@@ -152,9 +154,11 @@
     // Track analytics
     trackAnswer(currentQuestion, answerId, answerText);
 
-    // Move to next question or complete
+    // Move to next question or show info step
     if (currentQuestion < QUESTIONS.length) {
       showQuestion(currentQuestion + 1);
+    } else if (currentQuestion === QUESTIONS.length) {
+      showInfoStep(); // Show step 5
     } else {
       completeQuiz();
     }
@@ -165,6 +169,26 @@
     if (currentQuestion > 1) {
       showQuestion(currentQuestion - 1);
     }
+  }
+
+  // Show informational step 5
+  function showInfoStep() {
+    showQuestion(5);
+
+    // Track analytics
+    trackEvent('quiz_info_step_viewed', {
+      total_questions: QUESTIONS.length
+    });
+  }
+
+  // Handle continue button on info step
+  function handleContinue() {
+    // Track analytics
+    trackEvent('quiz_info_step_continued', {
+      total_questions: QUESTIONS.length
+    });
+
+    completeQuiz();
   }
 
   // Complete quiz and show CTA buttons
@@ -279,6 +303,12 @@
       backBtn.addEventListener('click', goBack);
     }
 
+    // Attach continue button handler
+    const continueBtn = document.getElementById('quiz-continue-btn');
+    if (continueBtn) {
+      continueBtn.addEventListener('click', handleContinue);
+    }
+
     console.log('Quiz initialized');
   }
 
@@ -308,4 +338,14 @@
       }
     }
   };
+
+  // Hidden testing feature: click copyright symbol to reset quiz
+  const resetTrigger = document.getElementById('quiz-reset-trigger');
+  if (resetTrigger) {
+    resetTrigger.addEventListener('click', function() {
+      if (confirm('Сбросить тест и начать заново?')) {
+        window.quizGate.reset();
+      }
+    });
+  }
 })();

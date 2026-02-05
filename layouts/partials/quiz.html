@@ -2,7 +2,7 @@
 <div id="quiz-section" class="quiz-section">
   <div class="quiz__container">
     <div class="quiz__progress">
-      <span class="quiz__progress-text">Вопрос <span id="quiz-current">1</span> из 4</span>
+      <span class="quiz__progress-text">Вопрос <span id="quiz-current">1</span> из 5</span>
       <div class="quiz__progress-bar">
         <div class="quiz__progress-fill" id="quiz-progress-fill" style="width: 25%"></div>
       </div>
@@ -53,6 +53,35 @@
           <button class="quiz__answer" data-answer="techniques">Конкретные техники и упражнения</button>
           <button class="quiz__answer" data-answer="support">Поддержка и принятие</button>
         </div>
+      </div>
+
+      <!-- Step 5: Pricing Information -->
+      <div class="quiz__question quiz__question--info" data-question="5" style="display: none;">
+        <h2 class="quiz__info-title">Следующий шаг — <strong>бесплатная</strong> встреча 30 минут</h2>
+        <div class="quiz__info-content">
+          <p class="quiz__info-text">
+            Вы записываетесь на <strong>бесплатный звонок с психологом (30 минут).</strong><br>
+            На встрече обсудим вашу ситуацию, я расскажу, как работает КПТ и подходит ли она в вашем случае.
+            Вместе составим план работы.
+          </p>
+
+          <div class="quiz__info-divider"></div>
+
+          <p class="quiz__info-text quiz__info-text--secondary">
+            <strong>После первой встречи</strong> вы решите, хотите ли продолжить терапию.<br>
+            Дальнейшие сессии — платные:
+          </p>
+
+          <div class="quiz__info-pricing">
+            <div class="pricing-item">
+              <strong>Полная сессия (60 минут):</strong> 5000 ₽
+            </div>
+            <div class="pricing-item">
+              <strong>Пакет 10 сессий:</strong> 45000 ₽ <span class="pricing-savings">(экономия 5000 ₽)</span>
+            </div>
+          </div>
+        </div>
+        <button class="quiz__continue-btn" id="quiz-continue-btn">Понятно, продолжить</button>
       </div>
     </div>
 
