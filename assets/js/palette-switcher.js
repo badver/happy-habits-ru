@@ -74,23 +74,6 @@
         '--color-error': '#d08770',
         '--color-success': '#8b9d83'
       }
-    },
-    neutral: {
-      name: '⚫ Минимализм',
-      colors: {
-        '--color-primary': '#5d6d7e',
-        '--color-primary-dark': '#4a5866',
-        '--color-secondary': '#85929e',
-        '--color-secondary-dark': '#6b7a87',
-        '--color-accent': '#aeb6bf',
-        '--color-text': '#2c3e50',
-        '--color-text-light': '#7f8c8d',
-        '--color-bg': '#ffffff',
-        '--color-bg-light': '#f4f6f7',
-        '--color-border': '#d5d8dc',
-        '--color-error': '#e74c3c',
-        '--color-success': '#27ae60'
-      }
     }
   };
 
