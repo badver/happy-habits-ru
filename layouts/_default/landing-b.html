@@ -17,10 +17,10 @@
   <link rel="canonical" href="{{ .Site.BaseURL }}v/a/">
   <meta name="robots" content="noindex,follow">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ " apple-touch-icon.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ " favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ " favicon-16x16.png" | relURL }}">
+  <link rel="manifest" href="{{ " site.webmanifest" | relURL }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
     content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками. Консультации онлайн, конфиденциально.">
   {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $ogImage }}
-  <meta property="og:image" content="{{ ($ogImage.Fill "1200x630 Center").Permalink }}">
+  <meta property="og:image" content="{{ ($ogImage.Fill " 1200x630 Center").Permalink }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   {{ end }}
@@ -44,7 +44,7 @@
     content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками.">
   {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
   {{ if $twitterImage }}
-  <meta name="twitter:image" content="{{ ($twitterImage.Fill "1200x630 Center").Permalink }}">
+  <meta name="twitter:image" content="{{ ($twitterImage.Fill " 1200x630 Center").Permalink }}">
   {{ end }}
 
   <!-- Schema.org markup -->
@@ -98,8 +98,16 @@
 
   <!-- Critical CSS inline for above-the-fold content -->
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -109,17 +117,49 @@
       background-color: var(--color-bg, #ffffff);
       -webkit-font-smoothing: antialiased;
     }
-    .hero { padding: 32px 16px; background-color: var(--color-bg-light, #f8f9fa); }
-    .hero__title { font-size: 28px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
-    .hero__subtitle { font-size: 18px; color: var(--color-text-light, #666666); margin-bottom: 24px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 44px; padding: 12px 24px; font-size: 16px; font-weight: 600;
-      border: 2px solid transparent; border-radius: 8px; cursor: pointer;
-      text-decoration: none; transition: all 0.2s ease;
+
+    .hero {
+      padding: 32px 16px;
+      background-color: var(--color-bg-light, #f8f9fa);
     }
-    .btn--primary { background-color: var(--color-primary, #0088cc); color: white; }
-    .btn--secondary { background-color: var(--color-secondary, #25D366); color: white; }
+
+    .hero__title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero__subtitle {
+      font-size: 18px;
+      color: var(--color-text-light, #666666);
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn--primary {
+      background-color: var(--color-primary, #0088cc);
+      color: white;
+    }
+
+    .btn--secondary {
+      background-color: var(--color-secondary, #25D366);
+      color: white;
+    }
   </style>
 
   {{ if .Site.Params.yandexMetrikaID }}
@@ -155,7 +195,8 @@
       <div class="hero__content">
         <h1 class="hero__title">Представьте: вы просыпаетесь с ощущением ясности и легкости.</h1>
 
-        <p class="hero__subtitle">Это достижимо через последовательную работу с психологом. В подходе КПТ мы не просто говорим, а внедряем конкретные навыки, которые помогают справляться с тревогой в реальной жизни.</p>
+        <p class="hero__subtitle">Это возможно при последовательной работе с психологом. В подходе КПТ мы не просто
+          говорим, а внедряем конкретные навыки, которые помогают справляться с тревогой в реальной жизни.</p>
 
         <div class="hero__badges">
           <span class="badge">Конфиденциально</span>
@@ -163,8 +204,8 @@
         </div>
 
         <div class="hero__cta">
-          <a href="#cta-final" class="btn btn--primary" aria-label="Узнать формат и стоимость"
-             data-cta="scroll-to-cta" data-position="hero">
+          <a href="#cta-final" class="btn btn--primary" aria-label="Узнать формат и стоимость" data-cta="scroll-to-cta"
+            data-position="hero">
             Узнать формат и стоимость
           </a>
         </div>
@@ -177,58 +218,67 @@
     <div class="container">
       <h2 class="section__title">Я знаю, каково это</h2>
 
-      <div class="empathy-block" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px; margin-bottom: 32px;">
+      <div class="empathy-block"
+        style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px; margin-bottom: 32px;">
         <p style="font-size: 18px; line-height: 1.7; margin-bottom: 16px;">
-          Просыпаться с тревогой. Избегать звонков, встреч, решений. Перебирать в голове худшие сценарии. Ощущать постоянное напряжение, которое не отпускает.
+          Просыпаться с тревогой. Избегать звонков, встреч, решений. Перебирать в голове худшие сценарии. Ощущать
+          постоянное напряжение, которое не отпускает.
         </p>
         <p style="font-size: 18px; line-height: 1.7; font-weight: 600;">
-          Вы не сломаны. Вы не «слишком чувствительны». Ваш мозг просто застрял в режиме тревоги — и с этим можно работать.
+          Вы не сломаны. Вы не «слишком чувствительны». Ваш мозг просто застрял в режиме тревоги — и с этим можно
+          работать.
         </p>
       </div>
 
       <ul class="symptoms__list">
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Постоянное беспокойство, которое сложно «выключить»
         </li>
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Внезапные приступы сильной тревоги и страха
         </li>
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Трудности с засыпанием из-за потока навязчивых мыслей
         </li>
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Избегание привычных мест или общения из-за внутреннего дискомфорта
         </li>
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Постоянное чувство напряжения и невозможность расслабиться
         </li>
         <li class="symptom-item">
           <svg class="symptom-item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Сложности с концентрацией на работе или повседневных делах
         </li>
       </ul>
 
       <div class="symptoms__cta">
-        <p class="symptoms__cta-text"><strong>Если это про вас</strong> — я могу помочь. Первый шаг — вводная встреча.</p>
-        <a href="#cta-final" class="btn btn--primary"
-           data-cta="scroll-to-cta" data-position="symptoms">
+        <p class="symptoms__cta-text"><strong>Если это про вас</strong> — я могу помочь. Первый шаг — вводная встреча.
+        </p>
+        <a href="#cta-final" class="btn btn--primary" data-cta="scroll-to-cta" data-position="symptoms">
           Записаться на вводную встречу
         </a>
       </div>
@@ -241,17 +291,23 @@
       <h2 class="section__title">Что изменится после нашей работы</h2>
 
       <div class="benefits__timeline" style="display: grid; gap: 24px; margin-bottom: 32px;">
-        <div class="timeline-block" style="background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 100%); padding: 24px; border-radius: 12px; border-left: 4px solid var(--color-primary, #0088cc);">
+        <div class="timeline-block"
+          style="background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 100%); padding: 24px; border-radius: 12px; border-left: 4px solid var(--color-primary, #0088cc);">
           <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--color-primary, #0088cc);">На первых этапах</h3>
-          <p style="padding: 8px 0;">Появится понимание причин вашего состояния, освоите базовые техники снижения напряжения, почувствуете больше контроля.</p>
+          <p style="padding: 8px 0;">Появится понимание причин вашего состояния, освоите базовые техники снижения
+            напряжения, почувствуете больше контроля.</p>
         </div>
 
-        <div class="timeline-block" style="background: linear-gradient(135deg, #e8f8e8 0%, #d4edd4 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #25D366;">
+        <div class="timeline-block"
+          style="background: linear-gradient(135deg, #e8f8e8 0%, #d4edd4 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #25D366;">
           <h3 style="font-size: 20px; margin-bottom: 12px; color: #25D366;">В процессе работы</h3>
-          <p style="padding: 8px 0;">Приступы тревоги станут менее интенсивными, вернется способность принимать решения без страха, наладится сон.</p>
+          <p style="padding: 8px 0;">В процессе работы вы освоите навыки, которые помогают снижать интенсивность
+            тревоги, спокойнее реагировать на сложные
+            ситуации и выстраивать более устойчивый режим сна</p>
         </div>
 
-        <div class="timeline-block" style="background: linear-gradient(135deg, #f8f4e8 0%, #ede8d4 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #FFA500;">
+        <div class="timeline-block"
+          style="background: linear-gradient(135deg, #f8f4e8 0%, #ede8d4 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #FFA500;">
           <h3 style="font-size: 20px; margin-bottom: 12px; color: #FFA500;">Результат</h3>
           <p style="padding: 8px 0;">Вы получите набор инструментов для самостоятельного управления стрессом.</p>
         </div>
@@ -262,7 +318,8 @@
           <strong>Метод: КПТ</strong><br>(когнитивно-поведенческая терапия)
         </div>
         <p class="method-description">
-          Научно обоснованный метод работы с тревожными состояниями. Структурный подход с понятными шагами и практическими инструментами.
+          Научно обоснованный метод работы с тревожными состояниями. Структурный подход с понятными шагами и
+          практическими инструментами.
         </p>
       </div>
     </div>
@@ -276,28 +333,34 @@
 
       <div class="testimonials__grid" style="display: grid; gap: 24px; margin-top: 32px;">
 
-        <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
+        <div class="testimonial-card-b"
+          style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
             «Стало проще справляться с тревогой»
           </div>
           <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Анна, 32 года</div>
-          <p>Работа в КПТ-подходе помогла Анне постепенно вернуться к привычным действиям. Теперь она снова пользуется транспортом и чувствует себя увереннее в поездках.</p>
+          <p>Работа в КПТ-подходе помогла Анне постепенно вернуться к привычным действиям. Теперь она снова пользуется
+            транспортом и чувствует себя увереннее в поездках.</p>
         </div>
 
-        <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
+        <div class="testimonial-card-b"
+          style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
             «Вернулось спокойствие и нормальный сон»
           </div>
           <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Дмитрий, 28 лет</div>
-          <p>Мы работали с автоматическими мыслями и техниками релаксации. Дмитрий перестал постоянно беспокоиться о будущем и стал быстрее засыпать.</p>
+          <p>Мы работали с автоматическими мыслями и техниками релаксации. Дмитрий перестал постоянно беспокоиться о
+            будущем и стал быстрее засыпать.</p>
         </div>
 
-        <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
+        <div class="testimonial-card-b"
+          style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
             «Уверенность в рабочих ситуациях»
           </div>
           <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Екатерина, 41 год</div>
-          <p>Екатерина освоила навыки саморегуляции и смогла выступить на конференции. Тревога перед совещаниями стала управляемой и больше не мешает карьере.</p>
+          <p>Екатерина освоила навыки саморегуляции и смогла выступить на конференции. Тревога перед совещаниями стала
+            управляемой и больше не мешает карьере.</p>
         </div>
 
       </div>
@@ -322,19 +385,21 @@
           {{ $image := resources.Get "images/psychologist-portrait.jpg" }}
           {{ if $image }}
           {{ $resized := $image.Fit "400x400" }}
-          <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — психолог-психотерапевт"
-            class="about__photo" width="{{ $resized.Width }}" height="{{ $resized.Height }}">
+          <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — психолог-психотерапевт" class="about__photo"
+            width="{{ $resized.Width }}" height="{{ $resized.Height }}">
           {{ end }}
         </div>
 
         <div class="about__info">
           <div class="about__bio">
             <p style="font-size: 18px; margin-bottom: 16px;">
-              <strong>Я — Ксения Парваткина</strong>, психолог, специализируюсь на когнитивно-поведенческой терапии (КПТ) — структурном методе работы с тревожными состояниями.
+              <strong>Я — Ксения Парваткина</strong>, психолог, специализируюсь на когнитивно-поведенческой терапии
+              (КПТ) — структурном методе работы с тревожными состояниями.
             </p>
           </div>
 
-          <div class="about__credentials" style="background: var(--color-bg-light, #f8f9fa); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+          <div class="about__credentials"
+            style="background: var(--color-bg-light, #f8f9fa); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
             <h3 class="credentials__title">Квалификация</h3>
             <ul class="credentials__list">
               <li>Магистр психологии, <strong>МИП</strong></li>
@@ -347,7 +412,8 @@
           <div class="about__principles">
             <div class="principles__grid">
               <div class="principle">
-                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -356,7 +422,8 @@
               </div>
 
               <div class="principle">
-                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -365,7 +432,8 @@
               </div>
 
               <div class="principle">
-                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg class="principle__icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -394,8 +462,7 @@
               <strong>Никаких обязательств.</strong> Если КПТ не для вас — честно скажу и порекомендую, куда обратиться.
             </p>
             <div class="step__cta">
-              <a href="#cta-final" class="btn btn--small"
-                 data-cta="scroll-to-cta" data-position="process-step1">
+              <a href="#cta-final" class="btn btn--small" data-cta="scroll-to-cta" data-position="process-step1">
                 Записаться бесплатно
               </a>
             </div>
@@ -407,7 +474,8 @@
           <div class="step__content">
             <h3 class="step__title">Индивидуальный план</h3>
             <p class="step__description">
-              На первой полной сессии (60 минут) определим конкретную цель работы: работа с беспокойством, приступами сильной тревоги и навязчивыми мыслями. Составим план: какие техники и шаги помогут именно вам.
+              На первой полной сессии (60 минут) определим конкретную цель работы: работа с беспокойством, приступами
+              сильной тревоги и навязчивыми мыслями. Составим план: какие техники и шаги помогут именно вам.
             </p>
           </div>
         </div>
@@ -417,7 +485,8 @@
           <div class="step__content">
             <h3 class="step__title">Регулярные сессии с понятным планом</h3>
             <p class="step__description">
-              Каждая встреча — это разбор ситуаций, конкретные техники и упражнения. Мы отслеживаем изменения в вашем состоянии и корректируем план.
+              Каждая встреча — это разбор ситуаций, конкретные техники и упражнения. Мы отслеживаем изменения в вашем
+              состоянии и корректируем план.
             </p>
           </div>
         </div>
@@ -448,8 +517,7 @@
           </ul>
 
           <div class="pricing-card__cta">
-            <a href="#cta-final" class="btn btn--outline"
-               data-cta="scroll-to-cta" data-position="pricing-single">
+            <a href="#cta-final" class="btn btn--outline" data-cta="scroll-to-cta" data-position="pricing-single">
               Записаться
             </a>
           </div>
@@ -475,8 +543,7 @@
           </ul>
 
           <div class="pricing-card__cta">
-            <a href="#cta-final" class="btn btn--primary"
-               data-cta="scroll-to-cta" data-position="pricing-package">
+            <a href="#cta-final" class="btn btn--primary" data-cta="scroll-to-cta" data-position="pricing-package">
               Купить пакет
             </a>
           </div>
@@ -499,7 +566,8 @@
         <div class="faq-item">
           <h3 class="faq-item__question">«А вдруг мне не поможет?»</h3>
           <div class="faq-item__answer">
-            <p>КПТ считается одним из самых эффективных подходов для работы с повышенной тревожностью. На вводной встрече мы поймём, подходит ли вам именно этот метод.</p>
+            <p>КПТ считается одним из самых эффективных подходов для работы с повышенной тревожностью. На вводной
+              встрече мы поймём, подходит ли вам именно этот метод.</p>
             <p>Если нет — скажу честно и дам направление.</p>
           </div>
         </div>
@@ -507,7 +575,8 @@
         <div class="faq-item">
           <h3 class="faq-item__question">«Это дорого»</h3>
           <div class="faq-item__answer">
-            <p><strong>Инвестиция в своё спокойствие окупается качеством жизни и продуктивностью.</strong> Мы работаем на результат, который вы сможете поддерживать сами.</p>
+            <p><strong>Инвестиция в своё спокойствие окупается качеством жизни и продуктивностью.</strong> Мы работаем
+              на результат, который вы сможете поддерживать сами.</p>
           </div>
         </div>
 
