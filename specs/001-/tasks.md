@@ -352,7 +352,7 @@ Use Playwright MCP tools: `mcp__playwright__browser_navigate`, `mcp__playwright_
 
 - [x] **T032** Add SEO meta tags, OG tags, Schema.org in layouts/index.html
   - Path: `layouts/index.html` (head section)
-  - Title: «Психолог онлайн: Лечение тревожности КПТ | <Name>»
+  - Title: «Психолог онлайн: Помощь при тревожности КПТ | <Name>»
   - Description: «Избавьтесь от тревоги за 8-12 сессий. Когнитивно-поведенческая терапия (КПТ) с доказанной эффективностью 85%. Онлайн консультации, конфиденциально.»
   - Keywords: «психолог онлайн тревожность», «психотерапия тревоги онлайн», «панические атаки психолог онлайн», «КПТ тревога онлайн»
   - OG tags: og:title, og:description, og:image (psychologist photo), og:url
