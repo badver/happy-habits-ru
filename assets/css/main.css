@@ -1476,3 +1476,247 @@ img[loading="lazy"].loaded {
     font-size: 16px;
   }
 }
+
+/* ============================================
+   Floating Navigation
+   ============================================ */
+
+/* Container */
+.floating-nav {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  font-family: var(--font-family);
+}
+
+/* Toggle Button */
+.floating-nav__toggle {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.floating-nav__toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(74, 144, 226, 0.5);
+}
+
+.floating-nav__toggle:active {
+  transform: scale(0.95);
+}
+
+.floating-nav__toggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* Icons */
+.floating-nav__icon {
+  position: absolute;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-nav__icon--menu {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.floating-nav__icon--close {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+/* Toggle active state */
+.floating-nav--expanded .floating-nav__icon--menu {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.floating-nav--expanded .floating-nav__icon--close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Navigation Menu */
+.floating-nav__menu {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transform-origin: bottom right;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.floating-nav--expanded .floating-nav__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Menu Items */
+.floating-nav__item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.floating-nav__item:last-child {
+  border-bottom: none;
+}
+
+.floating-nav__item:hover {
+  background-color: var(--color-bg-light);
+  padding-left: 24px;
+}
+
+.floating-nav__item:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  background-color: var(--color-bg-light);
+}
+
+.floating-nav__item-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.floating-nav__item-desc {
+  font-size: 13px;
+  color: var(--color-text-light);
+  line-height: 1.4;
+}
+
+.floating-nav__item:hover .floating-nav__item-title {
+  color: var(--color-primary);
+}
+
+/* Backdrop (for mobile) */
+.floating-nav__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
+.floating-nav--expanded .floating-nav__backdrop {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+  .floating-nav {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .floating-nav__toggle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-nav__menu {
+    width: calc(100vw - 32px);
+    max-width: 320px;
+    bottom: 68px;
+  }
+
+  /* Show full backdrop on mobile for better UX */
+  .floating-nav__backdrop {
+    display: block;
+  }
+}
+
+/* Desktop: No backdrop needed */
+@media (min-width: 768px) {
+  .floating-nav__backdrop {
+    display: none;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .floating-nav {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Hide when scrolled to footer (optional enhancement) */
+.footer-visible .floating-nav {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Accessibility: Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav__toggle,
+  .floating-nav__menu,
+  .floating-nav__backdrop,
+  .floating-nav__icon {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .floating-nav__toggle {
+    border: 2px solid white;
+  }
+
+  .floating-nav__menu {
+    border: 2px solid var(--color-text);
+  }
+}
+
+/* Print: Hide floating nav */
+@media print {
+  .floating-nav {
+    display: none;
+  }
+}

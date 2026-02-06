@@ -324,7 +324,7 @@
   </section>
 
   <!-- ABOUT - Variant B: Warm, credential-focused -->
-  <section class="about" data-block="about">
+  <section id="about" class="about" data-block="about">
     <div class="container">
       <h2 class="section__title">Кто вам поможет</h2>
 
@@ -392,7 +392,7 @@
   </section>
 
   <!-- PROCESS - Variant B: Simplified -->
-  <section class="process" data-block="process">
+  <section id="format" class="process" data-block="process">
     <div class="container">
       <h2 class="section__title">Как мы будем работать</h2>
 
@@ -440,7 +440,7 @@
   </section>
 
   <!-- PRICING - Variant B: Simplified, value-focused -->
-  <section class="pricing" data-block="pricing">
+  <section id="price" class="pricing" data-block="pricing">
     <div class="container">
       <h2 class="section__title">Стоимость</h2>
 
@@ -548,6 +548,9 @@
   <!-- Final CTA Section -->
   {{ partial "cta-final.html" . }}
 
+  <!-- Floating Navigation -->
+  {{ partial "floating-nav.html" . }}
+
   <!-- Footer -->
   {{ partial "footer.html" . }}
 
@@ -580,6 +583,12 @@
   {{ if $quiz }}
   {{ $quiz = $quiz | minify | fingerprint }}
   <script src="{{ $quiz.Permalink }}" integrity="{{ $quiz.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $floatingNav := resources.Get "js/floating-nav.js" }}
+  {{ if $floatingNav }}
+  {{ $floatingNav = $floatingNav | minify | fingerprint }}
+  <script src="{{ $floatingNav.Permalink }}" integrity="{{ $floatingNav.Data.Integrity }}"></script>
   {{ end }}
 </body>
 

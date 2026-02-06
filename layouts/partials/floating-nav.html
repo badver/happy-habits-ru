@@ -1,0 +1,66 @@
+<!-- Floating Navigation Component -->
+<nav class="floating-nav" aria-label="Навигация по разделам страницы">
+  <!-- Toggle Button -->
+  <button
+    class="floating-nav__toggle"
+    aria-label="Открыть меню навигации"
+    aria-expanded="false"
+    aria-controls="floating-nav-menu"
+    data-cta="floating-nav-toggle"
+    data-position="floating-nav">
+    <!-- Hamburger Icon (default state) -->
+    <svg class="floating-nav__icon floating-nav__icon--menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <!-- Close Icon (expanded state) -->
+    <svg class="floating-nav__icon floating-nav__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- Navigation Menu -->
+  <div id="floating-nav-menu" class="floating-nav__menu" role="menu" aria-hidden="true">
+    <a href="#about"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="about">
+      <span class="floating-nav__item-title">Обо мне и методе</span>
+      <span class="floating-nav__item-desc">Узнайте больше о моей квалификации, опыте и подходе к терапии</span>
+    </a>
+
+    <a href="#format"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="format">
+      <span class="floating-nav__item-title">Как проходит сессия</span>
+      <span class="floating-nav__item-desc">Подробная информация о формате онлайн-встреч и длительности консультации</span>
+    </a>
+
+    <a href="#price"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="price">
+      <span class="floating-nav__item-title">Стоимость и запись</span>
+      <span class="floating-nav__item-desc">Актуальные цены на разовые сессии и пакеты консультаций</span>
+    </a>
+
+    <a href="#faq"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="faq">
+      <span class="floating-nav__item-title">Ответы на вопросы</span>
+      <span class="floating-nav__item-desc">Часто задаваемые вопросы о работе с тревогой и паническими атаками</span>
+    </a>
+  </div>
+
+  <!-- Backdrop for mobile -->
+  <div class="floating-nav__backdrop" aria-hidden="true"></div>
+</nav>

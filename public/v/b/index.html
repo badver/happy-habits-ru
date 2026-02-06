@@ -93,7 +93,7 @@
   
   
   
-  <link rel="stylesheet" href="http://localhost:1313/css/main.min.0d6b9179a3664957ea57b214e6470e49e667d9b57bc2c7751f2b830fb4d4dc72.css" integrity="sha256-DWuReaNmSVfqV7IU5kcOSeZn2bV7wsd1HyuDD7TU3HI=">
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.ba1943b13d2226503c84a0837a2a3b869270484b223a2b03d3879128753e8cb4.css" integrity="sha256-uhlDsT0iJlA8hKCDeio7hpJwSEsiOisD04eRKHU&#43;jLQ=">
   
 
   
@@ -324,7 +324,7 @@
   </section>
 
   
-  <section class="about" data-block="about">
+  <section id="about" class="about" data-block="about">
     <div class="container">
       <h2 class="section__title">Кто вам поможет</h2>
 
@@ -392,7 +392,7 @@
   </section>
 
   
-  <section class="process" data-block="process">
+  <section id="format" class="process" data-block="process">
     <div class="container">
       <h2 class="section__title">Как мы будем работать</h2>
 
@@ -440,7 +440,7 @@
   </section>
 
   
-  <section class="pricing" data-block="pricing">
+  <section id="price" class="pricing" data-block="pricing">
     <div class="container">
       <h2 class="section__title">Стоимость</h2>
 
@@ -711,6 +711,75 @@
 
 
   
+  
+<nav class="floating-nav" aria-label="Навигация по разделам страницы">
+  
+  <button
+    class="floating-nav__toggle"
+    aria-label="Открыть меню навигации"
+    aria-expanded="false"
+    aria-controls="floating-nav-menu"
+    data-cta="floating-nav-toggle"
+    data-position="floating-nav">
+    
+    <svg class="floating-nav__icon floating-nav__icon--menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    
+    <svg class="floating-nav__icon floating-nav__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  
+  <div id="floating-nav-menu" class="floating-nav__menu" role="menu" aria-hidden="true">
+    <a href="#about"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="about">
+      <span class="floating-nav__item-title">Обо мне и методе</span>
+      <span class="floating-nav__item-desc">Узнайте больше о моей квалификации, опыте и подходе к терапии</span>
+    </a>
+
+    <a href="#format"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="format">
+      <span class="floating-nav__item-title">Как проходит сессия</span>
+      <span class="floating-nav__item-desc">Подробная информация о формате онлайн-встреч и длительности консультации</span>
+    </a>
+
+    <a href="#price"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="price">
+      <span class="floating-nav__item-title">Стоимость и запись</span>
+      <span class="floating-nav__item-desc">Актуальные цены на разовые сессии и пакеты консультаций</span>
+    </a>
+
+    <a href="#faq"
+       class="floating-nav__item"
+       role="menuitem"
+       data-cta="floating-nav-link"
+       data-position="floating-nav"
+       data-target="faq">
+      <span class="floating-nav__item-title">Ответы на вопросы</span>
+      <span class="floating-nav__item-desc">Часто задаваемые вопросы о работе с тревогой и паническими атаками</span>
+    </a>
+  </div>
+
+  
+  <div class="floating-nav__backdrop" aria-hidden="true"></div>
+</nav>
+
+
+  
   <footer class="footer" data-block="footer">
   <div class="container">
     <div class="footer__content">
@@ -823,6 +892,12 @@
   
   
   <script src="http://localhost:1313/js/quiz.min.ff100a89f62a876fb524ad31d6c0688735096f33d8113379d3e132bca046e500.js" integrity="sha256-/xAKifYqh2&#43;1JK0x1sBohzUJbzPYETN50&#43;EyvKBG5QA="></script>
+  
+
+  
+  
+  
+  <script src="http://localhost:1313/js/floating-nav.min.4d17ad399d3734b899a7def543d4b551fdbf534fa858fbcbc37842035fc24d93.js" integrity="sha256-TRetOZ03NLiZp971Q9S1Uf2/U0&#43;oWPvLw3hCA1/CTZM="></script>
   
 </body>
 

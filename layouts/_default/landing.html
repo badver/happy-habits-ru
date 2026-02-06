@@ -315,6 +315,9 @@
   <!-- Final CTA Section -->
   {{ partial "cta-final.html" . }}
 
+  <!-- Floating Navigation -->
+  {{ partial "floating-nav.html" . }}
+
   <!-- Footer -->
   {{ partial "footer.html" . }}
 
@@ -353,6 +356,12 @@
   {{ if $quiz }}
   {{ $quiz = $quiz | minify | fingerprint }}
   <script src="{{ $quiz.Permalink }}" integrity="{{ $quiz.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $floatingNav := resources.Get "js/floating-nav.js" }}
+  {{ if $floatingNav }}
+  {{ $floatingNav = $floatingNav | minify | fingerprint }}
+  <script src="{{ $floatingNav.Permalink }}" integrity="{{ $floatingNav.Data.Integrity }}"></script>
   {{ end }}
 </body>
 
