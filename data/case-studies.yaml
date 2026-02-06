@@ -1,107 +1,20 @@
 ---
 # Case Studies with Anxiety Dynamics Data
+# TEMPORARILY DISABLED: Contains medical claims that need review
 # All data is anonymous, published with client consent
-- id: 1
-  title: "Панические атаки → Полное купирование за 10 сессий"
-  description: "Женщина, 32 года. Панические атаки 3-4 раза в неделю, агорафобия (избегание транспорта, магазинов). Метод: КПТ + экспозиционная терапия."
-  problem: "Панические атаки, агорафобия"
-  method: "Когнитивно-поведенческая терапия + экспозиция"
-  sessions_count: 10
-  duration_weeks: 10
-  outcome: "Панические атаки прекратились полностью. Клиент вернулся к обычной жизни: ездит на метро, ходит в магазины, путешествует. Через 8 месяцев рецидивов нет."
-  anxiety_data:
-    - session: 0
-      anxiety_level: 9
-      panic_frequency: 4  # times per week
-      avoidance_level: 8
-    - session: 2
-      anxiety_level: 8
-      panic_frequency: 3
-      avoidance_level: 7
-    - session: 4
-      anxiety_level: 6
-      panic_frequency: 2
-      avoidance_level: 5
-    - session: 6
-      anxiety_level: 4
-      panic_frequency: 1
-      avoidance_level: 3
-    - session: 8
-      anxiety_level: 3
-      panic_frequency: 0
-      avoidance_level: 2
-    - session: 10
-      anxiety_level: 2
-      panic_frequency: 0
-      avoidance_level: 1
 
-- id: 2
-  title: "Генерализованная тревога → Снижение с 9/10 до 2/10 за 12 сессий"
-  description: "Мужчина, 28 лет. Постоянная тревога о работе, здоровье, отношениях. Бессонница (засыпание по 2-3 часа). Метод: КПТ + когнитивная реструктуризация."
-  problem: "Генерализованное тревожное расстройство, бессонница"
-  method: "Когнитивно-поведенческая терапия + релаксация"
-  sessions_count: 12
-  duration_weeks: 12
-  outcome: "Уровень тревоги снизился с 9/10 до 2/10. Сон наладился (засыпание 15-20 минут). Клиент перестал «накручивать себя», научился управлять тревожными мыслями."
-  anxiety_data:
-    - session: 0
-      anxiety_level: 9
-      sleep_quality: 2  # scale 0-10, 10 is best
-      rumination: 9  # obsessive thinking
-    - session: 3
-      anxiety_level: 7
-      sleep_quality: 4
-      rumination: 7
-    - session: 6
-      anxiety_level: 5
-      sleep_quality: 6
-      rumination: 5
-    - session: 9
-      anxiety_level: 3
-      sleep_quality: 8
-      rumination: 3
-    - session: 12
-      anxiety_level: 2
-      sleep_quality: 9
-      rumination: 2
+# NOTE: This file is temporarily commented out during medical triggers removal
+# The case studies contain specific metrics and outcome claims that may trigger medical license requirements
+# Will be rewritten in safe format after main content updates are complete
 
-- id: 3
-  title: "Социальная тревога → От избегания к публичным выступлениям за 15 сессий"
-  description: "Женщина, 41 год. Страх публичных выступлений, совещаний, разговоров с незнакомыми людьми. Избегала карьерных возможностей. Метод: КПТ + экспозиция."
-  problem: "Социальная тревога, страх оценки"
-  method: "Когнитивно-поведенческая терапия + экспозиция"
-  sessions_count: 15
-  duration_weeks: 16
-  outcome: "Клиент выступил на конференции перед 50 людьми, получил повышение на работе. Уровень социальной тревоги снизился с 8/10 до 3/10. Новые знакомства, расширение социальной сети."
-  anxiety_data:
-    - session: 0
-      anxiety_level: 8
-      avoidance_social: 9  # scale 0-10
-      public_speaking_fear: 10
-    - session: 3
-      anxiety_level: 7
-      avoidance_social: 7
-      public_speaking_fear: 9
-    - session: 6
-      anxiety_level: 6
-      avoidance_social: 5
-      public_speaking_fear: 7
-    - session: 9
-      anxiety_level: 5
-      avoidance_social: 4
-      public_speaking_fear: 5
-    - session: 12
-      anxiety_level: 4
-      avoidance_social: 3
-      public_speaking_fear: 4
-    - session: 15
-      anxiety_level: 3
-      avoidance_social: 2
-      public_speaking_fear: 3
+# - id: 1
+#   title: "Панические атаки → Полное купирование за 10 сессий"
+#   ...
 
-# Notes:
-# - All anxiety levels measured on subjective scale 0-10 (0 = no anxiety, 10 = maximum anxiety)
-# - Session 0 = baseline assessment (before therapy)
-# - All data points are from client self-reports during sessions
-# - Charts can be rendered using Chart.js or CSS-based visualization
-# - Anonymous: no identifying information included
+# - id: 2
+#   title: "Генерализованная тревога → Снижение с 9/10 до 2/10 за 12 сессий"
+#   ...
+
+# - id: 3
+#   title: "Социальная тревога → От избегания к публичным выступлениям за 15 сессий"
+#   ...
