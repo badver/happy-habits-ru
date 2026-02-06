@@ -57,7 +57,7 @@
         "@id": "{{ .Site.BaseURL }}#person",
         "name": "Ксения Парваткина",
         "jobTitle": "Психолог-психотерапевт",
-        "description": "Специализация: тревожные расстройства, приступы тревоги, КПТ",
+        "description": "Специализация: работа с тревогой и тревожными состояниями, КПТ",
         {{ $schemaImage := resources.Get "images/psychologist-portrait.jpg" }}
         {{ if $schemaImage }}
         "image": "{{ $schemaImage.Permalink }}",
@@ -66,7 +66,7 @@
         "sameAs": [
           "https://t.me/happy_habits_ru"
         ],
-        "knowsAbout": ["Когнитивно-поведенческая терапия", "Тревожные расстройства", "Приступы тревоги", "ОКР", "Психотерапия"],
+        "knowsAbout": ["Когнитивно-поведенческая терапия", "Работа с тревогой", "Психологическая помощь онлайн"],
         "alumniOf": {
           "@type": "Organization",
           "name": "МИП"
@@ -253,7 +253,7 @@
 
         <div class="timeline-block" style="background: linear-gradient(135deg, #f8f4e8 0%, #ede8d4 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #FFA500;">
           <h3 style="font-size: 20px; margin-bottom: 12px; color: #FFA500;">Результат</h3>
-          <p style="padding: 8px 0;">Вы получите набор инструментов для самостоятельного управления стрессом, которые останутся с вами навсегда.</p>
+          <p style="padding: 8px 0;">Вы получите набор инструментов для самостоятельного управления стрессом.</p>
         </div>
       </div>
 
@@ -262,8 +262,7 @@
           <strong>Метод: КПТ</strong><br>(когнитивно-поведенческая терапия)
         </div>
         <p class="method-description">
-          Научно обоснованный метод работы с тревожными расстройствами. Структурный подход с понятными шагами.
-          Это не магия — это наука.
+          Научно обоснованный метод работы с тревожными состояниями. Структурный подход с понятными шагами и практическими инструментами.
         </p>
       </div>
     </div>
@@ -273,43 +272,32 @@
   <section class="testimonials" data-block="testimonials">
     <div class="container">
       <h2 class="section__title">Истории тех, кто уже прошёл этот путь</h2>
-      <p class="section__subtitle">Реальные результаты (имена изменены с согласия клиентов)</p>
+      <p class="section__subtitle">Имена изменены с согласия клиентов</p>
 
       <div class="testimonials__grid" style="display: grid; gap: 24px; margin-top: 32px;">
 
         <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
-            «Я снова живу, а не выживаю»
+            «Стало проще справляться с тревогой»
           </div>
-          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Анна, 32 года — приступы тревоги</div>
-          <div style="display: grid; gap: 12px;">
-            <div><strong>До:</strong> Приступы тревоги, не могла ездить в метро</div>
-            <div><strong>После работы:</strong> состояние значительно улучшилось, вернулась на работу</div>
-            <div style="color: #25D366; font-weight: 600;">Продолжаю использовать освоенные техники</div>
-          </div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Анна, 32 года</div>
+          <p>Работа в КПТ-подходе помогла Анне постепенно вернуться к привычным действиям. Теперь она снова пользуется транспортом и чувствует себя увереннее в поездках.</p>
         </div>
 
         <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
-            «Значительное снижение тревоги»
+            «Вернулось спокойствие и нормальный сон»
           </div>
-          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Дмитрий, 28 лет — постоянная тревога</div>
-          <div style="display: grid; gap: 12px;">
-            <div><strong>До:</strong> постоянная тревога обо всём, бессонница</div>
-            <div><strong>После работы:</strong> тревога значительно снизилась, сон нормализовался</div>
-          </div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Дмитрий, 28 лет</div>
+          <p>Мы работали с автоматическими мыслями и техниками релаксации. Дмитрий перестал постоянно беспокоиться о будущем и стал быстрее засыпать.</p>
         </div>
 
         <div class="testimonial-card-b" style="background: var(--color-bg-light, #f8f9fa); padding: 24px; border-radius: 12px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--color-primary, #0088cc); margin-bottom: 8px;">
-            «Впервые выступила перед 50 людьми»
+            «Уверенность в рабочих ситуациях»
           </div>
-          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Екатерина, 41 год — социальная тревога</div>
-          <div style="display: grid; gap: 12px;">
-            <div><strong>До:</strong> страх совещаний, избегание презентаций</div>
-            <div><strong>После работы:</strong> выступила на конференции, получила повышение</div>
-            <div style="color: #25D366; font-weight: 600;">Тревога значительно снизилась</div>
-          </div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 16px;">Екатерина, 41 год</div>
+          <p>Екатерина освоила навыки саморегуляции и смогла выступить на конференции. Тревога перед совещаниями стала управляемой и больше не мешает карьере.</p>
         </div>
 
       </div>
@@ -419,7 +407,7 @@
           <div class="step__content">
             <h3 class="step__title">Индивидуальный план</h3>
             <p class="step__description">
-              На первой полной сессии (60 минут) определим конкретную цель работы: снижение тревоги, управление приступами, работа с навязчивыми мыслями. Составим план: какие техники и шаги.
+              На первой полной сессии (60 минут) определим конкретную цель работы: работа с беспокойством, приступами сильной тревоги и навязчивыми мыслями. Составим план: какие техники и шаги помогут именно вам.
             </p>
           </div>
         </div>
@@ -427,10 +415,9 @@
         <div class="step">
           <div class="step__number">3</div>
           <div class="step__content">
-            <h3 class="step__title">Регулярные сессии с конкретными результатами</h3>
+            <h3 class="step__title">Регулярные сессии с понятным планом</h3>
             <p class="step__description">
-              Каждая встреча — конкретные техники и домашние задания. Отслеживаем изменения в самочувствии.
-              <strong>Вы не станете зависимы от терапевта.</strong> Моя задача — научить вас справляться самостоятельно.
+              Каждая встреча — это разбор ситуаций, конкретные техники и упражнения. Мы отслеживаем изменения в вашем состоянии и корректируем план.
             </p>
           </div>
         </div>
@@ -469,7 +456,7 @@
         </div>
 
         <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__badge">Решить проблему</div>
+          <div class="pricing-card__badge">Пройти курс</div>
 
           <div class="pricing-card__header">
             <h3 class="pricing-card__title">Пакет 10 сессий</h3>
@@ -512,8 +499,8 @@
         <div class="faq-item">
           <h3 class="faq-item__question">«А вдруг мне не поможет?»</h3>
           <div class="faq-item__answer">
-            <p>КПТ считается одним из самых эффективных подходов для работы с тревожными расстройствами. Но я не беру всех подряд.</p>
-            <p>На вводной встрече мы поймём, подходит ли вам именно этот метод. Если нет — скажу честно и дам направление.</p>
+            <p>КПТ считается одним из самых эффективных подходов для работы с повышенной тревожностью. На вводной встрече мы поймём, подходит ли вам именно этот метод.</p>
+            <p>Если нет — скажу честно и дам направление.</p>
           </div>
         </div>
 
