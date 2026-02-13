@@ -67,6 +67,35 @@
   };
 
   /**
+   * Track scroll-to-CTA button click
+   * @param {string} buttonPosition - location of button (e.g., 'hero', 'symptoms')
+   * @param {string} buttonText - text content of the button
+   */
+  window.trackScrollToCTA = function (buttonPosition, buttonText) {
+    // Get current color palette for conversion analysis
+    const colorPalette = window.paletteSwitcher?.getCurrent() || 'unknown';
+
+    const eventData = {
+      button_position: buttonPosition,
+      button_text: buttonText.trim(),
+      color_palette: colorPalette,
+      ...getStoredUTM()
+    };
+
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined' && GA4_ID) {
+      gtag('event', 'cta_scroll_click', eventData);
+      console.log('GA4 event fired:', 'cta_scroll_click', eventData);
+    }
+
+    // Yandex.Metrika
+    if (typeof ym !== 'undefined' && YM_ID) {
+      ym(YM_ID, 'reachGoal', 'cta_scroll_click', eventData);
+      console.log('YM event fired:', 'cta_scroll_click', eventData);
+    }
+  };
+
+  /**
    * Track scroll depth
    */
   let scrollDepthTracked = {
@@ -151,9 +180,17 @@
 
     ctaButtons.forEach(button => {
       button.addEventListener('click', function () {
-        const messengerType = this.getAttribute('data-cta');
+        const ctaType = this.getAttribute('data-cta');
         const buttonPosition = this.getAttribute('data-position') || 'unknown';
-        window.trackMessengerClick(messengerType, buttonPosition);
+
+        if (ctaType === 'scroll-to-cta') {
+          // Track scroll-to-CTA buttons separately
+          const buttonText = this.textContent || this.innerText || '';
+          window.trackScrollToCTA(buttonPosition, buttonText);
+        } else {
+          // Track messenger buttons (telegram, whatsapp, instagram)
+          window.trackMessengerClick(ctaType, buttonPosition);
+        }
       });
     });
 
