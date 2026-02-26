@@ -180,12 +180,13 @@
   }
   </script>
 
-  <!-- CSS: Colors + Theme (set theme in front matter: theme: "premium" or "warm") -->
+  <!-- CSS: Colors + Base + Theme (set theme in front matter: theme: "premium" or "warm") -->
   {{ $themeName := .Params.theme | default "premium" }}
   {{ $colors := resources.Get "css/colors.css" }}
+  {{ $base := resources.Get "css/base.css" }}
   {{ $theme := resources.Get (printf "css/themes/%s.css" $themeName) }}
-  {{ if and $colors $theme }}
-  {{ $css := slice $colors $theme | resources.Concat "css/bundle.css" | minify | fingerprint }}
+  {{ if and $colors $base $theme }}
+  {{ $css := slice $colors $base $theme | resources.Concat "css/bundle.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
   {{ end }}
 
