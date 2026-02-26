@@ -1,17 +1,25 @@
 /* ============================================
-   GREEN PALETTE — Natural, Grounded, Healing
+   GREEN PALETTE — Forest & Bronze
+   Premium dark forest with warm bronze accents
    ============================================ */
 :root {
-  --color-primary: #6a9a67;        /* Forest sage — healing, growth */
-  --color-primary-dark: #4e7d4b;   /* Deep forest */
-  --color-secondary: #8aad7c;      /* Meadow green — freshness */
-  --color-secondary-dark: #6d9160; /* Deeper meadow */
-  --color-accent: #b8d1a8;         /* Pale leaf — softness */
-  --color-text: #2d3a2c;           /* Deep moss */
-  --color-text-light: #617560;     /* Lichen gray */
-  --color-bg: #f7faf6;             /* Morning dew */
-  --color-bg-light: #edf4eb;       /* Pale mint */
-  --color-border: #d4e3d0;         /* Soft stem */
-  --color-error: #c96b5a;          /* Terracotta */
-  --color-success: #6a9a67;        /* Primary green */
+  --color-primary: #8aad7c;        /* Sage leaf */
+  --color-primary-dark: #5e8a54;   /* Deep forest */
+  --color-secondary: #a4b89a;      /* Pale fern */
+  --color-secondary-dark: #7a9470; /* Darker fern */
+  --color-accent: #bdd1a8;         /* Light moss */
+  --color-text: #222e22;           /* Dark pine */
+  --color-text-light: #586858;     /* Forest floor */
+  --color-bg: #f8faf7;             /* Morning dew */
+  --color-bg-light: #eef3eb;       /* Pale mint */
+  --color-border: #d8e2d3;         /* Stem */
+  --color-error: #bf6856;          /* Terracotta */
+  --color-success: #6a9a67;        /* Fern */
+
+  --color-gold: #a8915c;
+  --color-gold-light: #c4b08a;
+  --color-gold-dark: #8a7548;
+  --color-hero-bg: #222e22;
+  --color-hero-bg-lighter: #2e3d2e;
+  --color-hero-text: #eef3eb;
 }

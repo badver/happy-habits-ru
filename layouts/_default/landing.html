@@ -8,10 +8,10 @@
 
   <title>{{ .Site.Title }}</title>
 
-  <!-- Typography: Cormorant Garamond (editorial serif) + Nunito (warm humanist sans) -->
+  <!-- Typography: Playfair Display (luxe contrast serif) + Outfit (geometric modern sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
   <meta name="description"
     content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками. Консультации онлайн, конфиденциально.">
   <meta name="keywords"
@@ -189,56 +189,16 @@
 
   <!-- Critical CSS inline for above-the-fold content (Hero section) -->
   <style>
-    /* Critical CSS - only for initial viewport */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
-    body {
-      margin: 0;
-      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--color-text, #3d3229);
-      background-color: var(--color-bg, #faf8f5);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .hero {
-      padding: 72px 16px 64px;
-      background: var(--color-hero-bg, linear-gradient(160deg, #f5efe8 0%, #e8ddd0 40%, #d4c4b0 100%));
-      position: relative;
-    }
-    .hero__title {
-      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-    .hero__subtitle {
-      font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 24px;
-      opacity: 0.85;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 14px 28px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      border: 2px solid transparent;
-      border-radius: 28px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn--primary { background-color: var(--color-primary, #b8885a); color: white; }
-    .btn--secondary { background-color: var(--color-secondary, #8b9d83); color: white; }
+    /* Critical CSS — "Velvet Clinic" Premium */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px}
+    body{margin:0;font-family:'Outfit',sans-serif;font-size:16px;line-height:1.65;color:var(--color-text,#2a2520);background-color:var(--color-bg,#faf9f7);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .hero{padding:80px 16px 72px;background:var(--color-hero-bg,#2a2520);color:var(--color-hero-text,#f5f0ea);position:relative;overflow:hidden}
+    .hero__title{font-family:'Playfair Display',Georgia,serif;font-size:30px;font-weight:500;line-height:1.18;margin-bottom:20px;letter-spacing:-0.01em;color:var(--color-hero-text,#f5f0ea)}
+    .hero__subtitle{font-size:16px;line-height:1.7;margin-bottom:24px;opacity:0.7;color:var(--color-hero-text,#f5f0ea)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 32px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1.5px solid transparent;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.35s cubic-bezier(0.4,0,0.2,1)}
+    .btn--primary{background-color:var(--color-gold,#c9a96e);color:var(--color-hero-bg,#2a2520);border-color:var(--color-gold,#c9a96e)}
+    .btn--secondary{background-color:transparent;color:var(--color-hero-text,#f5f0ea);border-color:rgba(245,240,234,0.3)}
   </style>
 
   {{ if .Site.Params.yandexMetrikaID }}

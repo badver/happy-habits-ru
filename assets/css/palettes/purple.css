@@ -1,17 +1,25 @@
 /* ============================================
-   PURPLE PALETTE — Meditative, Wise, Tranquil
+   PURPLE PALETTE — Plum & Rose Gold
+   Premium dark plum with rose gold accents
    ============================================ */
 :root {
-  --color-primary: #9882b0;        /* Dusty violet — meditation, wisdom */
-  --color-primary-dark: #7c6895;   /* Deep amethyst */
-  --color-secondary: #ab9abc;      /* Wisteria — peace */
-  --color-secondary-dark: #8e7da2; /* Deeper wisteria */
-  --color-accent: #cfc2d9;         /* Pale lilac — serenity */
-  --color-text: #3a3240;           /* Plum charcoal */
-  --color-text-light: #736a7d;     /* Mauve stone */
-  --color-bg: #faf8fb;             /* Pearl white */
-  --color-bg-light: #f2eef5;       /* Pale lavender */
-  --color-border: #e2dae8;         /* Silk border */
-  --color-error: #c96b5a;          /* Terracotta */
-  --color-success: #7d9b76;        /* Sage green */
+  --color-primary: #a48bb8;        /* Wisteria */
+  --color-primary-dark: #826a9a;   /* Deep amethyst */
+  --color-secondary: #b5a0c2;      /* Lavender */
+  --color-secondary-dark: #957faa; /* Deeper lavender */
+  --color-accent: #d0c0dc;         /* Pale lilac */
+  --color-text: #28222e;           /* Plum charcoal */
+  --color-text-light: #665a72;     /* Mauve stone */
+  --color-bg: #faf8fb;             /* Pearl */
+  --color-bg-light: #f2eef5;       /* Pale orchid */
+  --color-border: #e0d8e6;         /* Silk */
+  --color-error: #bf6856;          /* Terracotta */
+  --color-success: #7d9b76;        /* Sage */
+
+  --color-gold: #c4a088;
+  --color-gold-light: #d8bfad;
+  --color-gold-dark: #a68068;
+  --color-hero-bg: #28222e;
+  --color-hero-bg-lighter: #362e3e;
+  --color-hero-text: #f2eef5;
 }

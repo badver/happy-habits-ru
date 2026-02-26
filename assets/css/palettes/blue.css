@@ -1,17 +1,26 @@
 /* ============================================
-   BLUE PALETTE — Serene, Professional, Clear
+   BLUE PALETTE — Midnight & Silver
+   Premium dark blue with cool silver accents
    ============================================ */
 :root {
-  --color-primary: #6b9ec4;        /* Dusty blue — serene trust */
-  --color-primary-dark: #4f7fa3;   /* Deep ocean blue */
-  --color-secondary: #8fb5c9;      /* Sky mist — approachable */
-  --color-secondary-dark: #6d98b0; /* Deeper sky */
-  --color-accent: #b8d4e3;         /* Pale morning blue */
-  --color-text: #2d3a44;           /* Deep slate */
-  --color-text-light: #6b7d8a;     /* Muted steel */
-  --color-bg: #f7fafb;             /* Ice white */
-  --color-bg-light: #edf3f7;       /* Pale sky */
-  --color-border: #d4e2eb;         /* Frost border */
-  --color-error: #c96b5a;          /* Terracotta */
-  --color-success: #6ba368;        /* Soft green */
+  --color-primary: #8ba7c4;        /* Dusty silver-blue */
+  --color-primary-dark: #5f839e;   /* Deep slate blue */
+  --color-secondary: #94b0a8;      /* Sage teal */
+  --color-secondary-dark: #6d9188; /* Deep teal */
+  --color-accent: #b5c8d8;         /* Pale steel */
+  --color-text: #1e2830;           /* Midnight ink */
+  --color-text-light: #5a6a78;     /* Storm grey */
+  --color-bg: #f8fafb;             /* Cool white */
+  --color-bg-light: #eef2f5;       /* Frost */
+  --color-border: #dae1e8;         /* Silver border */
+  --color-error: #bf6856;          /* Terracotta */
+  --color-success: #6ba368;        /* Moss */
+
+  /* Override gold with silver for premium accents */
+  --color-gold: #8ba7c4;
+  --color-gold-light: #b5c8d8;
+  --color-gold-dark: #5f839e;
+  --color-hero-bg: #1e2830;
+  --color-hero-bg-lighter: #2a3640;
+  --color-hero-text: #eef2f5;
 }

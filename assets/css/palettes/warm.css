@@ -1,18 +1,18 @@
 /* ============================================
-   WARM PALETTE — Sanctuary, Grounding, Human
-   Default palette for "Quiet Sanctuary" design
+   WARM PALETTE — Espresso & Gold (Default)
+   Premium dark warmth with champagne accents
    ============================================ */
 :root {
-  --color-primary: #c4956a;        /* Warm amber — trust, comfort */
-  --color-primary-dark: #a67b52;   /* Deep amber for hovers */
-  --color-secondary: #7d9b76;      /* Sage green — calm, natural */
+  --color-primary: #c9a96e;        /* Champagne gold */
+  --color-primary-dark: #a68b52;   /* Deep gold */
+  --color-secondary: #7d9b76;      /* Sage green */
   --color-secondary-dark: #5f7d59; /* Deep sage */
-  --color-accent: #dfc4a8;         /* Soft sand — warmth */
-  --color-text: #3a322b;           /* Warm charcoal */
-  --color-text-light: #7a6e63;     /* Warm stone */
-  --color-bg: #faf8f5;             /* Warm cream */
-  --color-bg-light: #f3efe9;       /* Warm linen */
-  --color-border: #e6ddd2;         /* Warm sand border */
-  --color-error: #c96b5a;          /* Terracotta red */
-  --color-success: #7d9b76;        /* Sage green */
+  --color-accent: #ddc599;         /* Light gold */
+  --color-text: #2a2520;           /* Espresso */
+  --color-text-light: #6b6058;     /* Warm stone */
+  --color-bg: #faf9f7;             /* Warm ivory */
+  --color-bg-light: #f2f0ec;       /* Parchment */
+  --color-border: #e5e1db;         /* Sand */
+  --color-error: #bf6856;          /* Terracotta */
+  --color-success: #7d9b76;        /* Sage */
 }
