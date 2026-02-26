@@ -58,7 +58,6 @@
     (function() {
       'use strict';
 
-      var STORAGE_KEY = 'landing_variant';
       var config = {
         variants: {{ .Site.Params.variants.list | default (slice "a") | jsonify | safeJS }},
         weights: {{ .Site.Params.variants.weights | default (slice 100) | jsonify | safeJS }},
@@ -114,7 +113,7 @@
         window.location.replace(url);
       }
 
-      // Main router logic
+      // Main router logic — random on every visit (no persistence)
       (function route() {
         if (!config.enabled) {
           redirect(config.defaultVariant);
@@ -123,33 +122,19 @@
 
         var variant, source;
 
-        // 1. Check URL force parameter
+        // 1. Check URL force parameter (e.g. /?v=b)
         var forced = getUrlParam(config.forceParam);
         if (isValidVariant(forced)) {
           variant = forced;
           source = 'forced';
-          try { localStorage.setItem(STORAGE_KEY, variant); } catch(e) {}
           trackAssignment(variant, source);
           redirect(variant);
           return;
         }
 
-        // 2. Check localStorage
-        try {
-          var stored = localStorage.getItem(STORAGE_KEY);
-          if (isValidVariant(stored)) {
-            variant = stored;
-            source = 'stored';
-            trackAssignment(variant, source);
-            redirect(variant);
-            return;
-          }
-        } catch(e) {}
-
-        // 3. Random assignment
+        // 2. Random assignment every visit
         variant = weightedRandom(config.variants, config.weights);
-        source = 'assigned';
-        try { localStorage.setItem(STORAGE_KEY, variant); } catch(e) {}
+        source = 'random';
         trackAssignment(variant, source);
         redirect(variant);
       })();
