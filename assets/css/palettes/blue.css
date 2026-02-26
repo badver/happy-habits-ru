@@ -1,18 +1,17 @@
 /* ============================================
-   BLUE PALETTE - Professional, Calming, Trustworthy
+   BLUE PALETTE — Serene, Professional, Clear
    ============================================ */
 :root {
-  /* Colors */
-  --color-primary: #4a90e2;        /* Sky blue - trust, calm */
-  --color-primary-dark: #357abd;   /* Darker blue for hovers */
-  --color-secondary: #7fb3d5;      /* Light blue - approachable */
-  --color-secondary-dark: #5a9bc4; /* Darker light blue */
-  --color-accent: #a8d5e2;         /* Soft cyan - freshness */
-  --color-text: #2c3e50;           /* Dark blue-gray */
-  --color-text-light: #7f8c8d;     /* Medium gray */
-  --color-bg: #f8fcff;             /* Very light blue-white */
-  --color-bg-light: #ecf6fd;       /* Light blue background */
-  --color-border: #d6e9f5;         /* Light blue border */
-  --color-error: #e74c3c;          /* Soft red */
-  --color-success: #27ae60;        /* Green */
+  --color-primary: #6b9ec4;        /* Dusty blue — serene trust */
+  --color-primary-dark: #4f7fa3;   /* Deep ocean blue */
+  --color-secondary: #8fb5c9;      /* Sky mist — approachable */
+  --color-secondary-dark: #6d98b0; /* Deeper sky */
+  --color-accent: #b8d4e3;         /* Pale morning blue */
+  --color-text: #2d3a44;           /* Deep slate */
+  --color-text-light: #6b7d8a;     /* Muted steel */
+  --color-bg: #f7fafb;             /* Ice white */
+  --color-bg-light: #edf3f7;       /* Pale sky */
+  --color-border: #d4e2eb;         /* Frost border */
+  --color-error: #c96b5a;          /* Terracotta */
+  --color-success: #6ba368;        /* Soft green */
 }

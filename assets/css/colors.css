@@ -1,11 +1,10 @@
 /* ============================================
-   Color Palettes for Psychologist Landing Page
-
-   To switch palettes, uncomment ONE @import below
+   Color Palettes — "Quiet Sanctuary" Design
+   Default: Warm (most aligned with the aesthetic)
    ============================================ */
 
 /* ACTIVE PALETTE - Uncomment ONE of these: */
-@import "palettes/blue.css";
-/* @import "palettes/warm.css"; */
+@import "palettes/warm.css";
+/* @import "palettes/blue.css"; */
 /* @import "palettes/green.css"; */
 /* @import "palettes/purple.css"; */

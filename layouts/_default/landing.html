@@ -7,6 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>{{ .Site.Title }}</title>
+
+  <!-- Typography: Cormorant Garamond (editorial serif) + Nunito (warm humanist sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta name="description"
     content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками. Консультации онлайн, конфиденциально.">
   <meta name="keywords"
@@ -185,70 +190,55 @@
   <!-- Critical CSS inline for above-the-fold content (Hero section) -->
   <style>
     /* Critical CSS - only for initial viewport */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 16px;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 16px;
-      line-height: 1.6;
-      color: var(--color-text, #1a1a1a);
-      background-color: var(--color-bg, #ffffff);
+      line-height: 1.7;
+      color: var(--color-text, #3d3229);
+      background-color: var(--color-bg, #faf8f5);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
     .hero {
-      padding: 32px 16px;
-      background-color: var(--color-bg-light, #f8f9fa);
+      padding: 72px 16px 64px;
+      background: var(--color-hero-bg, linear-gradient(160deg, #f5efe8 0%, #e8ddd0 40%, #d4c4b0 100%));
+      position: relative;
     }
-
     .hero__title {
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: var(--color-text, #1a1a1a);
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
-
     .hero__subtitle {
-      font-size: 18px;
-      color: var(--color-text-light, #666666);
+      font-size: 17px;
+      line-height: 1.7;
       margin-bottom: 24px;
+      opacity: 0.85;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: 600;
+      min-height: 48px;
+      padding: 14px 28px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       border: 2px solid transparent;
-      border-radius: 8px;
+      border-radius: 28px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-    .btn--primary {
-      background-color: var(--color-primary, #0088cc);
-      color: white;
-    }
-
-    .btn--secondary {
-      background-color: var(--color-secondary, #25D366);
-      color: white;
-    }
+    .btn--primary { background-color: var(--color-primary, #b8885a); color: white; }
+    .btn--secondary { background-color: var(--color-secondary, #8b9d83); color: white; }
   </style>
 
   {{ if .Site.Params.yandexMetrikaID }}

@@ -1,18 +1,17 @@
 /* ============================================
-   GREEN PALETTE - Natural, Healing, Balanced
+   GREEN PALETTE — Natural, Grounded, Healing
    ============================================ */
 :root {
-  /* Colors */
-  --color-primary: #6ba368;        /* Natural green - healing, growth */
-  --color-primary-dark: #4d8b4a;   /* Darker green */
-  --color-secondary: #8fbc8f;      /* Light green - freshness */
-  --color-secondary-dark: #6fa56f; /* Medium green */
-  --color-accent: #b8d4b8;         /* Soft mint - calm */
-  --color-text: #2d3c2d;           /* Dark green-gray */
-  --color-text-light: #6b7c6b;     /* Medium green-gray */
-  --color-bg: #f7fbf7;             /* Very light green-white */
-  --color-bg-light: #eff5ef;       /* Light green background */
-  --color-border: #d9e8d9;         /* Light green border */
-  --color-error: #d08770;          /* Soft coral */
-  --color-success: #6ba368;        /* Primary green */
+  --color-primary: #6a9a67;        /* Forest sage — healing, growth */
+  --color-primary-dark: #4e7d4b;   /* Deep forest */
+  --color-secondary: #8aad7c;      /* Meadow green — freshness */
+  --color-secondary-dark: #6d9160; /* Deeper meadow */
+  --color-accent: #b8d1a8;         /* Pale leaf — softness */
+  --color-text: #2d3a2c;           /* Deep moss */
+  --color-text-light: #617560;     /* Lichen gray */
+  --color-bg: #f7faf6;             /* Morning dew */
+  --color-bg-light: #edf4eb;       /* Pale mint */
+  --color-border: #d4e3d0;         /* Soft stem */
+  --color-error: #c96b5a;          /* Terracotta */
+  --color-success: #6a9a67;        /* Primary green */
 }

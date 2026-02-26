@@ -1,18 +1,17 @@
 /* ============================================
-   PURPLE PALETTE - Mindfulness, Wisdom, Serenity
+   PURPLE PALETTE — Meditative, Wise, Tranquil
    ============================================ */
 :root {
-  /* Colors */
-  --color-primary: #9b7eb5;        /* Soft purple - mindfulness, wisdom */
-  --color-primary-dark: #7d6394;   /* Darker purple */
-  --color-secondary: #b8a4c9;      /* Lavender - calm, peace */
-  --color-secondary-dark: #9b88ad; /* Medium lavender */
-  --color-accent: #d4c5de;         /* Light lavender - serenity */
-  --color-text: #3d3142;           /* Dark purple-gray */
-  --color-text-light: #756a7f;     /* Medium purple-gray */
-  --color-bg: #fbf9fc;             /* Very light purple-white */
-  --color-bg-light: #f3eff6;       /* Light lavender background */
-  --color-border: #e5dcea;         /* Light purple border */
-  --color-error: #d08770;          /* Soft coral */
-  --color-success: #8b9d83;        /* Sage green */
+  --color-primary: #9882b0;        /* Dusty violet — meditation, wisdom */
+  --color-primary-dark: #7c6895;   /* Deep amethyst */
+  --color-secondary: #ab9abc;      /* Wisteria — peace */
+  --color-secondary-dark: #8e7da2; /* Deeper wisteria */
+  --color-accent: #cfc2d9;         /* Pale lilac — serenity */
+  --color-text: #3a3240;           /* Plum charcoal */
+  --color-text-light: #736a7d;     /* Mauve stone */
+  --color-bg: #faf8fb;             /* Pearl white */
+  --color-bg-light: #f2eef5;       /* Pale lavender */
+  --color-border: #e2dae8;         /* Silk border */
+  --color-error: #c96b5a;          /* Terracotta */
+  --color-success: #7d9b76;        /* Sage green */
 }
