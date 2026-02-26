@@ -16,7 +16,7 @@
   <meta name="description"
     content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками. Консультации онлайн, конфиденциально.">
   <meta name="keywords"
-    content="психолог онлайн тревожность, психотерапия тревоги онлайн, приступы тревоги психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия, психотерапевт онлайн">
+    content="клинический психолог онлайн, КПТ тревога онлайн, когнитивно-поведенческая терапия тревоги, психолог тревожность онлайн, психологическая помощь тревога">
   <meta name="author" content="Ксения Парваткина">
 
   {{/* SEO: Variant B points to A as canonical */}}
@@ -62,7 +62,7 @@
         "@type": "Person",
         "@id": "{{ .Site.BaseURL }}#person",
         "name": "Ксения Парваткина",
-        "jobTitle": "Психолог-психотерапевт",
+        "jobTitle": "Клинический психолог, КПТ-специалист",
         "description": "Специализация: работа с тревогой и тревожными состояниями, КПТ",
         {{ $schemaImage := resources.Get "images/psychologist-portrait.jpg" }}
         {{ if $schemaImage }}
@@ -336,7 +336,7 @@
           {{ $image := resources.Get "images/psychologist-portrait.jpg" }}
           {{ if $image }}
           {{ $resized := $image.Fit "400x400" }}
-          <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — психолог-психотерапевт" class="about__photo"
+          <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — клинический психолог" class="about__photo"
             width="{{ $resized.Width }}" height="{{ $resized.Height }}">
           {{ end }}
         </div>

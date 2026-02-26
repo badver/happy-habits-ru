@@ -72,6 +72,10 @@ Forbidden patterns:
 - Vague promises ("Вы почувствуете себя лучше")
 - Medical overreach ("Мы вылечим депрессию")
 - Pressure tactics without value ("Только сегодня!" without justification)
+- **Medical terminology** — psychologist ≠ doctor. NEVER use: психотерапевт, психотерапия, диагноз, лечение, депрессия, невроз, расстройство, симптомы, панические атаки
+- **Cure/guarantee language** — NEVER use: избавлю, избавление, вылечу, гарантирую результат
+- Correct title: «Клинический психолог, КПТ-специалист» (NEVER «психотерапевт»)
+- Use instead: «работа с тревожностью», «снижение тревоги», «психологическая помощь», «подавленное состояние» (not «депрессия»), «приступы тревоги» (not «панические атаки»)
 
 *Rationale*: Target audience is skeptical and research-oriented. Trust is built through specificity and professional restraint.
 
@@ -165,6 +169,7 @@ Typography requirements:
 
 ### Content Quality Gates
 - [ ] No unexplained medical claims
+- [ ] No banned terminology (see Forbidden patterns in Section III) — run grep check before deploy
 - [ ] All statistics cited (e.g., "8 из 10") have methodology note
 - [ ] Testimonials include consent disclosure
 - [ ] Pricing clearly stated with payment/cancellation terms
