@@ -880,6 +880,19 @@ section {
 @media print { .floating-nav { display: none; } }
 
 /* ============================================
+   Responsive — Mobile testimonials fix
+   ============================================ */
+@media (max-width: 767px) {
+  .testimonials-carousel { padding: 0 48px; }
+  .testimonial-card { padding: 20px; }
+  .testimonial-card__author { font-size: 16px; }
+  .testimonial-card__text { font-size: 14px; line-height: 1.55; margin-bottom: 10px; }
+  .testimonial-card__details { gap: 6px; font-size: 13px; padding-top: 10px; }
+  .carousel__btn { width: 36px; height: 36px; }
+  .carousel__btn svg { width: 18px; height: 18px; }
+}
+
+/* ============================================
    Responsive — Tablet (768px+)
    ============================================ */
 @media (min-width: 768px) {
