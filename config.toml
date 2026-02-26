@@ -1,7 +1,7 @@
 # Production baseURL - for local dev, run: hugo server (ignores this)
 baseURL = "https://happy-habits.ru/"
 languageCode = "ru-RU"
-title = "Психолог онлайн — Помощь при тревоге и панических атаках"
+title = "Психолог онлайн — Помощь при тревоге и сильном стрессе"
 
 # Disable unnecessary features for a landing page
 disableKinds = ["RSS", "taxonomy", "term"]
