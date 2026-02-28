@@ -175,6 +175,8 @@ section + section::before {
 .cta-final .btn--telegram:hover { background-color: #0088cc; color: white; border-color: #0088cc; }
 .cta-final .btn--whatsapp { color: #25D366; border-color: #25D36620; }
 .cta-final .btn--whatsapp:hover { background-color: #25D366; color: white; border-color: #25D366; }
+.cta-final .btn--max { color: #5533ee; border-color: #5533ee20; }
+.cta-final .btn--max:hover { background: linear-gradient(135deg, #44ccff, #5533ee, #9933dd); color: white; border-color: transparent; }
 
 .cta-final__sla { color: var(--color-text-light); }
 .guarantee { color: var(--color-text-light); }
@@ -198,6 +200,8 @@ section + section::before {
 .social-btn--telegram:hover { background-color: #006699; }
 .social-btn--whatsapp { background-color: #25D366; color: white; }
 .social-btn--whatsapp:hover { background-color: #1da851; }
+.social-btn--max { background: linear-gradient(135deg, #44ccff, #5533ee, #9933dd); color: white; }
+.social-btn--max:hover { background: linear-gradient(135deg, #3ab8e6, #4829d4, #8529c4); }
 .social-btn--instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
 .social-btn--instagram:hover { background: linear-gradient(45deg, #d97d2b 0%, #c75832 25%, #b8203a 50%, #a91d57 75%, #9a1473 100%); }
 

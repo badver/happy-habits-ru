@@ -241,6 +241,8 @@ section + section::before { display: none; }
 .cta-final .btn--telegram:hover { background-color: #0088cc; color: white; border-color: #0088cc; }
 .cta-final .btn--whatsapp { color: #5ed68a; border-color: rgba(94, 214, 138, 0.25); }
 .cta-final .btn--whatsapp:hover { background-color: #25D366; color: white; border-color: #25D366; }
+.cta-final .btn--max { color: #9b7af0; border-color: rgba(155, 122, 240, 0.25); }
+.cta-final .btn--max:hover { background: linear-gradient(135deg, #44ccff, #5533ee, #9933dd); color: white; border-color: transparent; }
 
 .cta-final__sla { color: var(--color-hero-text); opacity: 0.45; }
 .guarantee { color: var(--color-hero-text); opacity: 0.55; }
@@ -267,6 +269,8 @@ section + section::before { display: none; }
 .social-btn--telegram:hover { background-color: #0088cc; color: white; box-shadow: 0 4px 16px rgba(0, 136, 204, 0.3); }
 .social-btn--whatsapp { color: #5ed68a; }
 .social-btn--whatsapp:hover { background-color: #25D366; color: white; box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3); }
+.social-btn--max { color: #9b7af0; }
+.social-btn--max:hover { background: linear-gradient(135deg, #44ccff, #5533ee, #9933dd); color: white; border-color: transparent; box-shadow: 0 4px 16px rgba(85, 51, 238, 0.3); }
 .social-btn--instagram { color: #e0808a; }
 .social-btn--instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; border-color: transparent; box-shadow: 0 4px 16px rgba(220, 39, 67, 0.3); }
 
