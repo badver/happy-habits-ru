@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
 
-  <!-- SEO: Router page should not be indexed -->
-  <meta name="robots" content="noindex,nofollow">
+  <!-- SEO: Router page should not be indexed, but allow bots to follow canonical -->
+  <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="{{ .Site.BaseURL }}v/a/">
+  <meta http-equiv="refresh" content="0;url=/v/a/">
 
   <!-- Minimal styling for brief flash -->
   <style>
@@ -144,7 +145,6 @@
 <body>
   <!-- Fallback for no-JS users -->
   <noscript>
-    <meta http-equiv="refresh" content="0;url=/v/a/">
     <p>Redirecting to <a href="/v/a/">main page</a>...</p>
   </noscript>
 
