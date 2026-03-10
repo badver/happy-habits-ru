@@ -186,11 +186,6 @@ section + section::before {
 .footer__title { color: white; }
 .footer__text { color: rgba(255, 255, 255, 0.7); }
 .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); }
-.palette-label { color: rgba(255, 255, 255, 0.7); }
-.palette-selector { border: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(255, 255, 255, 0.08); color: white; }
-.palette-selector:hover { background-color: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.4); }
-.palette-selector:focus { outline: 2px solid rgba(255, 255, 255, 0.5); outline-offset: 2px; }
-.palette-selector option { background-color: var(--color-text); color: white; }
 .footer__copyright { opacity: 0.5; }
 .disclaimer__text { color: rgba(255, 255, 255, 0.5); }
 

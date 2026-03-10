@@ -709,17 +709,6 @@ section {
 .footer__text { margin-bottom: var(--spacing-xs); font-size: 15px; }
 .footer__bottom { padding-top: var(--spacing-md); }
 
-.footer__palette-switcher { display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); flex-wrap: wrap; }
-.palette-label { display: flex; align-items: center; font-size: 14px; }
-
-.palette-selector {
-  padding: 8px 16px; font-size: 14px;
-  border-radius: var(--btn-radius);
-  cursor: pointer;
-  transition: all 0.25s var(--ease);
-  min-width: 200px; font-family: var(--font-body);
-}
-
 .footer__copyright { text-align: center; margin-bottom: var(--spacing-sm); font-size: 14px; }
 .disclaimer__text { font-size: 13px; text-align: center; line-height: 1.6; max-width: 600px; margin: 0 auto; }
 

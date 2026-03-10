@@ -254,11 +254,6 @@ section + section::before { display: none; }
 .footer__title { color: var(--color-hero-text); }
 .footer__text { color: rgba(245, 240, 234, 0.5); }
 .footer__bottom { border-top: 1px solid rgba(245, 240, 234, 0.06); }
-.palette-label { color: rgba(245, 240, 234, 0.5); }
-.palette-selector { border: 1px solid rgba(245, 240, 234, 0.12); background-color: rgba(245, 240, 234, 0.04); color: var(--color-hero-text); }
-.palette-selector:hover { background-color: rgba(245, 240, 234, 0.08); border-color: rgba(245, 240, 234, 0.25); }
-.palette-selector:focus { outline: 2px solid var(--color-gold); outline-offset: 2px; }
-.palette-selector option { background-color: #1e1a16; color: var(--color-hero-text); }
 .footer__copyright { opacity: 0.3; }
 .disclaimer__text { color: rgba(245, 240, 234, 0.3); }
 

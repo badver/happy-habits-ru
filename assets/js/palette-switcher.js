@@ -1,6 +1,6 @@
 /**
  * Palette Switcher
- * Allows users to switch color palettes without editing files
+ * Applies a random color palette on each page load
  */
 
 (function() {
@@ -8,7 +8,7 @@
 
   const PALETTES = {
     blue: {
-      name: '🔵 Синий',
+      name: 'Синий',
       colors: {
         '--color-primary': '#4a90e2',
         '--color-primary-dark': '#357abd',
@@ -25,7 +25,7 @@
       }
     },
     warm: {
-      name: '🟤 Уютный',
+      name: 'Уютный',
       colors: {
         '--color-primary': '#d4a574',
         '--color-primary-dark': '#b8885a',
@@ -42,7 +42,7 @@
       }
     },
     green: {
-      name: '🟢 Природный',
+      name: 'Природный',
       colors: {
         '--color-primary': '#6ba368',
         '--color-primary-dark': '#4d8b4a',
@@ -59,7 +59,7 @@
       }
     },
     purple: {
-      name: '🟣 Медитация',
+      name: 'Медитация',
       colors: {
         '--color-primary': '#9b7eb5',
         '--color-primary-dark': '#7d6394',
@@ -77,89 +77,30 @@
     }
   };
 
-  // Track current palette for the session
   let currentPalette = null;
 
-  /**
-   * Apply a palette to the page
-   */
   function applyPalette(paletteName) {
     const palette = PALETTES[paletteName];
-    if (!palette) {
-      console.error('Unknown palette:', paletteName);
-      return;
-    }
+    if (!palette) return;
 
     currentPalette = paletteName;
-
     const root = document.documentElement;
     Object.keys(palette.colors).forEach(cssVar => {
       root.style.setProperty(cssVar, palette.colors[cssVar]);
     });
 
-    // Update dropdown if it exists
-    const selector = document.getElementById('palette-selector');
-    if (selector) {
-      selector.value = paletteName;
-    }
-
-    // Dispatch custom event for analytics
     if (window.trackEvent) {
       window.trackEvent('palette_change', { palette: paletteName });
     }
   }
 
-  /**
-   * Get a random palette
-   */
   function getRandomPalette() {
     const paletteNames = Object.keys(PALETTES);
-    const randomIndex = Math.floor(Math.random() * paletteNames.length);
-    return paletteNames[randomIndex];
+    return paletteNames[Math.floor(Math.random() * paletteNames.length)];
   }
 
-  /**
-   * Initialize palette selector dropdown
-   */
-  function initSelector() {
-    const selector = document.getElementById('palette-selector');
-    if (!selector) return;
-
-    // Populate dropdown
-    Object.keys(PALETTES).forEach(key => {
-      const option = document.createElement('option');
-      option.value = key;
-      option.textContent = PALETTES[key].name;
-      selector.appendChild(option);
-    });
-
-    // Set current palette in dropdown
-    selector.value = currentPalette;
-
-    // Listen for changes
-    selector.addEventListener('change', function() {
-      applyPalette(this.value);
-    });
-  }
-
-  /**
-   * Initialize on page load
-   */
-  function init() {
-    // Apply random palette on each visit
-    const randomPalette = getRandomPalette();
-    applyPalette(randomPalette);
-
-    // Initialize selector when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSelector);
-    } else {
-      initSelector();
-    }
-  }
-
-  // Run initialization
-  init();
+  // Apply random palette on load
+  applyPalette(getRandomPalette());
 
   // Expose for debugging
   window.paletteSwitcher = {
