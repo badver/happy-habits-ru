@@ -7,6 +7,5 @@ Allow: /
 # Sitemap location - dynamically generated
 Sitemap: {{ "sitemap.xml" | absURL }}
 
-# Block access to admin areas (if any in future)
-# User-agent: *
-# Disallow: /admin/
+# Yandex: ignore insignificant GET parameters (prevents duplicate pages)
+Clean-param: v&from&utm_source&utm_medium&utm_campaign&utm_term&utm_content&utm_referrer&yclid&gclid&fbclid&_openstat
