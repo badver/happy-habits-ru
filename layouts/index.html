@@ -1,60 +1,14 @@
+{{/* Homepage: renders full variant A content for search engines, JS redirects users to A/B variant */}}
+{{ $pageA := .Site.GetPage "/v/a" }}
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- SEO: Router page should not be indexed, but allow bots to follow canonical -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="{{ .Site.BaseURL }}v/a/">
-  <meta http-equiv="refresh" content="0;url=/v/a/">
-
-  <!-- Minimal styling for brief flash -->
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background: #f8f9fa;
-      color: #666;
-    }
-  </style>
-
-  {{ if .Site.Params.yandexMetrikaID }}
-  <!-- Yandex.Metrika counter (for tracking router visits) -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-      m[i].l = 1 * new Date();
-      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym({{ .Site.Params.yandexMetrikaID }}, 'init', {
-      webvisor: true,
-      clickmap: true,
-      accurateTrackBounce: true,
-      trackLinks: true
-    });
-  </script>
-  {{ end }}
-
-  {{ if .Site.Params.googleAnalyticsID }}
-  <!-- Google Analytics 4 (for tracking router visits) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
-  </script>
-  {{ end }}
-
-  <!-- Router script (inline for immediate execution) -->
+  <!-- A/B Router: JS-enabled users are redirected before the page renders -->
   <script>
     (function() {
       'use strict';
@@ -90,20 +44,6 @@
         return v && config.variants.indexOf(v) !== -1;
       }
 
-      function trackAssignment(variant, source) {
-        if (config.googleAnalyticsID && typeof gtag === 'function') {
-          gtag('event', 'variant_assigned', {
-            variant: variant,
-            assignment_source: source,
-            event_category: 'ab_test'
-          });
-        }
-        if (config.yandexMetrikaID && typeof ym === 'function') {
-          ym(config.yandexMetrikaID, 'params', { landing_variant: variant });
-          ym(config.yandexMetrikaID, 'reachGoal', 'variant_assigned', { variant: variant });
-        }
-      }
-
       function redirect(variant) {
         var url = '/v/' + variant + '/';
         if (window.location.hash) url += window.location.hash;
@@ -117,34 +57,304 @@
           return;
         }
 
-        var variant, source;
-
         // 1. Check URL force parameter (e.g. /?v=b)
         var forced = getUrlParam(config.forceParam);
         if (isValidVariant(forced)) {
-          variant = forced;
-          source = 'forced';
-          trackAssignment(variant, source);
-          redirect(variant);
+          redirect(forced);
           return;
         }
 
         // 2. Random assignment every visit
-        variant = weightedRandom(config.variants, config.weights);
-        source = 'random';
-        trackAssignment(variant, source);
+        var variant = weightedRandom(config.variants, config.weights);
         redirect(variant);
       })();
     })();
   </script>
-</head>
-<body>
-  <!-- Fallback for no-JS users -->
-  <noscript>
-    <p>Redirecting to <a href="/v/a/">main page</a>...</p>
-  </noscript>
 
-  <!-- Brief loading state (JS will redirect immediately) -->
-  <div id="loading">Загрузка...</div>
+  <title>{{ with $pageA }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+
+  <!-- Typography: All theme fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+
+  {{ with $pageA }}
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <meta name="keywords" content="{{ .Params.keywords }}">
+  {{ end }}
+  <meta name="author" content="Ксения Парваткина">
+
+  <link rel="canonical" href="{{ .Site.BaseURL }}">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Site.BaseURL }}">
+  <meta property="og:title" content="Психолог онлайн: Помощь при тревожности КПТ | Ксения Парваткина">
+  <meta property="og:description"
+    content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками. Консультации онлайн, конфиденциально.">
+  {{ $ogImage := resources.Get "images/psychologist-portrait.jpg" }}
+  {{ if $ogImage }}
+  <meta property="og:image" content="{{ ($ogImage.Fill "1200x630 Center").Permalink }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {{ end }}
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Психолог онлайн: Помощь при тревожности КПТ | Ксения Парваткина">
+  <meta name="twitter:description"
+    content="Психолог онлайн. Помощь при тревоге методом КПТ — структурированный подход с практическими техниками.">
+  {{ $twitterImage := resources.Get "images/psychologist-portrait.jpg" }}
+  {{ if $twitterImage }}
+  <meta name="twitter:image" content="{{ ($twitterImage.Fill "1200x630 Center").Permalink }}">
+  {{ end }}
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "{{ .Site.BaseURL }}#person",
+        "name": "Ксения Парваткина",
+        "jobTitle": "Клинический психолог, КПТ-специалист",
+        "description": "Специализация: работа с тревогой методом КПТ",
+        {{ $schemaImage := resources.Get "images/psychologist-portrait.jpg" }}
+        {{ if $schemaImage }}
+        "image": "{{ $schemaImage.Permalink }}",
+        {{ end }}
+        "url": "{{ .Site.BaseURL }}",
+        "sameAs": [
+          "https://t.me/happy_habits_ru"
+        ],
+        "knowsAbout": ["Когнитивно-поведенческая терапия", "Работа с тревогой", "Психологическая помощь онлайн"],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "МИП"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "{{ .Site.BaseURL }}#service",
+        "name": "Психолог онлайн — Ксения Парваткина",
+        "description": "Онлайн консультации психолога. Психологическая помощь при тревоге методом когнитивно-поведенческой терапии (КПТ).",
+        "url": "{{ .Site.BaseURL }}",
+        "telephone": "+905071754633",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "RU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "55.7558",
+          "longitude": "37.6173"
+        },
+        "priceRange": "5000-45000 ₽",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "20:00"
+          }
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "Россия"
+        },
+        "availableLanguage": {
+          "@type": "Language",
+          "name": "Russian"
+        },
+        "provider": {
+          "@id": "{{ .Site.BaseURL }}#person"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "{{ .Site.BaseURL }}#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "А если не поможет?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Когнитивно-поведенческая терапия — научно обоснованный метод работы с тревогой. После вводной встречи вы поймёте, подходит ли КПТ для вашего случая."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько займёт времени?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "КПТ — краткосрочный метод, фокусируется на конкретных целях. Длительность зависит от вашей ситуации, обсуждается на вводной встрече."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Конфиденциально ли?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, строго конфиденциально. Никакой информации третьим лицам без вашего письменного согласия. Все записи зашифрованы."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Чем КПТ отличается от других методов?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "КПТ фокусируется на мыслях и поведении, краткосрочный метод с доказательной базой, структурирован с измерением прогресса."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Дорого ли?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "5000 ₽ за сессию — средняя цена в Москве для КПТ-терапевта с сертификацией. Пакет 10 сессий — 45000 ₽ (экономия 5000 ₽)."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ .Site.BaseURL }}#website",
+        "url": "{{ .Site.BaseURL }}",
+        "name": "{{ .Site.Title }}",
+        "description": "Психолог онлайн. Психологическая помощь при тревоге методом КПТ",
+        "publisher": {
+          "@id": "{{ .Site.BaseURL }}#person"
+        },
+        "inLanguage": "ru-RU"
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS: Colors + Base + Theme -->
+  {{ $themeName := "premium" }}
+  {{ with $pageA }}{{ $themeName = .Params.theme | default "premium" }}{{ end }}
+  {{ $colors := resources.Get "css/colors.css" }}
+  {{ $base := resources.Get "css/base.css" }}
+  {{ $theme := resources.Get (printf "css/themes/%s.css" $themeName) }}
+  {{ if and $colors $base $theme }}
+  {{ $css := slice $colors $base $theme | resources.Concat "css/bundle-home.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ end }}
+
+  <!-- Minimal critical CSS to prevent FOUC -->
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  </style>
+
+  {{ if .Site.Params.yandexMetrikaID }}
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym({{ .Site.Params.yandexMetrikaID }}, 'init', {
+      webvisor: true,
+      clickmap: true,
+      accurateTrackBounce: true,
+      trackLinks: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/{{ .Site.Params.yandexMetrikaID }}"
+        style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+  {{ end }}
+
+  <!-- Google Analytics 4 -->
+  {{ if .Site.Params.googleAnalyticsID }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalyticsID }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{ .Site.Params.googleAnalyticsID }}');
+  </script>
+  {{ end }}
+</head>
+
+{{ with $pageA }}
+<body data-variant="a">
+  {{ partial "hero.html" . }}
+  {{ partial "symptoms.html" . }}
+  {{ partial "benefits.html" . }}
+  {{ partial "about.html" . }}
+  {{ partial "process.html" . }}
+  {{ partial "testimonials.html" . }}
+  {{ partial "pricing.html" . }}
+  {{ partial "faq.html" . }}
+  {{ partial "cta-final.html" . }}
+  {{ partial "floating-nav.html" . }}
+  {{ partial "footer.html" . }}
+
+  <!-- JavaScript -->
+  {{ $analytics := resources.Get "js/analytics.js" | resources.ExecuteAsTemplate "js/analytics-home.js" . }}
+  {{ if $analytics }}
+  {{ $analytics = $analytics | minify | fingerprint }}
+  <script src="{{ $analytics.Permalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $deeplinks := resources.Get "js/deeplinks.js" }}
+  {{ if $deeplinks }}
+  {{ $deeplinks = $deeplinks | minify | fingerprint }}
+  <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $abtest := resources.Get "js/ab-test.js" | resources.ExecuteAsTemplate "js/ab-test-home.js" . }}
+  {{ if $abtest }}
+  {{ $abtest = $abtest | minify | fingerprint }}
+  <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $paletteSwitcher := resources.Get "js/palette-switcher.js" }}
+  {{ if $paletteSwitcher }}
+  {{ $paletteSwitcher = $paletteSwitcher | minify | fingerprint }}
+  <script src="{{ $paletteSwitcher.Permalink }}" integrity="{{ $paletteSwitcher.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $carousel := resources.Get "js/testimonials-carousel.js" }}
+  {{ if $carousel }}
+  {{ $carousel = $carousel | minify | fingerprint }}
+  <script src="{{ $carousel.Permalink }}" integrity="{{ $carousel.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $quiz := resources.Get "js/quiz.js" }}
+  {{ if $quiz }}
+  {{ $quiz = $quiz | minify | fingerprint }}
+  <script src="{{ $quiz.Permalink }}" integrity="{{ $quiz.Data.Integrity }}"></script>
+  {{ end }}
+
+  {{ $floatingNav := resources.Get "js/floating-nav.js" }}
+  {{ if $floatingNav }}
+  {{ $floatingNav = $floatingNav | minify | fingerprint }}
+  <script src="{{ $floatingNav.Permalink }}" integrity="{{ $floatingNav.Data.Integrity }}"></script>
+  {{ end }}
 </body>
+{{ else }}
+<body>
+  <noscript>
+    <p>Перейти на <a href="/v/a/">главную страницу</a></p>
+  </noscript>
+</body>
+{{ end }}
+
 </html>

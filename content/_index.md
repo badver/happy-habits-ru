@@ -1,8 +1,4 @@
 ---
-title: "Redirecting..."
-description: "Redirecting to landing page"
-robots: "noindex,follow"
-build:
-  list: never
-sitemap_exclude: true
+title: "Психолог онлайн: Помощь при тревожности КПТ | Ксения Парваткина"
+description: "Работа с тревогой. Когнитивно-поведенческая терапия (КПТ) — научно обоснованный метод. Онлайн консультации, конфиденциально."
 ---
