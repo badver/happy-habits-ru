@@ -292,7 +292,7 @@ section + section::before { display: none; }
 .quiz__info-divider { background: rgba(245, 240, 234, 0.08); }
 .quiz__info-pricing { background: rgba(245, 240, 234, 0.04); border: 1px solid rgba(245, 240, 234, 0.08); }
 .quiz__info-pricing .pricing-item { color: var(--color-hero-text); opacity: 0.8; }
-.quiz__info-pricing .pricing-item strong { opacity: 1; }
+.quiz__info-pricing .pricing-item strong { color: var(--color-hero-text); opacity: 1; }
 .quiz__info-pricing .pricing-savings { color: var(--color-gold); }
 .quiz__continue-btn { background: var(--color-gold); color: var(--color-hero-bg); border-radius: var(--radius-md); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 16px rgba(201, 169, 110, 0.2); }
 .quiz__continue-btn:hover { background: var(--color-gold-light); box-shadow: 0 6px 24px rgba(201, 169, 110, 0.35); }

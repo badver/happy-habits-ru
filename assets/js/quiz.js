@@ -200,10 +200,19 @@
 
   // Show all CTA buttons (hide quiz, show buttons)
   function showCTAButtons() {
-    // Hide quiz section
+    // Smoothly collapse quiz section
     const quizSection = document.getElementById('quiz-section');
     if (quizSection) {
-      quizSection.style.display = 'none';
+      // Set explicit max-height from current height so CSS transition works
+      quizSection.style.maxHeight = quizSection.scrollHeight + 'px';
+      // Force reflow before adding collapse class
+      quizSection.offsetHeight;
+      quizSection.classList.add('quiz-section--collapsing');
+      // After transition, fully hide
+      quizSection.addEventListener('transitionend', function handler() {
+        quizSection.style.display = 'none';
+        quizSection.removeEventListener('transitionend', handler);
+      }, { once: true });
     }
 
     // Show CTA buttons in cta-final section
@@ -241,6 +250,13 @@
     const quizSection = document.getElementById('quiz-section');
     if (quizSection) {
       quizSection.style.display = 'block';
+      quizSection.classList.remove('quiz-section--collapsing');
+      quizSection.style.maxHeight = quizSection.scrollHeight + 'px';
+      // After expand transition, remove max-height so content can resize naturally
+      quizSection.addEventListener('transitionend', function handler() {
+        quizSection.style.maxHeight = 'none';
+        quizSection.removeEventListener('transitionend', handler);
+      }, { once: true });
     }
 
     // Hide CTA buttons in cta-final section
