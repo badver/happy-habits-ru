@@ -330,25 +330,67 @@ section {
 .benefit-card__title { font-family: var(--font-display); font-size: 20px; margin-bottom: var(--spacing-xs); }
 .benefit-card__description { color: var(--color-text-light); font-size: 15px; line-height: 1.7; }
 
-.benefits__method {
-  text-align: center;
-  padding: var(--spacing-lg);
+.method-details {
   background-color: white;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
+  transition: border-color 0.3s var(--ease);
 }
+.method-details[open] { border-color: var(--color-gold); }
 
-.method-badge {
-  display: inline-block;
-  padding: 10px 24px;
+.method-details__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  list-style: none;
+  gap: var(--spacing-md);
+}
+.method-details__summary::-webkit-details-marker { display: none; }
+.method-details__summary::marker { display: none; content: ''; }
+
+.method-details__header { flex: 1; }
+.method-details__title { font-size: 17px; margin-bottom: 4px; }
+.method-details__title strong {
   background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
-  color: white;
-  border-radius: var(--btn-radius);
-  margin-bottom: var(--spacing-sm);
-  font-size: 15px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.method-details__subtitle { color: var(--color-text-light); font-size: 14px; }
+.method-details__hint { display: block; color: var(--color-text-light); font-size: 14px; margin-top: 4px; }
+
+.method-details__arrow {
+  flex-shrink: 0;
+  color: var(--color-gold);
+  transition: transform 0.3s var(--ease);
+}
+.method-details[open] .method-details__arrow { transform: rotate(180deg); }
+
+.method-details__content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
 }
 
-.method-description { color: var(--color-text-light); font-size: 15px; }
+.method-details__list {
+  list-style: none;
+  display: grid;
+  gap: var(--spacing-sm);
+}
+.method-details__list li {
+  position: relative;
+  padding-left: var(--spacing-md);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-light);
+}
+.method-details__list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-weight: bold;
+}
 
 /* ============================================
    About
