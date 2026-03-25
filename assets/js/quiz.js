@@ -220,6 +220,10 @@
     if (ctaButtons) {
       ctaButtons.classList.remove('quiz-hidden');
       ctaButtons.classList.add('quiz-revealed');
+      // Scroll to messenger buttons after quiz collapse
+      setTimeout(function() {
+        ctaButtons.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 400);
     }
 
     // Show SLA text

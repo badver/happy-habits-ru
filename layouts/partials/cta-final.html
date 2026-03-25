@@ -6,7 +6,7 @@
       <div class="cta-final__photo">
         {{ $ctaImg := resources.Get "images/ksenia-cta.jpg" }}
         {{ if $ctaImg }}
-        {{ $resized := $ctaImg.Fit "280x350" }}
+        {{ $resized := $ctaImg.Fit "560x700 q85" }}
         <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — запишитесь на вводную встречу"
           width="{{ $resized.Width }}" height="{{ $resized.Height }}">
         {{ end }}

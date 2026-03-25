@@ -6,7 +6,7 @@
       <div class="about__image">
         {{ $image := resources.Get "images/ksenia-about.jpg" }}
         {{ if $image }}
-        {{ $resized := $image.Fit "400x500" }}
+        {{ $resized := $image.Fit "800x1000 q85" }}
         <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — клинический психолог, более 1 800 консультаций"
           class="about__photo" width="{{ $resized.Width }}" height="{{ $resized.Height }}">
         {{ end }}
