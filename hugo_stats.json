@@ -47,7 +47,6 @@
       "benefits",
       "benefits__grid",
       "benefits__method",
-      "benefits__timeline",
       "btn",
       "btn--large",
       "btn--max",
@@ -73,7 +72,6 @@
       "cta-text",
       "detail",
       "disclaimer__text",
-      "empathy-block",
       "faq",
       "faq-item",
       "faq-item__answer",
@@ -129,7 +127,6 @@
       "pricing-savings",
       "pricing__cards",
       "pricing__faq-link",
-      "pricing__note",
       "pricing__promo",
       "pricing__promo-text",
       "pricing__terms",
@@ -184,7 +181,6 @@
       "terms__list",
       "terms__title",
       "testimonial-card",
-      "testimonial-card-b",
       "testimonial-card__author",
       "testimonial-card__content",
       "testimonial-card__details",
@@ -194,9 +190,7 @@
       "testimonials",
       "testimonials-carousel",
       "testimonials__badge",
-      "testimonials__grid",
-      "testimonials__track",
-      "timeline-block"
+      "testimonials__track"
     ],
     "ids": [
       "about",

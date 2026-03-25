@@ -22,10 +22,10 @@ disableKinds = ["RSS", "taxonomy", "term"]
 # A/B Testing - Landing Page Variants
 [params.variants]
   enabled = true
-  list = ["a", "b"]              # Variant A (control) and B (challenger)
-  weights = [50, 50]             # 50/50 split for A/B test
-  default = "a"                  # Default variant for fallback
-  forceParam = "v"               # URL param to force variant: /?v=b
+  list = ["a"]                   # Variant B removed 25.03.2026 (insufficient data for A/B test)
+  weights = [100]
+  default = "a"
+  forceParam = "v"
 
 # Asset processing configuration
 [build]

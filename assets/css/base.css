@@ -570,7 +570,7 @@ section {
 
 .pricing__cards {
   display: grid; gap: var(--spacing-md); margin-bottom: var(--spacing-lg);
-  max-width: 800px; margin-left: auto; margin-right: auto;
+  max-width: 1100px; margin-left: auto; margin-right: auto;
 }
 
 .pricing-card {
@@ -903,7 +903,7 @@ section {
   .testimonial-card { flex: 0 0 calc(50% - var(--spacing-md) / 2); max-width: calc(50% - var(--spacing-md) / 2); }
   .testimonials__track { scroll-snap-type: x proximity; }
   .testimonial-card { scroll-snap-align: center; }
-  .pricing__cards { grid-template-columns: repeat(2, 1fr); }
+  .pricing__cards { grid-template-columns: repeat(3, 1fr); }
   .cta-final__title { font-size: 36px; }
   .cta-final__buttons { flex-direction: row; }
   .footer__content { grid-template-columns: repeat(3, 1fr); }

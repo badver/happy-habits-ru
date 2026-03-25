@@ -50,23 +50,16 @@
         window.location.replace(url);
       }
 
-      // Main router logic — random on every visit (no persistence)
+      // Direct redirect to variant A (A/B test disabled 25.03.2026 — insufficient data for statistical significance)
       (function route() {
-        if (!config.enabled) {
-          redirect(config.defaultVariant);
-          return;
-        }
-
-        // 1. Check URL force parameter (e.g. /?v=b)
+        // Allow forcing variant via URL param for testing (e.g. /?v=b)
         var forced = getUrlParam(config.forceParam);
         if (isValidVariant(forced)) {
           redirect(forced);
           return;
         }
 
-        // 2. Random assignment every visit
-        var variant = weightedRandom(config.variants, config.weights);
-        redirect(variant);
+        redirect('a');
       })();
     })();
   </script>
@@ -157,7 +150,7 @@
           "latitude": "55.7558",
           "longitude": "37.6173"
         },
-        "priceRange": "5000-45000 ₽",
+        "priceRange": "5000-38000 ₽",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -219,7 +212,7 @@
             "name": "Дорого ли?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "5000 ₽ за сессию — средняя цена в Москве для КПТ-терапевта с сертификацией. Пакет 10 сессий — 45000 ₽ (экономия 5000 ₽)."
+              "text": "5 000 ₽ за сессию (1 час 20 мин) — средняя цена для КПТ-специалиста с сертификацией. Пакет 4 сессии — 16 000 ₽ (4 000 ₽ за сессию). Пакет 10 сессий — 38 000 ₽ (3 800 ₽ за сессию)."
             }
           }
         ]
@@ -319,11 +312,7 @@
   <script src="{{ $deeplinks.Permalink }}" integrity="{{ $deeplinks.Data.Integrity }}"></script>
   {{ end }}
 
-  {{ $abtest := resources.Get "js/ab-test.js" | resources.ExecuteAsTemplate "js/ab-test-home.js" . }}
-  {{ if $abtest }}
-  {{ $abtest = $abtest | minify | fingerprint }}
-  <script src="{{ $abtest.Permalink }}" integrity="{{ $abtest.Data.Integrity }}"></script>
-  {{ end }}
+  {{/* ab-test.js disabled 25.03.2026 — headline fixed to best-performing combo */}}
 
   {{ $paletteSwitcher := resources.Get "js/palette-switcher.js" }}
   {{ if $paletteSwitcher }}
