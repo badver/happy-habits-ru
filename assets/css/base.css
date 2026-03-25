@@ -236,7 +236,12 @@ section {
 }
 
 .hero__image { text-align: center; }
-.hero__photo { width: 100%; max-width: 400px; margin: 0 auto; border-radius: var(--radius-lg); }
+.hero__photo { width: 100%; max-width: 320px; margin: 0 auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+
+.cta-final__intro { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-lg); position: relative; z-index: 1; }
+.cta-final__photo { position: relative; z-index: 2; }
+.cta-final__photo img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); max-width: 200px; width: 200px; display: block; position: relative; z-index: 2; }
+.cta-final__intro .cta-final__description { margin-bottom: 0; }
 
 /* ============================================
    Symptoms
@@ -893,8 +898,17 @@ section {
   .container { padding: 0 var(--spacing-lg); }
   section { padding: var(--spacing-xxl) 0; }
   .hero { padding: 100px 0 88px; }
+  .hero__container { flex-direction: row; align-items: center; }
+  .hero__content { text-align: left; margin: 0; flex: 1; }
+  .hero__content .hero__subtitle { margin-left: 0; margin-right: 0; }
+  .hero__content .hero__badges { justify-content: flex-start; }
+  .hero__content .hero__cta { align-items: flex-start; }
+  .hero__image { flex: 0 0 auto; }
+  .hero__photo { max-width: 300px; }
   .hero__cta { flex-direction: row; }
   .cta-buttons { flex-direction: row; }
+  .cta-final__intro { flex-direction: row; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cta-final__photo { flex-shrink: 0; }
   .benefits__grid { grid-template-columns: repeat(2, 1fr); }
   .about__content { flex-direction: row; align-items: flex-start; }
   .about__image { flex: 0 0 280px; position: sticky; top: 100px; }

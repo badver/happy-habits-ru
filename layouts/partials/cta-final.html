@@ -2,10 +2,20 @@
   <div class="container">
     <h2 class="cta-final__title">Первый шаг — бесплатная вводная встреча 30 минут</h2>
 
-    <p class="cta-final__description">
-      Познакомимся, обсудим ваш запрос, я расскажу, как работает КПТ и подходит ли она в вашем случае.
-      Это бесплатно и ни к чему не обязывает.
-    </p>
+    <div class="cta-final__intro">
+      <div class="cta-final__photo">
+        {{ $ctaImg := resources.Get "images/ksenia-cta.jpg" }}
+        {{ if $ctaImg }}
+        {{ $resized := $ctaImg.Fit "280x350" }}
+        <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — запишитесь на вводную встречу"
+          width="{{ $resized.Width }}" height="{{ $resized.Height }}">
+        {{ end }}
+      </div>
+      <p class="cta-final__description">
+        Познакомимся, обсудим ваш запрос, я расскажу, как работает КПТ и подходит ли она в вашем случае.
+        Это бесплатно и ни к чему не обязывает.
+      </p>
+    </div>
 
     <!-- Quiz Gate -->
     {{ partial "quiz.html" . }}

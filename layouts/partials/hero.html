@@ -18,5 +18,14 @@
         </a>
       </div>
     </div>
+
+    <div class="hero__image">
+      {{ $heroImg := resources.Get "images/ksenia-hero.jpg" }}
+      {{ if $heroImg }}
+      {{ $resized := $heroImg.Fit "500x600" }}
+      <img src="{{ $resized.RelPermalink }}" alt="Ксения Парваткина — клинический психолог, КПТ-специалист"
+        class="hero__photo" width="{{ $resized.Width }}" height="{{ $resized.Height }}" loading="eager">
+      {{ end }}
+    </div>
   </div>
 </section>
