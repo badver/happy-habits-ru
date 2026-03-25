@@ -12,6 +12,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
@@ -71,6 +72,7 @@ strong { font-weight: 700; }
 section {
   padding: var(--spacing-xl) 0;
   position: relative;
+  overflow-x: clip;
 }
 
 .section__title {
@@ -954,7 +956,7 @@ section {
   .benefits__grid { grid-template-columns: repeat(2, 1fr); }
   .about__content { flex-direction: row; align-items: flex-start; }
   .about__image { flex: 0 0 280px; position: sticky; top: 100px; }
-  .about__info { flex: 1; }
+  .about__info { flex: 1; min-width: 0; }
   .principles__grid { grid-template-columns: repeat(3, 1fr); }
   .testimonial-card { flex: 0 0 calc(50% - var(--spacing-md) / 2); max-width: calc(50% - var(--spacing-md) / 2); }
   .testimonials__track { scroll-snap-type: x proximity; }
@@ -975,6 +977,68 @@ section {
   .hero__title { font-size: 58px; }
   .benefits__grid { grid-template-columns: repeat(4, 1fr); }
   .hero { padding: 120px 0 100px; }
+}
+
+/* ============================================
+   Responsive — Tablets (768–1199px) layout fixes
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about__info .principles__grid { grid-template-columns: 1fr; }
+  .testimonials-carousel { padding: 0 52px; }
+}
+@media (min-width: 768px) and (max-width: 899px) {
+  .about__image { flex: 0 0 220px; }
+  .pricing__cards { grid-template-columns: 1fr; max-width: 480px; }
+}
+
+/* ============================================
+   Responsive — Very narrow screens (<360px)
+   ============================================ */
+@media (max-width: 359px) {
+  .container { padding: 0 var(--spacing-sm); }
+  .hero__container { padding: 0 var(--spacing-sm); }
+  .hero__title { font-size: 28px; }
+  .hero__subtitle { font-size: 15px; }
+  h2 { font-size: 24px; }
+  .section__title { font-size: 24px; }
+  .section__subtitle { font-size: 14px; }
+  .badge { font-size: 11px; padding: 6px 10px; }
+  .benefit-card { padding: var(--spacing-md) var(--spacing-sm); }
+  .benefit-card__number { font-size: 40px; }
+  .benefit-card__title { font-size: 18px; }
+  .benefit-card__description { font-size: 14px; }
+  .step { gap: var(--spacing-sm); padding: var(--spacing-sm); }
+  .step__number { width: 40px; height: 40px; font-size: 18px; }
+  .step__title { font-size: 16px; }
+  .step__description { font-size: 14px; }
+  .process__steps::before { left: 31px; }
+  .testimonials-carousel { padding: 0 40px; }
+  .testimonial-card { padding: var(--spacing-sm); }
+  .testimonial-card__author { font-size: 15px; }
+  .testimonial-card__text { font-size: 13px; line-height: 1.5; }
+  .testimonial-card__details { font-size: 12px; gap: 4px; }
+  .carousel__btn { width: 32px; height: 32px; }
+  .carousel__btn svg { width: 16px; height: 16px; }
+  .pricing-card { padding: var(--spacing-md); }
+  .pricing-card__title { font-size: 20px; }
+  .price__amount { font-size: 40px; }
+  .price__currency { font-size: 20px; }
+  .pricing-card__features li { font-size: 14px; }
+  .faq-item { padding: var(--spacing-sm) var(--spacing-md); }
+  .faq-item__question { font-size: 17px; }
+  .faq-item__answer { font-size: 14px; }
+  .cta-final__title { font-size: 24px; }
+  .cta-final__description { font-size: 15px; }
+  .quiz__container { padding: var(--spacing-md); }
+  .quiz__question-text { font-size: 18px; }
+  .quiz__answer { padding: var(--spacing-sm); font-size: 14px; }
+  .method-details__summary { padding: var(--spacing-sm) var(--spacing-md); }
+  .method-details__content { padding: 0 var(--spacing-md) var(--spacing-md); }
+  .about__bio p { font-size: 14px; }
+  .credentials__list li { font-size: 14px; }
+  .principle h4 { font-size: 16px; }
+  .principle p { font-size: 13px; }
+  .floating-nav__menu { width: calc(100vw - 24px); }
 }
 
 /* ============================================
