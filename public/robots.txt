@@ -1,11 +1,11 @@
-# robots.txt for http://localhost:57168/
+# robots.txt for https://happy-habits.ru/
 # Allow all crawlers to index the site
 
 User-agent: *
 Allow: /
 
 # Sitemap location - dynamically generated
-Sitemap: http://localhost:57168/sitemap.xml
+Sitemap: https://happy-habits.ru/sitemap.xml
 
 # Yandex: ignore insignificant GET parameters (prevents duplicate pages)
 Clean-param: v&from&utm_source&utm_medium&utm_campaign&utm_term&utm_content&utm_referrer&yclid&gclid&fbclid&_openstat
