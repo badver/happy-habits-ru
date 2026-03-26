@@ -1042,6 +1042,36 @@ section {
 }
 
 /* ============================================
+   Messenger Bridge Toast
+   ============================================ */
+.messenger-bridge {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 10000;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  padding: 16px 24px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  pointer-events: none;
+}
+.messenger-bridge--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.messenger-bridge__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ============================================
    Accessibility
    ============================================ */
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

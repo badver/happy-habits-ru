@@ -302,6 +302,19 @@ section + section::before { display: none; }
 .floating-nav__toggle:hover { box-shadow: 0 6px 28px rgba(201, 169, 110, 0.4); }
 .floating-nav__backdrop { background: rgba(42, 37, 32, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
+/* Messenger Bridge — glassmorphism toast */
+.messenger-bridge {
+  background: rgba(42, 37, 32, 0.88);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 169, 110, 0.1);
+}
+.messenger-bridge__text {
+  color: var(--color-hero-text);
+  font-family: var(--font-body);
+}
+
 /* ============================================
    Premium responsive tweaks
    ============================================ */

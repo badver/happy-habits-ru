@@ -1,6 +1,6 @@
 /**
  * Deeplink Logic
- * Handles Telegram and WhatsApp deeplinks with fallback
+ * Handles Telegram, WhatsApp and Max deeplinks with fallback and bridge toast
  */
 
 (function() {
@@ -8,84 +8,122 @@
 
   const TELEGRAM_USERNAME = 'happy_habits_ru';
   const WHATSAPP_NUMBER = '905071754633';
-  const DEFAULT_MESSAGE = 'Здравствуйте! Хочу записаться на бесплатную диагностику (30 минут)';
-  const FALLBACK_TIMEOUT = 2000; // 2 seconds
+  const DEFAULT_MESSAGE = 'Здравствуйте! Хочу записаться на вводную встречу (30 минут)';
+  const FALLBACK_TIMEOUT = 2000;
+  const BRIDGE_DELAY = 1500;
 
-  /**
-   * Build Telegram deeplink
-   * @param {string} message - Message to pre-fill
-   * @returns {string} Telegram deeplink URL
-   */
-  function buildTelegramDeeplink(message = DEFAULT_MESSAGE) {
-    const encodedMessage = encodeURIComponent(message);
-    return `tg://resolve?domain=${TELEGRAM_USERNAME}&text=${encodedMessage}`;
+  const MESSENGER_NAMES = {
+    telegram: 'Telegram',
+    whatsapp: 'WhatsApp',
+    max: 'Макс'
+  };
+
+  const CONCERN_MAP = {
+    anxiety: 'тревожность',
+    panic: 'приступы тревоги',
+    stress: 'стресс и выгорание',
+    ocd: 'навязчивые мысли',
+    other: null
+  };
+
+  const DURATION_MAP = {
+    less_month: 'менее месяца',
+    '1_6_months': '1\u20136 месяцев',
+    '6_12_months': '6\u201312 месяцев',
+    more_year: 'более года',
+    several_years: 'несколько лет'
+  };
+
+  function buildPersonalizedMessage() {
+    if (typeof window.quizGate === 'undefined' || typeof window.quizGate.getAnswers !== 'function') {
+      return DEFAULT_MESSAGE;
+    }
+
+    var a = window.quizGate.getAnswers();
+    var concern = a.q1 && CONCERN_MAP[a.q1];
+    if (!concern) return DEFAULT_MESSAGE;
+
+    var duration = a.q2 && DURATION_MAP[a.q2];
+    if (duration) {
+      return 'Здравствуйте! Меня беспокоит ' + concern + ' уже ' + duration + '. Хочу записаться на вводную встречу (30 минут)';
+    }
+    return 'Здравствуйте! Меня беспокоит ' + concern + '. Хочу записаться на вводную встречу (30 минут)';
   }
 
-  /**
-   * Build WhatsApp deeplink
-   * @param {string} message - Message to pre-fill
-   * @returns {string} WhatsApp deeplink URL
-   */
-  function buildWhatsAppDeeplink(message = DEFAULT_MESSAGE) {
-    const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+  function buildTelegramDeeplink(message) {
+    message = message || DEFAULT_MESSAGE;
+    return 'tg://resolve?domain=' + TELEGRAM_USERNAME + '&text=' + encodeURIComponent(message);
   }
 
-  /**
-   * Get fallback URL for messenger
-   * @param {string} messengerType - 'telegram' or 'whatsapp'
-   * @returns {string} Fallback URL
-   */
-  function getFallbackURL(messengerType) {
+  function buildWhatsAppDeeplink(message) {
+    message = message || DEFAULT_MESSAGE;
+    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+  }
+
+  function getFallbackURL(messengerType, message) {
+    message = message || DEFAULT_MESSAGE;
+    var encodedMessage = encodeURIComponent(message);
     if (messengerType === 'telegram') {
-      return `https://t.me/${TELEGRAM_USERNAME}`;
+      return 'https://t.me/' + TELEGRAM_USERNAME + '?text=' + encodedMessage;
     } else if (messengerType === 'whatsapp') {
-      return `https://web.whatsapp.com/`;
+      return 'https://web.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodedMessage;
     }
     return '';
   }
 
-  /**
-   * Handle messenger button click
-   * @param {Event} event - Click event
-   * @param {HTMLElement} button - Button element
-   */
-  function handleMessengerClick(event, button) {
-    const messengerType = button.getAttribute('data-cta');
-    const buttonPosition = button.getAttribute('data-position') || 'unknown';
-
-    // Track analytics
-    if (typeof window.trackMessengerClick === 'function') {
-      window.trackMessengerClick(messengerType, buttonPosition);
+  function showBridge(messengerType, callback) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      callback();
+      return;
     }
 
-    // Get deeplink URL
-    let deeplinkURL;
-    if (messengerType === 'telegram') {
-      deeplinkURL = buildTelegramDeeplink();
-    } else if (messengerType === 'whatsapp') {
-      deeplinkURL = buildWhatsAppDeeplink();
+    var bridge = document.getElementById('messenger-bridge');
+    if (!bridge) {
+      callback();
+      return;
+    }
+
+    var textEl = bridge.querySelector('.messenger-bridge__text');
+    var name = MESSENGER_NAMES[messengerType] || messengerType;
+    if (messengerType === 'max') {
+      textEl.textContent = 'Сейчас откроется ' + name + '. Напишите \u00ABЗдравствуйте\u00BB\u00A0\u2014 Ксения ответит в течение 2 часов';
     } else {
-      return; // Unknown messenger type
+      textEl.textContent = 'Сейчас откроется ' + name + '. Сообщение уже заполнено\u00A0\u2014 просто нажмите \u00ABОтправить\u00BB';
     }
 
-    // Try to open deeplink
-    const fallbackURL = button.getAttribute('data-fallback') || getFallbackURL(messengerType);
+    bridge.classList.add('messenger-bridge--visible');
 
-    // Detect if deeplink failed (simplified approach)
-    let appOpened = false;
-    const startTime = Date.now();
+    setTimeout(function() {
+      bridge.classList.remove('messenger-bridge--visible');
+      callback();
+    }, BRIDGE_DELAY);
+  }
 
-    // Set up fallback timer
-    const fallbackTimer = setTimeout(() => {
+  function openDeeplink(messengerType, message, button) {
+    var deeplinkURL;
+    if (messengerType === 'telegram') {
+      deeplinkURL = buildTelegramDeeplink(message);
+    } else if (messengerType === 'whatsapp') {
+      deeplinkURL = buildWhatsAppDeeplink(message);
+    } else if (messengerType === 'max') {
+      window.open(button.href, '_blank');
+      return;
+    } else {
+      return;
+    }
+
+    var fallbackURL = button.getAttribute('data-fallback') || getFallbackURL(messengerType, message);
+
+    var appOpened = false;
+    var startTime = Date.now();
+
+    var fallbackTimer = setTimeout(function() {
       if (!appOpened && Date.now() - startTime >= FALLBACK_TIMEOUT) {
-        console.log(`Deeplink timeout, redirecting to fallback: ${fallbackURL}`);
-        window.location.href = fallbackURL;
+        window.open(fallbackURL, '_blank');
       }
     }, FALLBACK_TIMEOUT);
 
-    // Listen for visibility change (app might have opened)
-    const visibilityHandler = () => {
+    var visibilityHandler = function() {
       if (document.hidden) {
         appOpened = true;
         clearTimeout(fallbackTimer);
@@ -94,51 +132,54 @@
     };
     document.addEventListener('visibilitychange', visibilityHandler);
 
-    // Also listen for blur event
-    const blurHandler = () => {
+    var blurHandler = function() {
       appOpened = true;
       clearTimeout(fallbackTimer);
       window.removeEventListener('blur', blurHandler);
     };
     window.addEventListener('blur', blurHandler);
 
-    // Try to open deeplink
     try {
       window.location.href = deeplinkURL;
     } catch (e) {
-      console.error('Failed to open deeplink:', e);
       clearTimeout(fallbackTimer);
-      window.location.href = fallbackURL;
+      window.open(fallbackURL, '_blank');
     }
-
-    // Prevent default link behavior
-    event.preventDefault();
   }
 
-  /**
-   * Initialize deeplink handlers
-   */
-  function initDeeplinks() {
-    // Find all CTA buttons
-    const ctaButtons = document.querySelectorAll('[data-cta="telegram"], [data-cta="whatsapp"]');
+  function handleMessengerClick(event, button) {
+    event.preventDefault();
 
-    ctaButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
+    var messengerType = button.getAttribute('data-cta');
+    var buttonPosition = button.getAttribute('data-position') || 'unknown';
+
+    if (typeof window.trackMessengerClick === 'function') {
+      window.trackMessengerClick(messengerType, buttonPosition);
+    }
+
+    var message = buildPersonalizedMessage();
+
+    showBridge(messengerType, function() {
+      openDeeplink(messengerType, message, button);
+    });
+  }
+
+  function initDeeplinks() {
+    var ctaButtons = document.querySelectorAll('[data-cta="telegram"], [data-cta="whatsapp"], [data-cta="max"]');
+
+    ctaButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
         handleMessengerClick(event, button);
       });
     });
-
-    console.log(`Initialized ${ctaButtons.length} deeplink buttons`);
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initDeeplinks);
   } else {
     initDeeplinks();
   }
 
-  // Expose functions for testing
   window.buildTelegramDeeplink = buildTelegramDeeplink;
   window.buildWhatsAppDeeplink = buildWhatsAppDeeplink;
 })();
