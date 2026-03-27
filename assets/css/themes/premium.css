@@ -302,6 +302,22 @@ section + section::before { display: none; }
 .floating-nav__toggle:hover { box-shadow: 0 6px 28px rgba(201, 169, 110, 0.4); }
 .floating-nav__backdrop { background: rgba(42, 37, 32, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
+/* CTA micro-testimonial */
+.cta-final__testimonial {
+  background: rgba(245, 240, 234, 0.04);
+  color: var(--color-hero-text);
+}
+.cta-final__testimonial cite { color: var(--color-gold); }
+
+/* CTA SLA badge */
+.cta-final__sla {
+  background: rgba(245, 240, 234, 0.04);
+  border: 1px solid rgba(245, 240, 234, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: inline-flex;
+}
+
 /* Messenger Bridge — glassmorphism toast */
 .messenger-bridge {
   background: rgba(42, 37, 32, 0.88);

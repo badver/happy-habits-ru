@@ -12,6 +12,8 @@
   const FALLBACK_TIMEOUT = 2000;
   const BRIDGE_DELAY = 1500;
 
+  var isProcessing = false;
+
   const MESSENGER_NAMES = {
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
@@ -71,6 +73,12 @@
     return '';
   }
 
+  function trackDeeplinkResult(messengerType, result) {
+    if (typeof window.trackMessengerDeeplinkResult === 'function') {
+      window.trackMessengerDeeplinkResult(messengerType, result);
+    }
+  }
+
   function showBridge(messengerType, callback) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       callback();
@@ -86,7 +94,7 @@
     var textEl = bridge.querySelector('.messenger-bridge__text');
     var name = MESSENGER_NAMES[messengerType] || messengerType;
     if (messengerType === 'max') {
-      textEl.textContent = 'Сейчас откроется ' + name + '. Напишите \u00ABЗдравствуйте\u00BB\u00A0\u2014 Ксения ответит в течение 2 часов';
+      textEl.textContent = 'Сейчас откроется ' + name + '. Напишите \u00ABЗдравствуйте\u00BB\u00A0\u2014 Ксения ответит в течение часа';
     } else {
       textEl.textContent = 'Сейчас откроется ' + name + '. Сообщение уже заполнено\u00A0\u2014 просто нажмите \u00ABОтправить\u00BB';
     }
@@ -107,8 +115,11 @@
       deeplinkURL = buildWhatsAppDeeplink(message);
     } else if (messengerType === 'max') {
       window.open(button.href, '_blank');
+      trackDeeplinkResult(messengerType, 'opened');
+      isProcessing = false;
       return;
     } else {
+      isProcessing = false;
       return;
     }
 
@@ -119,14 +130,18 @@
 
     var fallbackTimer = setTimeout(function() {
       if (!appOpened && Date.now() - startTime >= FALLBACK_TIMEOUT) {
+        trackDeeplinkResult(messengerType, 'fallback');
         window.open(fallbackURL, '_blank');
       }
+      isProcessing = false;
     }, FALLBACK_TIMEOUT);
 
     var visibilityHandler = function() {
       if (document.hidden) {
         appOpened = true;
         clearTimeout(fallbackTimer);
+        trackDeeplinkResult(messengerType, 'opened');
+        isProcessing = false;
       }
       document.removeEventListener('visibilitychange', visibilityHandler);
     };
@@ -135,6 +150,8 @@
     var blurHandler = function() {
       appOpened = true;
       clearTimeout(fallbackTimer);
+      trackDeeplinkResult(messengerType, 'opened');
+      isProcessing = false;
       window.removeEventListener('blur', blurHandler);
     };
     window.addEventListener('blur', blurHandler);
@@ -143,12 +160,17 @@
       window.location.href = deeplinkURL;
     } catch (e) {
       clearTimeout(fallbackTimer);
+      trackDeeplinkResult(messengerType, 'error');
       window.open(fallbackURL, '_blank');
+      isProcessing = false;
     }
   }
 
   function handleMessengerClick(event, button) {
     event.preventDefault();
+
+    if (isProcessing) return;
+    isProcessing = true;
 
     var messengerType = button.getAttribute('data-cta');
     var buttonPosition = button.getAttribute('data-position') || 'unknown';

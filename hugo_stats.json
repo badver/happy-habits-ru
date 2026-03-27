@@ -2,9 +2,11 @@
   "htmlElements": {
     "tags": [
       "a",
+      "blockquote",
       "body",
       "br",
       "button",
+      "cite",
       "details",
       "div",
       "footer",
@@ -71,6 +73,7 @@
       "cta-final__intro",
       "cta-final__photo",
       "cta-final__sla",
+      "cta-final__testimonial",
       "cta-final__title",
       "cta-text",
       "detail",

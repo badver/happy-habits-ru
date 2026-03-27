@@ -67,6 +67,27 @@
   };
 
   /**
+   * Track deeplink open result (opened / fallback / error)
+   * @param {string} messengerType - 'telegram', 'whatsapp', or 'max'
+   * @param {string} result - 'opened' (app opened), 'fallback' (web fallback used), 'error' (deeplink failed)
+   */
+  window.trackMessengerDeeplinkResult = function (messengerType, result) {
+    const eventData = {
+      messenger_type: messengerType,
+      deeplink_result: result,
+      ...getStoredUTM()
+    };
+
+    if (typeof gtag !== 'undefined' && GA4_ID) {
+      gtag('event', 'messenger_deeplink_result', eventData);
+    }
+
+    if (typeof ym !== 'undefined' && YM_ID) {
+      ym(YM_ID, 'reachGoal', 'messenger_' + result, eventData);
+    }
+  };
+
+  /**
    * Track scroll-to-CTA button click
    * @param {string} buttonPosition - location of button (e.g., 'hero', 'symptoms')
    * @param {string} buttonText - text content of the button
